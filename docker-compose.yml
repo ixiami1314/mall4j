@@ -28,6 +28,7 @@ services:
       dockerfile: ./yami-shop-admin/Dockerfile
     restart: always
     container_name: mall4j-admin
+    env_file: .env
     image: mall4j-admin
     ports:
       - 8085:8085
@@ -45,6 +46,7 @@ services:
     restart: always
     container_name: mall4j-api
     image: mall4j-api
+    env_file: .env
     ports:
       - 8086:8086
     depends_on:
