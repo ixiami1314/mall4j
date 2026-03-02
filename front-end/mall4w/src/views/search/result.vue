@@ -59,7 +59,7 @@ watch(() => route.query.keyword, (newKeyword) => {
 const fetchProducts = async () => {
   if (!keyword.value) return
   const { data } = await searchProd({
-    keyword: keyword.value,
+    prodName: keyword.value,
     current: pageNum.value,
     size: pageSize.value,
     orderBy: orderBy.value

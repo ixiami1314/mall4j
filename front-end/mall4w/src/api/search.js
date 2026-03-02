@@ -10,9 +10,10 @@ export function searchProd(params) {
 }
 
 // 热门搜索
-export function getHotSearch() {
+export function getHotSearch(number = 10, sort = 0) {
   return http({
     url: http.adornUrl('/search/hotSearch'),
-    method: 'get'
+    method: 'get',
+    params: http.adornParams({ number, sort })
   })
 }
