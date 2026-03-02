@@ -33,17 +33,19 @@ onMounted(() => {
 const fetchCollection = async () => {
   const { data } = await http({
     url: http.adornUrl('/p/user/collection/prods'),
-    method: 'get'
+    method: 'get',
+    params: http.adornParams({ current: 1, size: 20 })
   })
-  prodList.value = data || []
+  // 处理分页数据
+  prodList.value = data?.records || []
 }
 
 const handleRemove = async (prodId) => {
   await ElMessageBox.confirm('确定取消收藏吗？')
   await http({
-    url: http.adornUrl('/p/user/collection/addOrDelete'),
+    url: http.adornUrl('/p/user/collection/addOrCancel'),
     method: 'post',
-    data: { prodId }
+    data: prodId
   })
   fetchCollection()
 }
