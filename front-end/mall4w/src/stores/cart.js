@@ -8,20 +8,21 @@ export const useCartStore = defineStore('cart', {
   }),
   actions: {
     async fetchCart() {
-      const { data } = await http({
+      const res = await http({
         url: http.adornUrl('/p/shopCart/info'),
         method: 'post',
         data: {}
       })
-      this.items = data || []
+      this.items = res.data || []
       this.calculateTotal()
     },
     async fetchCartCount() {
-      const { data } = await http({
+      const res = await http({
         url: http.adornUrl('/p/shopCart/prodCount'),
-        method: 'get'
+        method: 'get',
+        params: http.adornParams()
       })
-      this.totalCount = data || 0
+      this.totalCount = res.data || 0
     },
     calculateTotal() {
       let count = 0
