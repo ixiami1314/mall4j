@@ -79,7 +79,7 @@ http.interceptors.response.use(
 
 // API 地址处理
 http.adornUrl = actionName => {
-  return '/api' + actionName
+  return import.meta.env.VITE_APP_BASE_API + actionName
 }
 
 // get 请求参数处理

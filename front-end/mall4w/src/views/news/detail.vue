@@ -23,12 +23,17 @@ onMounted(() => {
 })
 
 const fetchNewsDetail = async () => {
-  const { data } = await http({
-    url: http.adornUrl('/shop/notice/info/' + route.params.id),
-    method: 'get'
-  })
-  newsInfo.value = data || {}
-  loading.value = false
+  try {
+    const { data } = await http({
+      url: http.adornUrl('/shop/notice/info/' + route.params.id),
+      method: 'get'
+    })
+    newsInfo.value = data || {}
+  } catch (error) {
+    console.error('获取新闻详情失败:', error)
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
