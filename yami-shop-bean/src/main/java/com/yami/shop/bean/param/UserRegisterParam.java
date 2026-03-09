@@ -46,4 +46,7 @@ public class UserRegisterParam {
 
 	@Schema(description = "用户id" )
 	private Long userId;
+
+	@Schema(description = "跳过手机验证码验证")
+	private Boolean skipVerify;
 }

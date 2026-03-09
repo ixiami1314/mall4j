@@ -17,12 +17,17 @@ export const useCartStore = defineStore('cart', {
       this.calculateTotal()
     },
     async fetchCartCount() {
-      const res = await http({
-        url: http.adornUrl('/p/shopCart/prodCount'),
-        method: 'get',
-        params: http.adornParams()
-      })
-      this.totalCount = res.data || 0
+      try {
+        const res = await http({
+          url: http.adornUrl('/p/shopCart/prodCount'),
+          method: 'get',
+          params: { t: Date.now() }
+        })
+        this.totalCount = res.data || 0
+      } catch (error) {
+        console.error('获取购物车数量失败:', error)
+        this.totalCount = 0
+      }
     },
     calculateTotal() {
       let count = 0

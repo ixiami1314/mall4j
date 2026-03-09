@@ -5,7 +5,7 @@ export function getProdInfo(prodId) {
   return http({
     url: http.adornUrl('/prod/prodInfo'),
     method: 'get',
-    params: { prodId }
+    params: http.adornParams({ prodId })
   })
 }
 

@@ -3,12 +3,12 @@
     <div class="login-box">
       <h2>用户登录</h2>
       <el-form ref="formRef" :model="form" :rules="rules" label-width="0">
-        <el-form-item prop="principal">
-          <el-input v-model="form.principal" placeholder="请输入手机号/用户名" :prefix-icon="User" />
+        <el-form-item prop="userName">
+          <el-input v-model="form.userName" placeholder="请输入手机号/用户名" :prefix-icon="User" />
         </el-form-item>
-        <el-form-item prop="credentials">
+        <el-form-item prop="passWord">
           <el-input
-            v-model="form.credentials"
+            v-model="form.passWord"
             type="password"
             placeholder="请输入密码"
             :prefix-icon="Lock"
@@ -47,13 +47,13 @@ const formRef = ref(null)
 const loading = ref(false)
 
 const form = reactive({
-  principal: '',
-  credentials: ''
+  userName: '',
+  passWord: ''
 })
 
 const rules = {
-  principal: [{ required: true, message: '请输入手机号/用户名', trigger: 'blur' }],
-  credentials: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+  userName: [{ required: true, message: '请输入手机号/用户名', trigger: 'blur' }],
+  passWord: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 }
 
 const handleLogin = async () => {
@@ -63,8 +63,9 @@ const handleLogin = async () => {
   loading.value = true
   try {
     const { data } = await login(form)
-    cookie.set('Authorization', data.accessToken, '7d')
-    userStore.setUser(data)
+    // 登录成功后保存 token，格式为 "bearer + token"
+    // 设置 cookie：key, value, expire(path), path
+    cookie.set('Authorization', 'bearer' + data.accessToken, 60 * 60 * 24 * 7, '/')
     await cartStore.fetchCartCount()
     ElMessage.success('登录成功')
     const redirect = route.query.redirect || '/'

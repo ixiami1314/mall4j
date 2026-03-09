@@ -9,7 +9,7 @@
         <el-form-item prop="mobile">
           <el-input v-model="form.mobile" placeholder="请输入手机号" :prefix-icon="Phone" />
         </el-form-item>
-        <el-form-item prop="code">
+        <el-form-item v-if="!skipVerify" prop="code">
           <div class="code-input">
             <el-input v-model="form.code" placeholder="请输入验证码" :prefix-icon="Key" />
             <el-button :disabled="countdown > 0" @click="handleSendCode">
@@ -37,16 +37,18 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, reactive, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { User, Lock, Phone, Key } from '@element-plus/icons-vue'
 import { register, sendSms } from '@/api/user'
 import { ElMessage } from 'element-plus'
 
 const router = useRouter()
+const route = useRoute()
 const formRef = ref(null)
 const loading = ref(false)
 const countdown = ref(0)
+const skipVerify = ref(false)
 
 const form = reactive({
   userName: '',
@@ -81,6 +83,11 @@ const rules = {
   ]
 }
 
+onMounted(() => {
+  // 检查 URL 参数， skip_mobile_code_verify
+  skipVerify.value = route.query.skip_mobile_code_verify === 'true' || route.query.skip_mobile_code_verify === ''
+})
+
 const handleSendCode = async () => {
   if (!form.mobile || !/^1[3-9]\d{9}$/.test(form.mobile)) {
     ElMessage.warning('请输入正确的手机号')
@@ -108,10 +115,12 @@ const handleRegister = async () => {
   loading.value = true
   try {
     await register({
-      userName: form.userName,
-      mobile: form.mobile,
-      validCode: form.code,
-      password: form.password
+    userName: form.userName,
+    mobile: form.mobile,
+    passWord: form.password,
+    nickName: form.userName,
+    checkRegisterSmsFlag: skipVerify.value ? '' : form.code,
+    skipVerify: skipVerify.value
     })
     ElMessage.success('注册成功，请登录')
     router.push('/login')

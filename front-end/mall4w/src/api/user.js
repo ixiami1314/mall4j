@@ -12,7 +12,7 @@ export function login(data) {
 // 注册
 export function register(data) {
   return http({
-    url: http.adornUrl('/userInfo/registerOrBindUser'),
+    url: http.adornUrl('/user/register'),
     method: 'post',
     data
   })
