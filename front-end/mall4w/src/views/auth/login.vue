@@ -33,6 +33,7 @@ import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { User, Lock } from '@element-plus/icons-vue'
 import { login } from '@/api/user'
+import { encryptPassword } from '@/utils/crypto'
 import { useUserStore } from '@/stores/user'
 import { useCartStore } from '@/stores/cart'
 import cookie from 'vue-cookies'
@@ -62,7 +63,10 @@ const handleLogin = async () => {
 
   loading.value = true
   try {
-    const { data } = await login(form)
+    const { data } = await login({
+      userName: form.userName,
+      passWord: encryptPassword(form.passWord)
+    })
     // 登录成功后保存 token，格式为 "bearer + token"
     // 设置 cookie：key, value, expire(path), path
     cookie.set('Authorization', 'bearer' + data.accessToken, 60 * 60 * 24 * 7, '/')

@@ -41,6 +41,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { User, Lock, Phone, Key } from '@element-plus/icons-vue'
 import { register, sendSms } from '@/api/user'
+import { encryptPassword } from '@/utils/crypto'
 import { ElMessage } from 'element-plus'
 
 const router = useRouter()
@@ -115,12 +116,12 @@ const handleRegister = async () => {
   loading.value = true
   try {
     await register({
-    userName: form.userName,
-    mobile: form.mobile,
-    passWord: form.password,
-    nickName: form.userName,
-    checkRegisterSmsFlag: skipVerify.value ? '' : form.code,
-    skipVerify: skipVerify.value
+      userName: form.userName,
+      mobile: form.mobile,
+      passWord: encryptPassword(form.password),
+      nickName: form.userName,
+      checkRegisterSmsFlag: skipVerify.value ? '' : form.code,
+      skipVerify: skipVerify.value
     })
     ElMessage.success('注册成功，请登录')
     router.push('/login')

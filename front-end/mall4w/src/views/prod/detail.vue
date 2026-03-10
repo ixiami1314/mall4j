@@ -175,11 +175,21 @@ const comments = ref([])
 const commentTotal = ref(0)
 const selectedSkus = ref({})
 
+// 解析 SKU properties 字符串 (格式: "颜色:红色;尺码:XL")
+const parseProperties = (propertiesStr) => {
+  if (!propertiesStr) return []
+  return propertiesStr.split(';').filter(Boolean).map(prop => {
+    const [propertyName, propertyValueName] = prop.split(':')
+    return { propertyName, propertyValueName }
+  })
+}
+
 const skuGroups = computed(() => {
   if (!prodInfo.value.skuList?.length) return []
   const groups = {}
   prodInfo.value.skuList.forEach(sku => {
-    sku.properties?.forEach(prop => {
+    const props = parseProperties(sku.properties)
+    props.forEach(prop => {
       if (!groups[prop.propertyName]) {
         groups[prop.propertyName] = new Set()
       }
@@ -198,7 +208,8 @@ const selectedSku = computed(() => {
   if (selectedCount !== skuGroups.value.length) return null
 
   return prodInfo.value.skuList.find(sku => {
-    return sku.properties?.every(prop =>
+    const props = parseProperties(sku.properties)
+    return props.every(prop =>
       selectedSkus.value[prop.propertyName] === prop.propertyValueName
     )
   })
@@ -208,7 +219,8 @@ const isSkuDisabled = (skuName, value) => {
   // 检查选择该值后是否有可用库存
   const tempSelected = { ...selectedSkus.value, [skuName]: value }
   return !prodInfo.value.skuList?.some(sku => {
-    return sku.properties?.every(prop =>
+    const props = parseProperties(sku.properties)
+    return props.every(prop =>
       tempSelected[prop.propertyName] === prop.propertyValueName
     ) && sku.stocks > 0
   })
@@ -231,7 +243,8 @@ const fetchProdInfo = async () => {
     // 自动选择第一个 SKU
     if (prodInfo.value.skuList?.length) {
       const firstSku = prodInfo.value.skuList[0]
-      firstSku.properties?.forEach(prop => {
+      const props = parseProperties(firstSku.properties)
+      props.forEach(prop => {
         selectedSkus.value[prop.propertyName] = prop.propertyValueName
       })
     }
