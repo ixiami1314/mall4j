@@ -11,7 +11,10 @@
     "all": "All",
     "success": "Success",
     "error": "Failed",
-    "back": "Back"
+    "back": "Back",
+    "modify": "Modify",
+    "tip": "Tip",
+    "unknown": "Unknown"
   },
   "nav": {
     "home": "Home",
@@ -108,12 +111,20 @@
   "order": {
     "confirm": {
       "title": "Confirm Order",
-      "shippingInfo": "Shipping Info",
+      "shippingInfo": "Shipping Address",
       "addAddress": "Add Address",
+      "selectAddress": "Select Address",
+      "selectAddressHint": "Please select shipping address",
       "productInfo": "Product Info",
+      "productList": "Product List",
+      "productTotal": "Subtotal",
+      "discount": "Discount",
+      "payAmount": "Total",
+      "payAmountLabel": "Total: ",
       "orderNote": "Order Note",
       "notePlaceholder": "Optional",
-      "submit": "Submit Order"
+      "submit": "Submit Order",
+      "submitSuccess": "Order submitted successfully"
     },
     "list": {
       "title": "My Orders",
@@ -127,12 +138,26 @@
       "cancel": "Cancel",
       "confirm": "Confirm Receipt",
       "review": "Review",
-      "buyAgain": "Buy Again"
+      "buyAgain": "Buy Again",
+      "empty": "No orders yet",
+      "orderNo": "Order No.: ",
+      "totalCount": "{count} items, total ",
+      "viewDetail": "View Detail",
+      "cancelConfirm": "Are you sure to cancel this order?",
+      "cancelSuccess": "Order cancelled",
+      "receiptConfirm": "Confirm receipt of goods?",
+      "receiptSuccess": "Receipt confirmed"
     },
     "detail": {
       "title": "Order Detail",
-      "orderNo": "Order No.",
-      "createTime": "Created",
+      "orderStatus": "Order Status",
+      "shippingInfo": "Shipping Info",
+      "productInfo": "Product Info",
+      "orderInfo": "Order Info",
+      "orderNo": "Order No.: ",
+      "createTime": "Created: ",
+      "orderTotal": "Order Total: ",
+      "actualTotal": "Amount Paid: ",
       "payTime": "Paid",
       "deliveryTime": "Shipped",
       "completeTime": "Completed"
@@ -140,8 +165,12 @@
     "payResult": {
       "success": "Payment Successful",
       "failed": "Payment Failed",
+      "submitSuccess": "Order Submitted",
+      "payHint": "Please complete payment",
+      "payNow": "Pay Now",
       "viewOrder": "View Order",
-      "continueShopping": "Continue Shopping"
+      "continueShopping": "Continue Shopping",
+      "orderNotFound": "Order not found"
     }
   },
   "user": {

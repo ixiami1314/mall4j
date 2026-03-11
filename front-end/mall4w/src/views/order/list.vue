@@ -1,22 +1,22 @@
 <template>
   <div class="order-list container">
-    <h2>我的订单</h2>
+    <h2>{{ t('order.list.title') }}</h2>
 
     <el-tabs v-model="activeStatus" @tab-change="handleTabChange">
-      <el-tab-pane label="全部" name="" />
-      <el-tab-pane label="待付款" name="1" />
-      <el-tab-pane label="待发货" name="2" />
-      <el-tab-pane label="待收货" name="3" />
-      <el-tab-pane label="已完成" name="5" />
+      <el-tab-pane :label="t('order.list.all')" name="" />
+      <el-tab-pane :label="t('order.list.pending')" name="1" />
+      <el-tab-pane :label="t('order.list.paid')" name="2" />
+      <el-tab-pane :label="t('order.list.shipped')" name="3" />
+      <el-tab-pane :label="t('order.list.completed')" name="5" />
     </el-tabs>
 
     <div v-if="orderList.length === 0" class="empty-order">
-      <el-empty description="暂无订单" />
+      <el-empty :description="t('order.list.empty')" />
     </div>
     <div v-else class="order-cards">
       <div v-for="order in orderList" :key="order.orderNumber" class="order-card">
         <div class="order-header">
-          <span>订单号: {{ order.orderNumber }}</span>
+          <span>{{ t('order.list.orderNo') }}{{ order.orderNumber }}</span>
           <span class="status">{{ getStatusText(order.status) }}</span>
         </div>
         <div class="order-items">
@@ -31,12 +31,12 @@
           </div>
         </div>
         <div class="order-footer">
-          <span>共 {{ order.totalCount }} 件商品，实付 <em>¥{{ order.actualTotal }}</em></span>
+          <span>{{ t('order.list.totalCount', { count: order.totalCount }) }}<em>¥{{ order.actualTotal }}</em></span>
           <div class="order-actions">
-            <el-button v-if="order.status === 1" type="primary" @click="handlePay(order.orderNumber)">去支付</el-button>
-            <el-button v-if="order.status === 1" @click="handleCancel(order.orderNumber)">取消订单</el-button>
-            <el-button v-if="order.status === 3" type="primary" @click="handleReceipt(order.orderNumber)">确认收货</el-button>
-            <el-button link @click="goDetail(order.orderNumber)">查看详情</el-button>
+            <el-button v-if="order.status === 1" type="primary" @click="handlePay(order.orderNumber)">{{ t('order.list.pay') }}</el-button>
+            <el-button v-if="order.status === 1" @click="handleCancel(order.orderNumber)">{{ t('order.list.cancel') }}</el-button>
+            <el-button v-if="order.status === 3" type="primary" @click="handleReceipt(order.orderNumber)">{{ t('order.list.confirm') }}</el-button>
+            <el-button link @click="goDetail(order.orderNumber)">{{ t('order.list.viewDetail') }}</el-button>
           </div>
         </div>
       </div>
@@ -55,9 +55,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { getOrderList, cancelOrder, receiptOrder } from '@/api/order'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
+const { t } = useI18n()
 const router = useRouter()
 
 const activeStatus = ref('')
@@ -67,12 +69,12 @@ const pageSize = ref(10)
 const total = ref(0)
 
 const statusMap = {
-  1: '待付款',
-  2: '待发货',
-  3: '待收货',
-  4: '已完成',
-  5: '已完成',
-  6: '已取消'
+  1: 'order.list.pending',
+  2: 'order.list.paid',
+  3: 'order.list.shipped',
+  4: 'order.list.completed',
+  5: 'order.list.completed',
+  6: 'order.list.cancelled'
 }
 
 onMounted(() => {
@@ -94,23 +96,23 @@ const handleTabChange = () => {
   fetchOrders()
 }
 
-const getStatusText = (status) => statusMap[status] || '未知'
+const getStatusText = (status) => t(statusMap[status] || 'common.unknown')
 
 const handlePay = (orderNumber) => {
   router.push({ path: '/order/pay-result', query: { orderNumbers: orderNumber } })
 }
 
 const handleCancel = async (orderNumber) => {
-  await ElMessageBox.confirm('确定取消该订单吗？', '提示')
+  await ElMessageBox.confirm(t('order.list.cancelConfirm'), t('common.tip'))
   await cancelOrder(orderNumber)
-  ElMessage.success('订单已取消')
+  ElMessage.success(t('order.list.cancelSuccess'))
   fetchOrders()
 }
 
 const handleReceipt = async (orderNumber) => {
-  await ElMessageBox.confirm('确定已收到货物吗？', '提示')
+  await ElMessageBox.confirm(t('order.list.receiptConfirm'), t('common.tip'))
   await receiptOrder(orderNumber)
-  ElMessage.success('已确认收货')
+  ElMessage.success(t('order.list.receiptSuccess'))
   fetchOrders()
 }
 

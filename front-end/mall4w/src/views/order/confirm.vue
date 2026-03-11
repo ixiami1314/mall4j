@@ -1,23 +1,23 @@
 <template>
   <div class="order-confirm container" v-loading="loading">
-    <h2>确认订单</h2>
+    <h2>{{ t('order.confirm.title') }}</h2>
 
     <!-- 收货地址 -->
     <div class="section address-section">
-      <h3>收货地址</h3>
+      <h3>{{ t('order.confirm.shippingInfo') }}</h3>
       <div v-if="!selectedAddr" class="no-address">
-        <el-button type="primary" @click="showAddressDialog = true">选择收货地址</el-button>
+        <el-button type="primary" @click="showAddressDialog = true">{{ t('order.confirm.selectAddress') }}</el-button>
       </div>
       <div v-else class="address-info">
         <p><strong>{{ selectedAddr.receiver }}</strong> {{ selectedAddr.mobile }}</p>
         <p>{{ selectedAddr.province }}{{ selectedAddr.city }}{{ selectedAddr.area }}{{ selectedAddr.addr }}</p>
-        <el-button link @click="showAddressDialog = true">修改</el-button>
+        <el-button link @click="showAddressDialog = true">{{ t('common.modify') }}</el-button>
       </div>
     </div>
 
     <!-- 商品列表 -->
     <div class="section goods-section">
-      <h3>商品清单</h3>
+      <h3>{{ t('order.confirm.productList') }}</h3>
       <div v-for="shop in orderInfo.shopCartOrders" :key="shop.shopId" class="shop-card">
         <div class="shop-header">{{ shop.shopName }}</div>
         <div v-for="discount in shop.shopCartItemDiscounts" :key="discount.discountId">
@@ -37,27 +37,27 @@
     <!-- 订单汇总 -->
     <div class="section summary-section">
       <div class="summary-row">
-        <span>商品总价</span>
+        <span>{{ t('order.confirm.productTotal') }}</span>
         <span>¥{{ orderInfo.total }}</span>
       </div>
       <div class="summary-row">
-        <span>优惠</span>
+        <span>{{ t('order.confirm.discount') }}</span>
         <span>-¥{{ orderInfo.orderReduce || 0 }}</span>
       </div>
       <div class="summary-row total">
-        <span>应付金额</span>
+        <span>{{ t('order.confirm.payAmount') }}</span>
         <span class="price">¥{{ orderInfo.actualTotal }}</span>
       </div>
     </div>
 
     <!-- 提交栏 -->
     <div class="submit-bar">
-      <span>应付：<em>¥{{ orderInfo.actualTotal }}</em></span>
-      <el-button type="danger" size="large" :loading="submitting" @click="handleSubmit">提交订单</el-button>
+      <span>{{ t('order.confirm.payAmountLabel') }}<em>¥{{ orderInfo.actualTotal }}</em></span>
+      <el-button type="danger" size="large" :loading="submitting" @click="handleSubmit">{{ t('order.confirm.submit') }}</el-button>
     </div>
 
     <!-- 地址选择弹窗 -->
-    <el-dialog v-model="showAddressDialog" title="选择收货地址" width="600px">
+    <el-dialog v-model="showAddressDialog" :title="t('order.confirm.selectAddress')" width="600px">
       <div v-for="addr in addressList" :key="addr.addrId" class="address-item" @click="selectAddress(addr)">
         <p><strong>{{ addr.receiver }}</strong> {{ addr.mobile }}</p>
         <p>{{ addr.province }}{{ addr.city }}{{ addr.area }}{{ addr.addr }}</p>
@@ -69,9 +69,12 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { confirmOrder, submitOrder } from '@/api/order'
 import { getAddressList } from '@/api/address'
 import { ElMessage } from 'element-plus'
+
+const { t } = useI18n()
 
 const route = useRoute()
 const router = useRouter()
@@ -109,7 +112,7 @@ const selectAddress = (addr) => {
 
 const handleSubmit = async () => {
   if (!selectedAddr.value) {
-    ElMessage.warning('请选择收货地址')
+    ElMessage.warning(t('order.confirm.selectAddressHint'))
     return
   }
 
@@ -121,7 +124,7 @@ const handleSubmit = async () => {
       addrId: selectedAddr.value.addrId
     })
     const { data } = await submitOrder({ orderShopParam: [] })
-    ElMessage.success('订单提交成功')
+    ElMessage.success(t('order.confirm.submitSuccess'))
     router.push({ path: '/order/pay-result', query: { orderNumbers: data.orderNumbers } })
   } catch (e) {
     console.error(e)

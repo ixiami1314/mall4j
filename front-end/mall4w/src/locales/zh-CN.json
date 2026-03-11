@@ -11,7 +11,10 @@
     "all": "全部",
     "success": "操作成功",
     "error": "操作失败",
-    "back": "返回"
+    "back": "返回",
+    "modify": "修改",
+    "tip": "提示",
+    "unknown": "未知"
   },
   "nav": {
     "home": "首页",
@@ -108,12 +111,20 @@
   "order": {
     "confirm": {
       "title": "确认订单",
-      "shippingInfo": "收货信息",
+      "shippingInfo": "收货地址",
       "addAddress": "添加收货地址",
+      "selectAddress": "选择收货地址",
+      "selectAddressHint": "请选择收货地址",
       "productInfo": "商品信息",
+      "productList": "商品清单",
+      "productTotal": "商品总价",
+      "discount": "优惠",
+      "payAmount": "应付金额",
+      "payAmountLabel": "应付：",
       "orderNote": "订单备注",
       "notePlaceholder": "选填，建议先和商家协商一致",
-      "submit": "提交订单"
+      "submit": "提交订单",
+      "submitSuccess": "订单提交成功"
     },
     "list": {
       "title": "我的订单",
@@ -127,12 +138,26 @@
       "cancel": "取消订单",
       "confirm": "确认收货",
       "review": "去评价",
-      "buyAgain": "再次购买"
+      "buyAgain": "再次购买",
+      "empty": "暂无订单",
+      "orderNo": "订单号：",
+      "totalCount": "共 {count} 件商品，实付 ",
+      "viewDetail": "查看详情",
+      "cancelConfirm": "确定取消该订单吗？",
+      "cancelSuccess": "订单已取消",
+      "receiptConfirm": "确定已收到货物吗？",
+      "receiptSuccess": "已确认收货"
     },
     "detail": {
       "title": "订单详情",
-      "orderNo": "订单编号",
-      "createTime": "创建时间",
+      "orderStatus": "订单状态",
+      "shippingInfo": "收货信息",
+      "productInfo": "商品信息",
+      "orderInfo": "订单信息",
+      "orderNo": "订单编号：",
+      "createTime": "创建时间：",
+      "orderTotal": "订单总价：",
+      "actualTotal": "实付金额：",
       "payTime": "付款时间",
       "deliveryTime": "发货时间",
       "completeTime": "完成时间"
@@ -140,8 +165,12 @@
     "payResult": {
       "success": "支付成功",
       "failed": "支付失败",
+      "submitSuccess": "订单提交成功",
+      "payHint": "请尽快完成支付",
+      "payNow": "立即支付",
       "viewOrder": "查看订单",
-      "continueShopping": "继续购物"
+      "continueShopping": "继续购物",
+      "orderNotFound": "订单号不存在"
     }
   },
   "user": {

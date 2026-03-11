@@ -3,12 +3,12 @@
     <div class="result-content">
       <el-result
         icon="success"
-        title="订单提交成功"
-        sub-title="请尽快完成支付"
+        :title="t('order.payResult.submitSuccess')"
+        :sub-title="t('order.payResult.payHint')"
       >
         <template #extra>
-          <el-button type="primary" @click="handlePay">立即支付</el-button>
-          <el-button @click="$router.push('/order/list')">查看订单</el-button>
+          <el-button type="primary" @click="handlePay">{{ t('order.payResult.payNow') }}</el-button>
+          <el-button @click="$router.push('/order/list')">{{ t('order.payResult.viewOrder') }}</el-button>
         </template>
       </el-result>
     </div>
@@ -17,20 +17,22 @@
 
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { pay } from '@/api/order'
 import { ElMessage } from 'element-plus'
 
+const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 
 const handlePay = async () => {
   const orderNumbers = route.query.orderNumbers
   if (!orderNumbers) {
-    ElMessage.warning('订单号不存在')
+    ElMessage.warning(t('order.payResult.orderNotFound'))
     return
   }
   await pay(orderNumbers)
-  ElMessage.success('支付成功')
+  ElMessage.success(t('order.payResult.success'))
   router.push('/order/list')
 }
 </script>

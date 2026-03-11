@@ -1,20 +1,20 @@
 <template>
   <div class="order-detail container" v-loading="loading">
-    <h2>订单详情</h2>
+    <h2>{{ t('order.detail.title') }}</h2>
 
     <div class="section status-section">
-      <h3>订单状态</h3>
+      <h3>{{ t('order.detail.orderStatus') }}</h3>
       <p class="status">{{ getStatusText(orderInfo.status) }}</p>
     </div>
 
     <div class="section address-section">
-      <h3>收货信息</h3>
+      <h3>{{ t('order.detail.shippingInfo') }}</h3>
       <p>{{ orderInfo.receiver }} {{ orderInfo.mobile }}</p>
       <p>{{ orderInfo.addr }}</p>
     </div>
 
     <div class="section goods-section">
-      <h3>商品信息</h3>
+      <h3>{{ t('order.detail.productInfo') }}</h3>
       <div v-for="item in orderInfo.orderItemDtos" :key="item.orderItemId" class="goods-item">
         <img :src="item.pic" class="goods-img" />
         <div class="goods-info">
@@ -27,11 +27,11 @@
     </div>
 
     <div class="section info-section">
-      <h3>订单信息</h3>
-      <p>订单编号：{{ orderInfo.orderNumber }}</p>
-      <p>创建时间：{{ orderInfo.createTime }}</p>
-      <p>订单总价：¥{{ orderInfo.total }}</p>
-      <p>实付金额：<em>¥{{ orderInfo.actualTotal }}</em></p>
+      <h3>{{ t('order.detail.orderInfo') }}</h3>
+      <p>{{ t('order.detail.orderNo') }}{{ orderInfo.orderNumber }}</p>
+      <p>{{ t('order.detail.createTime') }}{{ orderInfo.createTime }}</p>
+      <p>{{ t('order.detail.orderTotal') }}¥{{ orderInfo.total }}</p>
+      <p>{{ t('order.detail.actualTotal') }}<em>¥{{ orderInfo.actualTotal }}</em></p>
     </div>
   </div>
 </template>
@@ -39,19 +39,21 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { getOrderDetail } from '@/api/order'
 
+const { t } = useI18n()
 const route = useRoute()
 const loading = ref(true)
 const orderInfo = ref({})
 
 const statusMap = {
-  1: '待付款',
-  2: '待发货',
-  3: '待收货',
-  4: '已完成',
-  5: '已完成',
-  6: '已取消'
+  1: 'order.list.pending',
+  2: 'order.list.paid',
+  3: 'order.list.shipped',
+  4: 'order.list.completed',
+  5: 'order.list.completed',
+  6: 'order.list.cancelled'
 }
 
 onMounted(() => {
@@ -64,7 +66,7 @@ const fetchOrderDetail = async () => {
   loading.value = false
 }
 
-const getStatusText = (status) => statusMap[status] || '未知'
+const getStatusText = (status) => t(statusMap[status] || 'common.unknown')
 </script>
 
 <style lang="scss" scoped>

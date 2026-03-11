@@ -11,7 +11,10 @@
     "all": "全部",
     "success": "操作成功",
     "error": "操作失敗",
-    "back": "返回"
+    "back": "返回",
+    "modify": "修改",
+    "tip": "提示",
+    "unknown": "未知"
   },
   "nav": {
     "home": "首頁",
@@ -108,12 +111,20 @@
   "order": {
     "confirm": {
       "title": "確認訂單",
-      "shippingInfo": "收貨資訊",
+      "shippingInfo": "收貨地址",
       "addAddress": "新增收貨地址",
+      "selectAddress": "選擇收貨地址",
+      "selectAddressHint": "請選擇收貨地址",
       "productInfo": "商品資訊",
+      "productList": "商品清單",
+      "productTotal": "商品總價",
+      "discount": "優惠",
+      "payAmount": "應付金額",
+      "payAmountLabel": "應付：",
       "orderNote": "訂單備註",
       "notePlaceholder": "選填，建議先和商家協商一致",
-      "submit": "提交訂單"
+      "submit": "提交訂單",
+      "submitSuccess": "訂單提交成功"
     },
     "list": {
       "title": "我的訂單",
@@ -127,12 +138,26 @@
       "cancel": "取消訂單",
       "confirm": "確認收貨",
       "review": "去評價",
-      "buyAgain": "再次購買"
+      "buyAgain": "再次購買",
+      "empty": "暫無訂單",
+      "orderNo": "訂單號：",
+      "totalCount": "共 {count} 件商品，實付 ",
+      "viewDetail": "查看詳情",
+      "cancelConfirm": "確定取消該訂單嗎？",
+      "cancelSuccess": "訂單已取消",
+      "receiptConfirm": "確定已收到貨物嗎？",
+      "receiptSuccess": "已確認收貨"
     },
     "detail": {
       "title": "訂單詳情",
-      "orderNo": "訂單編號",
-      "createTime": "建立時間",
+      "orderStatus": "訂單狀態",
+      "shippingInfo": "收貨資訊",
+      "productInfo": "商品資訊",
+      "orderInfo": "訂單資訊",
+      "orderNo": "訂單編號：",
+      "createTime": "建立時間：",
+      "orderTotal": "訂單總價：",
+      "actualTotal": "實付金額：",
       "payTime": "付款時間",
       "deliveryTime": "出貨時間",
       "completeTime": "完成時間"
@@ -140,8 +165,12 @@
     "payResult": {
       "success": "付款成功",
       "failed": "付款失敗",
+      "submitSuccess": "訂單提交成功",
+      "payHint": "請盡快完成付款",
+      "payNow": "立即付款",
       "viewOrder": "查看訂單",
-      "continueShopping": "繼續購物"
+      "continueShopping": "繼續購物",
+      "orderNotFound": "訂單號不存在"
     }
   },
   "user": {

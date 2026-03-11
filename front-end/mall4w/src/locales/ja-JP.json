@@ -11,7 +11,10 @@
     "all": "すべて",
     "success": "成功",
     "error": "失敗",
-    "back": "戻る"
+    "back": "戻る",
+    "modify": "変更",
+    "tip": "ヒント",
+    "unknown": "不明"
   },
   "nav": {
     "home": "ホーム",
@@ -108,12 +111,20 @@
   "order": {
     "confirm": {
       "title": "注文確認",
-      "shippingInfo": "配送先情報",
+      "shippingInfo": "配送先住所",
       "addAddress": "住所を追加",
+      "selectAddress": "住所を選択",
+      "selectAddressHint": "配送先住所を選択してください",
       "productInfo": "商品情報",
+      "productList": "商品リスト",
+      "productTotal": "小計",
+      "discount": "割引",
+      "payAmount": "合計",
+      "payAmountLabel": "合計：",
       "orderNote": "注文メモ",
       "notePlaceholder": "任意",
-      "submit": "注文を確定"
+      "submit": "注文を確定",
+      "submitSuccess": "注文が完了しました"
     },
     "list": {
       "title": "注文履歴",
@@ -127,12 +138,26 @@
       "cancel": "キャンセル",
       "confirm": "受け取り確認",
       "review": "レビュー",
-      "buyAgain": "再購入"
+      "buyAgain": "再購入",
+      "empty": "注文がありません",
+      "orderNo": "注文番号：",
+      "totalCount": "{count}点、合計 ",
+      "viewDetail": "詳細を見る",
+      "cancelConfirm": "この注文をキャンセルしますか？",
+      "cancelSuccess": "注文をキャンセルしました",
+      "receiptConfirm": "商品を受け取りましたか？",
+      "receiptSuccess": "受け取りを確認しました"
     },
     "detail": {
       "title": "注文詳細",
-      "orderNo": "注文番号",
-      "createTime": "注文日時",
+      "orderStatus": "注文ステータス",
+      "shippingInfo": "配送先情報",
+      "productInfo": "商品情報",
+      "orderInfo": "注文情報",
+      "orderNo": "注文番号：",
+      "createTime": "注文日時：",
+      "orderTotal": "注文合計：",
+      "actualTotal": "支払金額：",
       "payTime": "支払日時",
       "deliveryTime": "発送日時",
       "completeTime": "完了日時"
@@ -140,8 +165,12 @@
     "payResult": {
       "success": "支払い完了",
       "failed": "支払い失敗",
+      "submitSuccess": "注文が完了しました",
+      "payHint": "お早めに支払いを完了してください",
+      "payNow": "今すぐ支払う",
       "viewOrder": "注文を見る",
-      "continueShopping": "ショッピングを続ける"
+      "continueShopping": "ショッピングを続ける",
+      "orderNotFound": "注文が見つかりません"
     }
   },
   "user": {
