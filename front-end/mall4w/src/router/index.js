@@ -32,10 +32,20 @@ const authRoutes = [
       { path: 'order/list', name: 'order-list', component: () => import('@/views/order/list.vue'), meta: { title: '订单列表', requiresAuth: true } },
       { path: 'order/detail/:id', name: 'order-detail', component: () => import('@/views/order/detail.vue'), meta: { title: '订单详情', requiresAuth: true } },
       { path: 'order/pay-result', name: 'pay-result', component: () => import('@/views/order/pay-result.vue'), meta: { title: '支付结果', requiresAuth: true } },
-      { path: 'user', name: 'user', component: () => import('@/views/user/index.vue'), meta: { title: '用户中心', requiresAuth: true } },
-      { path: 'user/address', name: 'address', component: () => import('@/views/user/address.vue'), meta: { title: '地址管理', requiresAuth: true } },
-      { path: 'user/collection', name: 'collection', component: () => import('@/views/user/collection.vue'), meta: { title: '我的收藏', requiresAuth: true } },
-      { path: 'user/coupon', name: 'coupon', component: () => import('@/views/user/coupon.vue'), meta: { title: '我的优惠券', requiresAuth: true } }
+      {
+        path: 'user',
+        name: 'user',
+        component: () => import('@/views/user/index.vue'),
+        meta: { title: '用户中心', requiresAuth: true },
+        redirect: '/user/dashboard',
+        children: [
+          { path: 'dashboard', name: 'user-dashboard', component: () => import('@/views/user/dashboard.vue'), meta: { title: '个人中心' } },
+          { path: 'order', name: 'user-order', component: () => import('@/views/order/list.vue'), meta: { title: '我的订单' } },
+          { path: 'address', name: 'user-address', component: () => import('@/views/user/address.vue'), meta: { title: '收货地址' } },
+          { path: 'collection', name: 'user-collection', component: () => import('@/views/user/collection.vue'), meta: { title: '我的收藏' } },
+          { path: 'coupon', name: 'user-coupon', component: () => import('@/views/user/coupon.vue'), meta: { title: '我的优惠券' } }
+        ]
+      }
     ]
   }
 ]

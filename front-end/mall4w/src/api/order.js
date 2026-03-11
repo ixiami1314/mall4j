@@ -62,3 +62,11 @@ export function pay(orderNumbers) {
     params: { orderNumbers }
   })
 }
+
+// 订单数量统计
+export function getOrderCount() {
+  return http({
+    url: http.adornUrl('/p/myOrder/orderCount'),
+    method: 'get'
+  })
+}

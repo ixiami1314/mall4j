@@ -1,3 +1,64 @@
+// ============================================
+// 字体导入 - 使用更有特色的字体
+// ============================================
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
+// ============================================
+// 颜色变量定义 - 精致电商配色
+// ============================================
+
+// 主色调 - 温暖橙
+$color-primary: #ff6700;
+$color-primary-light: #ff8c42;
+$color-primary-dark: #e55d00;
+$color-primary-bg: #fff8f5;
+
+// 强调色 - 活力红
+$color-danger: #e4393c;
+$color-danger-light: #ff4757;
+$color-danger-dark: #c41e24;
+
+// 金色点缀 - 用于高级感
+$color-gold: #d4a574;
+$color-gold-light: #e8c9a8;
+
+// 渐变色 - 更精致的渐变
+$gradient-primary: linear-gradient(135deg, #ff6700 0%, #ff4500 100%);
+$gradient-primary-soft: linear-gradient(135deg, #ff8c42 0%, #ff6700 100%);
+$gradient-danger: linear-gradient(135deg, #e4393c 0%, #c41e24 100%);
+$gradient-gold: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
+$gradient-hero: linear-gradient(135deg, #fff5f0 0%, #fff 50%, #fffaf5 100%);
+
+// 中性色 - 更柔和的层次
+$color-text-primary: #1a1a1a;
+$color-text-regular: #2d2d2d;
+$color-text-secondary: #5c5c5c;
+$color-text-tertiary: #8c8c8c;
+$color-text-placeholder: #bfbfbf;
+
+// 背景色 - 温暖的背景
+$bg-color-page: #faf9f7;
+$bg-color-secondary: #f5f3f0;
+$bg-color-hover: #fff8f5;
+$bg-color-card: #ffffff;
+
+// 边框色
+$border-color-light: #f0ede8;
+$border-color-base: #e8e4de;
+$border-color-dark: #d4cfc6;
+
+// 阴影 - 多层次阴影
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+$shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.1);
+$shadow-primary: 0 8px 24px rgba(255, 103, 0, 0.15);
+$shadow-danger: 0 8px 24px rgba(228, 57, 60, 0.15);
+
+// ============================================
+// 基础重置样式 - 更精致的基础
+// ============================================
+
 * {
   margin: 0;
   padding: 0;
@@ -7,29 +68,57 @@
 html, body {
   width: 100%;
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: 'DM Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 14px;
-  color: #333;
-  background-color: #f5f7fa;
+  color: $color-text-regular;
+  background-color: $bg-color-page;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
 }
 
 #app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+
+  // 添加微妙的纹理背景
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255, 103, 0, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(228, 57, 60, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
 }
 
 a {
-  color: #333;
+  color: $color-text-regular;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: #3a86b9;
+    color: $color-primary;
   }
 }
+
+// 选中文本样式
+::selection {
+  background: rgba(255, 103, 0, 0.15);
+  color: $color-text-primary;
+}
+
+// ============================================
+// 通用容器
+// ============================================
 
 .container {
   width: 1200px;
@@ -43,7 +132,10 @@ a {
   clear: both;
 }
 
+// ============================================
 // 滚动条样式
+// ============================================
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -55,19 +147,27 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #ddd;
   border-radius: 4px;
 
   &:hover {
-    background: #a8a8a8;
+    background: $color-primary;
   }
 }
 
-// 通用动画
+// ============================================
+// 通用动画 - 更精致的动效
+// ============================================
+
+// 缓动函数
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+$ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -75,40 +175,348 @@ a {
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 103, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 103, 0, 0.4);
+  }
+}
+
+// 动画类
 .fade-in {
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.4s $ease-out-expo;
 }
 
-// Element Plus 样式覆盖
+.fade-in-up {
+  animation: fadeInUp 0.5s $ease-out-expo;
+}
+
+.fade-in-scale {
+  animation: fadeInScale 0.4s $ease-out-expo;
+}
+
+// 交错动画 - 用于列表
+.stagger-item {
+  opacity: 0;
+  animation: fadeInUp 0.5s $ease-out-expo forwards;
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+}
+
+// 骨架屏加载效果
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+// 悬浮效果
+.hover-lift {
+  transition: transform 0.3s $ease-out-expo, box-shadow 0.3s $ease-out-expo;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s $ease-out-expo;
+  &:hover {
+    box-shadow: $shadow-primary;
+  }
+}
+
+// ============================================
+// Element Plus 主题覆盖 - 更精致的主题
+// ============================================
+
+// 主按钮 - 橙色渐变
 .el-button--primary {
-  --el-button-bg-color: #3a86b9;
-  --el-button-border-color: #3a86b9;
-  --el-button-hover-bg-color: #5ba4d4;
-  --el-button-hover-border-color: #5ba4d4;
-  --el-button-active-bg-color: #2d6d94;
-  --el-button-active-border-color: #2d6d94;
+  --el-button-bg-color: #{$color-primary};
+  --el-button-border-color: #{$color-primary};
+  --el-button-hover-bg-color: #{$color-primary-light};
+  --el-button-hover-border-color: #{$color-primary-light};
+  --el-button-active-bg-color: #{$color-primary-dark};
+  --el-button-active-border-color: #{$color-primary-dark};
+  transition: all 0.25s $ease-out-expo;
 }
 
+// 危险按钮 - 红色
+.el-button--danger {
+  --el-button-bg-color: #{$color-danger};
+  --el-button-border-color: #{$color-danger};
+  --el-button-hover-bg-color: #{$color-danger-light};
+  --el-button-hover-border-color: #{$color-danger-light};
+  --el-button-active-bg-color: #{$color-danger-dark};
+  --el-button-active-border-color: #{$color-danger-dark};
+  transition: all 0.25s $ease-out-expo;
+}
+
+// 大号按钮增强
+.el-button--large {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+// 链接
 .el-link--primary {
-  --el-link-text-color: #3a86b9;
-  --el-link-hover-text-color: #5ba4d4;
+  --el-link-text-color: #{$color-primary};
+  --el-link-hover-text-color: #{$color-primary-light};
 }
 
-// 通用卡片样式
-.card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+.el-link--danger {
+  --el-link-text-color: #{$color-danger};
+  --el-link-hover-text-color: #{$color-danger-light};
 }
 
-// 通用页面标题
-.page-title {
-  font-size: 24px;
+// Tag 标签 - 更精致
+.el-tag--danger {
+  --el-tag-bg-color: #fff5f5;
+  --el-tag-border-color: #ffc9c9;
+  --el-tag-text-color: #{$color-danger};
+  font-weight: 500;
+}
+
+.el-tag--warning {
+  --el-tag-bg-color: #fffbf5;
+  --el-tag-border-color: #ffd699;
+  --el-tag-text-color: #{$color-primary};
+  font-weight: 500;
+}
+
+.el-tag--success {
+  --el-tag-bg-color: #f0fdf4;
+  --el-tag-border-color: #86efac;
+  --el-tag-text-color: #16a34a;
+  font-weight: 500;
+}
+
+.el-tag--info {
+  --el-tag-bg-color: #fafafa;
+  --el-tag-border-color: #e5e5e5;
+  --el-tag-text-color: #525252;
+  font-weight: 500;
+}
+
+// 复选框选中色
+.el-checkbox__input.is-checked .el-checkbox__inner {
+  background-color: $color-primary !important;
+  border-color: $color-primary !important;
+}
+
+// 单选框选中色
+.el-radio__input.is-checked .el-radio__inner {
+  background-color: $color-primary !important;
+  border-color: $color-primary !important;
+}
+
+// 分页器 - 更精致
+.el-pagination.is-background .el-pager li:not(.is-disabled).is-active {
+  background: $gradient-primary !important;
+  border-radius: 8px;
+}
+
+.el-pagination.is-background .el-pager li:not(.is-disabled):hover {
+  color: $color-primary;
+}
+
+// Tabs 选中色
+.el-tabs__item.is-active {
+  color: $color-primary !important;
   font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 24px;
+}
+
+.el-tabs__active-bar {
+  background: $gradient-primary !important;
+  height: 3px !important;
+  border-radius: 2px;
+}
+
+// 输入框聚焦
+.el-input__wrapper:focus-within {
+  box-shadow: 0 0 0 2px rgba(255, 103, 0, 0.1) !important;
+}
+
+// 对话框
+.el-dialog {
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+
+.el-dialog__header {
+  border-bottom: 1px solid $border-color-light;
+  padding: 20px 24px !important;
+}
+
+.el-dialog__body {
+  padding: 24px !important;
+}
+
+// 消息提示
+.el-message {
+  border-radius: 12px !important;
+  box-shadow: $shadow-lg !important;
+}
+
+// 下拉菜单
+.el-dropdown-menu {
+  border-radius: 12px !important;
+  border: 1px solid $border-color-light !important;
+  box-shadow: $shadow-lg !important;
+  padding: 8px !important;
+}
+
+.el-dropdown-menu__item {
+  border-radius: 8px;
+  margin: 2px 0;
+  transition: all 0.2s;
+
+  &:hover {
+    background: $bg-color-hover !important;
+    color: $color-primary !important;
+  }
+}
+
+// 徽章
+.el-badge__content {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  border-radius: 10px !important;
+}
+
+// 空状态
+.el-empty__description {
+  color: $color-text-tertiary;
+}
+
+// 加载
+.el-loading-mask {
+  border-radius: inherit;
+}
+
+.el-loading-spinner {
+  .circular {
+    stroke: $color-primary;
+  }
+}
+
+// ============================================
+// 通用卡片样式 - 更精致的效果
+// ============================================
+
+.card {
+  background: $bg-color-card;
+  border-radius: 16px;
+  box-shadow: $shadow-sm;
+  border: 1px solid $border-color-light;
+  transition: all 0.35s $ease-out-expo;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    border-color: rgba(255, 103, 0, 0.15);
+    transform: translateY(-2px);
+  }
+}
+
+// 精品卡片 - 更强的效果
+.card-premium {
+  background: $bg-color-card;
+  border-radius: 20px;
+  box-shadow: $shadow-md;
+  border: 1px solid $border-color-light;
+  transition: all 0.4s $ease-out-expo;
   position: relative;
-  padding-left: 16px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: $gradient-primary;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    box-shadow: $shadow-xl;
+    transform: translateY(-6px);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// ============================================
+// 通用页面标题 - 更精致
+// ============================================
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: $color-text-primary;
+  margin-bottom: 28px;
+  position: relative;
+  padding-left: 20px;
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  letter-spacing: -0.02em;
 
   &::before {
     content: '';
@@ -117,24 +525,232 @@ a {
     top: 50%;
     transform: translateY(-50%);
     width: 4px;
-    height: 24px;
-    background: linear-gradient(180deg, #3a86b9, #5ba4d4);
+    height: 28px;
+    background: $gradient-primary;
     border-radius: 2px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 16px;
+    background: $color-gold;
+    border-radius: 1px;
+    opacity: 0.6;
   }
 }
 
-// 价格样式
-.price {
-  color: #e4393c;
+// 区块标题
+.section-title {
+  font-size: 20px;
   font-weight: 600;
+  color: $color-text-primary;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+
+  &::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: $color-primary;
+    border-radius: 50%;
+  }
+}
+
+// ============================================
+// 价格样式 - 更醒目
+// ============================================
+
+.price {
+  color: $color-danger;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
 
   &::before {
     content: '¥';
-    font-size: 0.8em;
+    font-size: 0.7em;
+    margin-right: 2px;
+    font-weight: 600;
+  }
+
+  &.price-lg {
+    font-size: 32px;
+  }
+
+  &.price-md {
+    font-size: 22px;
+  }
+
+  &.price-sm {
+    font-size: 16px;
   }
 }
 
+// 原价（划线价）
+.ori-price {
+  color: $color-text-placeholder;
+  text-decoration: line-through;
+  font-size: 14px;
+  margin-left: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+// ============================================
+// 促销标签 - 更精致
+// ============================================
+
+.promo-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: $gradient-primary;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(255, 103, 0, 0.25);
+}
+
+// 小型标签
+.tag-small {
+  padding: 2px 8px;
+  font-size: 11px;
+  border-radius: 3px;
+}
+
+// ============================================
+// 渐变按钮样式 - 更精致
+// ============================================
+
+.btn-primary-gradient {
+  background: $gradient-primary !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 12px rgba(255, 103, 0, 0.3);
+  transition: all 0.3s $ease-out-expo !important;
+
+  &:hover {
+    background: $gradient-primary-soft !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 103, 0, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-danger-gradient {
+  background: $gradient-danger !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 12px rgba(228, 57, 60, 0.3);
+  transition: all 0.3s $ease-out-expo !important;
+
+  &:hover {
+    background: linear-gradient(135deg, #ff4757 0%, #e4393c 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(228, 57, 60, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// 圆形图标按钮
+.btn-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $gradient-primary;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 103, 0, 0.3);
+  transition: all 0.3s $ease-out-expo;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 103, 0, 0.4);
+  }
+}
+
+// ============================================
+// 装饰性元素
+// ============================================
+
+// 装饰性角标
+.corner-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 40px 40px 0;
+  border-color: transparent $color-primary transparent transparent;
+
+  &::after {
+    content: 'HOT';
+    position: absolute;
+    top: 4px;
+    right: -36px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    transform: rotate(45deg);
+  }
+}
+
+// 分隔线
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $border-color-base, transparent);
+  margin: 24px 0;
+}
+
+// 装饰性点
+.deco-dots {
+  display: flex;
+  gap: 6px;
+
+  span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $color-primary;
+    opacity: 0.3;
+
+    &:nth-child(2) {
+      opacity: 0.6;
+    }
+
+    &:nth-child(3) {
+      opacity: 1;
+    }
+  }
+}
+
+// ============================================
 // 响应式容器
+// ============================================
+
 @media (max-width: 1240px) {
   .container {
     width: 100%;
@@ -148,5 +764,84 @@ a {
   }
   .container {
     padding: 0 16px;
+  }
+
+  .page-title {
+    font-size: 22px;
+    padding-left: 16px;
+
+    &::before {
+      height: 24px;
+    }
+  }
+
+  .card-premium {
+    border-radius: 16px;
+  }
+}
+
+// ============================================
+// 实用工具类
+// ============================================
+
+// 文本截断
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-ellipsis-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Flex 布局快捷类
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+// 间距
+.gap-xs { gap: 4px; }
+.gap-sm { gap: 8px; }
+.gap-md { gap: 16px; }
+.gap-lg { gap: 24px; }
+.gap-xl { gap: 32px; }
+
+// 隐藏滚动条但保持滚动
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

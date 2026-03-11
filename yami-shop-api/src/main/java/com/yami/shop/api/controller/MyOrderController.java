@@ -118,7 +118,7 @@ public class MyOrderController {
     @Parameters({
             @Parameter(name = "status", description = "订单状态 1:待付款 2:待发货 3:待收货 4:待评价 5:成功 6:失败")
     })
-    public ServerResponseEntity<IPage<MyOrderDto>> myOrder(@RequestParam(value = "status") Integer status, PageParam<MyOrderDto> page) {
+    public ServerResponseEntity<IPage<MyOrderDto>> myOrder(@RequestParam(value = "status", required = false) Integer status, PageParam<MyOrderDto> page) {
         String userId = SecurityUtils.getUser().getUserId();
         IPage<MyOrderDto> myOrderDtoIpage = myOrderService.pageMyOrderByUserIdAndStatus(page, userId, status);
         return ServerResponseEntity.success(myOrderDtoIpage);

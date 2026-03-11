@@ -56,8 +56,8 @@ export function getCategoryInfo() {
 // 商品评论
 export function getProdCommPage(prodId, page = {}) {
   return http({
-    url: http.adornUrl('/prodComm/prodCommPage'),
+    url: http.adornUrl('/prodComm/prodCommPageByProd'),
     method: 'get',
-    params: http.adornParams({ prodId, ...page })
+    params: http.adornParams({ prodId, evaluate: -1, ...page })
   })
 }
