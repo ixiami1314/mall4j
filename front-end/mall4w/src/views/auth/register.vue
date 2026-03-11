@@ -1,36 +1,36 @@
 <template>
   <div class="register-page">
     <div class="register-box">
-      <h2>用户注册</h2>
+      <h2>{{ t('auth.register.title') }}</h2>
       <el-form ref="formRef" :model="form" :rules="rules" label-width="0">
         <el-form-item prop="userName">
-          <el-input v-model="form.userName" placeholder="请输入用户名" :prefix-icon="User" />
+          <el-input v-model="form.userName" :placeholder="t('auth.register.usernamePlaceholder')" :prefix-icon="User" />
         </el-form-item>
         <el-form-item prop="mobile">
-          <el-input v-model="form.mobile" placeholder="请输入手机号" :prefix-icon="Phone" />
+          <el-input v-model="form.mobile" :placeholder="t('auth.register.phonePlaceholder')" :prefix-icon="Phone" />
         </el-form-item>
         <el-form-item v-if="!skipVerify" prop="code">
           <div class="code-input">
-            <el-input v-model="form.code" placeholder="请输入验证码" :prefix-icon="Key" />
+            <el-input v-model="form.code" :placeholder="t('auth.register.codePlaceholder')" :prefix-icon="Key" />
             <el-button :disabled="countdown > 0" @click="handleSendCode">
-              {{ countdown > 0 ? `${countdown}s` : '获取验证码' }}
+              {{ countdown > 0 ? `${countdown}s` : t('auth.register.getCode') }}
             </el-button>
           </div>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="form.password" type="password" placeholder="请输入密码" :prefix-icon="Lock" show-password />
+          <el-input v-model="form.password" type="password" :placeholder="t('auth.register.passwordPlaceholder')" :prefix-icon="Lock" show-password />
         </el-form-item>
         <el-form-item prop="confirmPassword">
-          <el-input v-model="form.confirmPassword" type="password" placeholder="请确认密码" :prefix-icon="Lock" show-password />
+          <el-input v-model="form.confirmPassword" type="password" :placeholder="t('auth.register.confirmPasswordPlaceholder')" :prefix-icon="Lock" show-password />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" class="register-btn" :loading="loading" @click="handleRegister">
-            注册
+            {{ t('auth.register.submit') }}
           </el-button>
         </el-form-item>
       </el-form>
       <div class="register-footer">
-        <router-link to="/login">已有账号？立即登录</router-link>
+        <router-link to="/login">{{ t('auth.register.login') }}</router-link>
       </div>
     </div>
   </div>
@@ -39,11 +39,13 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { User, Lock, Phone, Key } from '@element-plus/icons-vue'
 import { register, sendSms } from '@/api/user'
 import { encryptPassword } from '@/utils/crypto'
 import { ElMessage } from 'element-plus'
 
+const { t } = useI18n()
 const router = useRouter()
 const route = useRoute()
 const formRef = ref(null)
@@ -61,25 +63,25 @@ const form = reactive({
 
 const validatePass = (rule, value, callback) => {
   if (value !== form.password) {
-    callback(new Error('两次输入的密码不一致'))
+    callback(new Error(t('auth.validation.passwordMismatch')))
   } else {
     callback()
   }
 }
 
 const rules = {
-  userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  userName: [{ required: true, message: t('auth.validation.usernameRequired'), trigger: 'blur' }],
   mobile: [
-    { required: true, message: '请输入手机号', trigger: 'blur' },
-    { pattern: /^1[3-9]\d{9}$/, message: '手机号格式不正确', trigger: 'blur' }
+    { required: true, message: t('auth.validation.phoneRequired'), trigger: 'blur' },
+    { pattern: /^1[3-9]\d{9}$/, message: t('auth.validation.phoneFormat'), trigger: 'blur' }
   ],
-  code: [{ required: true, message: '请输入验证码', trigger: 'blur' }],
+  code: [{ required: true, message: t('auth.validation.codeRequired'), trigger: 'blur' }],
   password: [
-    { required: true, message: '请输入密码', trigger: 'blur' },
-    { min: 6, message: '密码至少6位', trigger: 'blur' }
+    { required: true, message: t('auth.validation.passwordRequired'), trigger: 'blur' },
+    { min: 6, message: t('auth.validation.passwordMinLength'), trigger: 'blur' }
   ],
   confirmPassword: [
-    { required: true, message: '请确认密码', trigger: 'blur' },
+    { required: true, message: t('auth.validation.confirmPasswordRequired'), trigger: 'blur' },
     { validator: validatePass, trigger: 'blur' }
   ]
 }
@@ -91,12 +93,12 @@ onMounted(() => {
 
 const handleSendCode = async () => {
   if (!form.mobile || !/^1[3-9]\d{9}$/.test(form.mobile)) {
-    ElMessage.warning('请输入正确的手机号')
+    ElMessage.warning(t('auth.validation.phoneFormat'))
     return
   }
   try {
     await sendSms(form.mobile)
-    ElMessage.success('验证码已发送')
+    ElMessage.success(t('auth.register.codeSent'))
     countdown.value = 60
     const timer = setInterval(() => {
       countdown.value--
@@ -123,7 +125,7 @@ const handleRegister = async () => {
       checkRegisterSmsFlag: skipVerify.value ? '' : form.code,
       skipVerify: skipVerify.value
     })
-    ElMessage.success('注册成功，请登录')
+    ElMessage.success(t('auth.register.success'))
     router.push('/login')
   } catch (e) {
     console.error(e)
