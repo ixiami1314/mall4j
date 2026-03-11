@@ -1,28 +1,28 @@
 <template>
   <div class="login-page">
     <div class="login-box">
-      <h2>用户登录</h2>
+      <h2>{{ t('auth.login.title') }}</h2>
       <el-form ref="formRef" :model="form" :rules="rules" label-width="0">
         <el-form-item prop="userName">
-          <el-input v-model="form.userName" placeholder="请输入手机号/用户名" :prefix-icon="User" />
+          <el-input v-model="form.userName" :placeholder="t('auth.login.usernamePlaceholder')" :prefix-icon="User" />
         </el-form-item>
         <el-form-item prop="passWord">
           <el-input
             v-model="form.passWord"
             type="password"
-            placeholder="请输入密码"
+            :placeholder="t('auth.login.passwordPlaceholder')"
             :prefix-icon="Lock"
             show-password
           />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" class="login-btn" :loading="loading" @click="handleLogin">
-            登录
+            {{ t('auth.login.submit') }}
           </el-button>
         </el-form-item>
       </el-form>
       <div class="login-footer">
-        <router-link to="/register">还没有账号？立即注册</router-link>
+        <router-link to="/register">{{ t('auth.login.register') }}</router-link>
       </div>
     </div>
   </div>
@@ -31,6 +31,7 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { User, Lock } from '@element-plus/icons-vue'
 import { login } from '@/api/user'
 import { encryptPassword } from '@/utils/crypto'
@@ -39,6 +40,7 @@ import { useCartStore } from '@/stores/cart'
 import cookie from 'vue-cookies'
 import { ElMessage } from 'element-plus'
 
+const { t } = useI18n()
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
@@ -53,8 +55,8 @@ const form = reactive({
 })
 
 const rules = {
-  userName: [{ required: true, message: '请输入手机号/用户名', trigger: 'blur' }],
-  passWord: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+  userName: [{ required: true, message: t('auth.validation.usernameRequired'), trigger: 'blur' }],
+  passWord: [{ required: true, message: t('auth.validation.passwordRequired'), trigger: 'blur' }]
 }
 
 const handleLogin = async () => {
@@ -71,7 +73,7 @@ const handleLogin = async () => {
     // 设置 cookie：key, value, expire(path), path
     cookie.set('Authorization', data.accessToken, 60 * 60 * 24 * 7, '/')
     await cartStore.fetchCartCount()
-    ElMessage.success('登录成功')
+    ElMessage.success(t('auth.login.success'))
     const redirect = route.query.redirect || '/'
     router.push(redirect)
   } catch (e) {
