@@ -1,8 +1,8 @@
 <template>
   <div class="coupon-page">
-    <h3>我的优惠券</h3>
+    <h3>{{ t('user.coupon.title') }}</h3>
     <div v-if="couponList.length === 0" class="empty-coupon">
-      <el-empty description="暂无优惠券" />
+      <el-empty :description="t('user.coupon.empty')" />
     </div>
     <div v-else class="coupon-list">
       <div v-for="coupon in couponList" :key="coupon.id" class="coupon-item">
@@ -11,10 +11,10 @@
           <span class="amount">{{ coupon.reduceAmount }}</span>
         </div>
         <div class="coupon-info">
-          <p class="coupon-name">满{{ coupon.fullAmount }}减{{ coupon.reduceAmount }}</p>
+          <p class="coupon-name">{{ t('user.coupon.discountRule', { full: coupon.fullAmount, reduce: coupon.reduceAmount }) }}</p>
           <p class="coupon-time">{{ coupon.startTime }} - {{ coupon.endTime }}</p>
         </div>
-        <el-button type="primary" size="small" @click="$router.push('/')">去使用</el-button>
+        <el-button type="primary" size="small" @click="$router.push('/')">{{ t('user.coupon.goUse') }}</el-button>
       </div>
     </div>
   </div>
@@ -22,7 +22,10 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import http from '@/utils/http'
+
+const { t } = useI18n()
 
 const couponList = ref([])
 

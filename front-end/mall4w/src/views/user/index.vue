@@ -12,7 +12,7 @@
             <el-tag size="small" type="warning">LV.{{ userInfo.level }}</el-tag>
           </div>
         </div>
-        <h3 class="user-name">{{ userInfo.nickName || '用户' }}</h3>
+        <h3 class="user-name">{{ userInfo.nickName || t('user.center.user') }}</h3>
         <p class="user-phone" v-if="userInfo.userMobile">{{ formatPhone(userInfo.userMobile) }}</p>
       </div>
 
@@ -25,23 +25,23 @@
         >
           <el-menu-item index="/user/dashboard">
             <el-icon><User /></el-icon>
-            <span>个人中心</span>
+            <span>{{ t('user.center.title') }}</span>
           </el-menu-item>
           <el-menu-item index="/user/order">
             <el-icon><List /></el-icon>
-            <span>我的订单</span>
+            <span>{{ t('user.center.myOrders') }}</span>
           </el-menu-item>
           <el-menu-item index="/user/address">
             <el-icon><Location /></el-icon>
-            <span>收货地址</span>
+            <span>{{ t('user.center.myAddress') }}</span>
           </el-menu-item>
           <el-menu-item index="/user/collection">
             <el-icon><Star /></el-icon>
-            <span>我的收藏</span>
+            <span>{{ t('user.center.myCollection') }}</span>
           </el-menu-item>
           <el-menu-item index="/user/coupon">
             <el-icon><Ticket /></el-icon>
-            <span>我的优惠券</span>
+            <span>{{ t('user.center.myCoupon') }}</span>
           </el-menu-item>
         </el-menu>
       </div>
@@ -50,7 +50,7 @@
       <div class="logout-section">
         <el-button type="danger" plain @click="handleLogout">
           <el-icon><SwitchButton /></el-icon>
-          退出登录
+          {{ t('user.center.logout') }}
         </el-button>
       </div>
     </div>
@@ -65,12 +65,15 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { User, List, Location, Star, Ticket, SwitchButton } from '@element-plus/icons-vue'
 import { getUserInfo } from '@/api/user'
 import { useUserStore } from '@/stores/user'
 import { useCartStore } from '@/stores/cart'
 import { clearLoginInfo } from '@/utils'
 import { ElMessageBox } from 'element-plus'
+
+const { t } = useI18n()
 
 const route = useRoute()
 const router = useRouter()
@@ -90,7 +93,7 @@ const fetchUserInfo = async () => {
     userInfo.value = data || {}
     userStore.setUser(data)
   } catch (error) {
-    console.error('获取用户信息失败:', error)
+    console.error(t('user.dashboard.getUserInfoError'), ':', error)
   }
 }
 
@@ -101,9 +104,9 @@ const formatPhone = (phone) => {
 
 const handleLogout = async () => {
   try {
-    await ElMessageBox.confirm('确定要退出登录吗？', '提示', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
+    await ElMessageBox.confirm(t('user.center.logoutConfirm'), t('common.tip'), {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
       type: 'warning'
     })
     clearLoginInfo()

@@ -181,7 +181,10 @@
       "myCollection": "我的收藏",
       "myCoupon": "我的優惠券",
       "myAddress": "收貨地址",
-      "accountSettings": "帳號設定"
+      "accountSettings": "帳號設定",
+      "logout": "登出",
+      "logoutConfirm": "確定要登出嗎？",
+      "user": "使用者"
     },
     "address": {
       "title": "收貨地址",
@@ -196,13 +199,21 @@
       "detail": "詳細地址",
       "consigneePlaceholder": "請輸入收貨人姓名",
       "phonePlaceholder": "請輸入手機號",
-      "detailPlaceholder": "請輸入詳細地址"
+      "detailPlaceholder": "請輸入詳細地址",
+      "empty": "暫無收貨地址",
+      "deleteConfirm": "確定刪除該地址嗎？",
+      "editBtn": "編輯",
+      "modifySuccess": "修改成功",
+      "addSuccess": "新增成功",
+      "setSuccess": "設定成功",
+      "deleteSuccess": "刪除成功"
     },
     "collection": {
       "title": "我的收藏",
       "empty": "暫無收藏商品",
       "addToCart": "加入購物車",
-      "remove": "取消收藏"
+      "remove": "取消收藏",
+      "removeConfirm": "確定取消收藏嗎？"
     },
     "coupon": {
       "title": "我的優惠券",
@@ -211,7 +222,29 @@
       "expired": "已過期",
       "empty": "暫無優惠券",
       "validity": "有效期：{start} - {end}",
-      "useNow": "立即使用"
+      "useNow": "立即使用",
+      "discountRule": "滿{full}減{reduce}",
+      "goUse": "去使用"
+    },
+    "dashboard": {
+      "welcomeTitle": "Hi, {name}",
+      "welcomeSubtitle": "歡迎來到個人中心",
+      "viewAllOrders": "查看全部訂單 >",
+      "pendingPayment": "待付款",
+      "pendingShipment": "待出貨",
+      "pendingReceipt": "待收貨",
+      "completed": "已完成",
+      "myCollection": "我的收藏",
+      "myCoupon": "我的優惠券",
+      "myAddress": "收貨地址",
+      "myFootprint": "我的足跡",
+      "commonFunctions": "常用功能",
+      "allOrders": "全部訂單",
+      "couponShort": "優惠券",
+      "getOrderCountError": "獲取訂單數量失敗",
+      "getCollectionCountError": "獲取收藏數量失敗",
+      "getAddressCountError": "獲取地址數量失敗",
+      "getUserInfoError": "獲取使用者資訊失敗"
     }
   },
   "product": {

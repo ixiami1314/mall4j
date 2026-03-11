@@ -181,7 +181,10 @@
       "myCollection": "My Wishlist",
       "myCoupon": "My Coupons",
       "myAddress": "Addresses",
-      "accountSettings": "Settings"
+      "accountSettings": "Settings",
+      "logout": "Logout",
+      "logoutConfirm": "Are you sure you want to logout?",
+      "user": "User"
     },
     "address": {
       "title": "Addresses",
@@ -196,13 +199,21 @@
       "detail": "Address",
       "consigneePlaceholder": "Recipient name",
       "phonePlaceholder": "Phone number",
-      "detailPlaceholder": "Detailed address"
+      "detailPlaceholder": "Detailed address",
+      "empty": "No addresses yet",
+      "deleteConfirm": "Delete this address?",
+      "editBtn": "Edit",
+      "modifySuccess": "Updated",
+      "addSuccess": "Added",
+      "setSuccess": "Set as default",
+      "deleteSuccess": "Deleted"
     },
     "collection": {
       "title": "My Wishlist",
       "empty": "No items in wishlist",
       "addToCart": "Add to Cart",
-      "remove": "Remove"
+      "remove": "Remove",
+      "removeConfirm": "Remove from wishlist?"
     },
     "coupon": {
       "title": "My Coupons",
@@ -211,7 +222,29 @@
       "expired": "Expired",
       "empty": "No coupons",
       "validity": "Valid: {start} - {end}",
-      "useNow": "Use Now"
+      "useNow": "Use Now",
+      "discountRule": "${reduce} off ${full}",
+      "goUse": "Use Now"
+    },
+    "dashboard": {
+      "welcomeTitle": "Hi, {name}",
+      "welcomeSubtitle": "Welcome to your account",
+      "viewAllOrders": "View All Orders >",
+      "pendingPayment": "Pending",
+      "pendingShipment": "To Ship",
+      "pendingReceipt": "To Receive",
+      "completed": "Completed",
+      "myCollection": "My Wishlist",
+      "myCoupon": "My Coupons",
+      "myAddress": "Addresses",
+      "myFootprint": "My Footprint",
+      "commonFunctions": "Quick Actions",
+      "allOrders": "All Orders",
+      "couponShort": "Coupons",
+      "getOrderCountError": "Failed to get order count",
+      "getCollectionCountError": "Failed to get wishlist count",
+      "getAddressCountError": "Failed to get address count",
+      "getUserInfoError": "Failed to get user info"
     }
   },
   "product": {

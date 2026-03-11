@@ -181,7 +181,10 @@
       "myCollection": "お気に入り",
       "myCoupon": "クーポン",
       "myAddress": "住所",
-      "accountSettings": "設定"
+      "accountSettings": "設定",
+      "logout": "ログアウト",
+      "logoutConfirm": "ログアウトしますか？",
+      "user": "ユーザー"
     },
     "address": {
       "title": "住所",
@@ -196,13 +199,21 @@
       "detail": "住所",
       "consigneePlaceholder": "宛名を入力",
       "phonePlaceholder": "電話番号を入力",
-      "detailPlaceholder": "詳細住所を入力"
+      "detailPlaceholder": "詳細住所を入力",
+      "empty": "住所がありません",
+      "deleteConfirm": "この住所を削除しますか？",
+      "editBtn": "編集",
+      "modifySuccess": "更新しました",
+      "addSuccess": "追加しました",
+      "setSuccess": "デフォルトに設定しました",
+      "deleteSuccess": "削除しました"
     },
     "collection": {
       "title": "お気に入り",
       "empty": "お気に入りに商品がありません",
       "addToCart": "カートに入れる",
-      "remove": "削除"
+      "remove": "削除",
+      "removeConfirm": "お気に入りから削除しますか？"
     },
     "coupon": {
       "title": "クーポン",
@@ -211,7 +222,29 @@
       "expired": "期限切れ",
       "empty": "クーポンがありません",
       "validity": "有効期限：{start} - {end}",
-      "useNow": "今すぐ使う"
+      "useNow": "今すぐ使う",
+      "discountRule": "{full}円以上で{reduce}円引き",
+      "goUse": "使う"
+    },
+    "dashboard": {
+      "welcomeTitle": "{name}さん、こんにちは",
+      "welcomeSubtitle": "マイページへようこそ",
+      "viewAllOrders": "すべての注文を見る >",
+      "pendingPayment": "未払い",
+      "pendingShipment": "発送待ち",
+      "pendingReceipt": "到着待ち",
+      "completed": "完了",
+      "myCollection": "お気に入り",
+      "myCoupon": "クーポン",
+      "myAddress": "住所",
+      "myFootprint": "閲覧履歴",
+      "commonFunctions": "よく使う機能",
+      "allOrders": "すべての注文",
+      "couponShort": "クーポン",
+      "getOrderCountError": "注文数の取得に失敗しました",
+      "getCollectionCountError": "お気に入り数の取得に失敗しました",
+      "getAddressCountError": "住所数の取得に失敗しました",
+      "getUserInfoError": "ユーザー情報の取得に失敗しました"
     }
   },
   "product": {

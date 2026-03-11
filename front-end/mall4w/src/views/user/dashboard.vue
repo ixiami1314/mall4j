@@ -3,8 +3,8 @@
     <!-- 欢迎区域 -->
     <div class="welcome-section">
       <div class="welcome-text">
-        <h2>Hi, {{ userInfo.nickName || '用户' }}</h2>
-        <p>欢迎来到个人中心</p>
+        <h2>{{ t('user.dashboard.welcomeTitle', { name: userInfo.nickName || t('user.center.user') }) }}</h2>
+        <p>{{ t('user.dashboard.welcomeSubtitle') }}</p>
       </div>
       <div class="welcome-img">
         <el-icon :size="80" color="#ff6700"><User /></el-icon>
@@ -14,8 +14,8 @@
     <!-- 订单快捷入口 -->
     <div class="order-section">
       <div class="section-header">
-        <h3>我的订单</h3>
-        <router-link to="/user/order" class="view-all">查看全部订单 ></router-link>
+        <h3>{{ t('user.center.myOrders') }}</h3>
+        <router-link to="/user/order" class="view-all">{{ t('user.dashboard.viewAllOrders') }}</router-link>
       </div>
       <div class="order-shortcuts">
         <div class="shortcut-item" @click="goOrder(1)">
@@ -24,7 +24,7 @@
               <el-icon :size="28"><Wallet /></el-icon>
             </el-badge>
           </div>
-          <span>待支付</span>
+          <span>{{ t('user.dashboard.pendingPayment') }}</span>
         </div>
         <div class="shortcut-item" @click="goOrder(2)">
           <div class="shortcut-icon">
@@ -32,7 +32,7 @@
               <el-icon :size="28"><Box /></el-icon>
             </el-badge>
           </div>
-          <span>待发货</span>
+          <span>{{ t('user.dashboard.pendingShipment') }}</span>
         </div>
         <div class="shortcut-item" @click="goOrder(3)">
           <div class="shortcut-icon">
@@ -40,13 +40,13 @@
               <el-icon :size="28"><Van /></el-icon>
             </el-badge>
           </div>
-          <span>待收货</span>
+          <span>{{ t('user.dashboard.pendingReceipt') }}</span>
         </div>
         <div class="shortcut-item" @click="goOrder(5)">
           <div class="shortcut-icon">
             <el-icon :size="28"><CircleCheck /></el-icon>
           </div>
-          <span>已完成</span>
+          <span>{{ t('user.dashboard.completed') }}</span>
         </div>
       </div>
     </div>
@@ -55,43 +55,43 @@
     <div class="stats-section">
       <div class="stat-card" @click="$router.push('/user/collection')">
         <div class="stat-num">{{ collectionCount }}</div>
-        <div class="stat-label">我的收藏</div>
+        <div class="stat-label">{{ t('user.dashboard.myCollection') }}</div>
       </div>
       <div class="stat-card" @click="$router.push('/user/coupon')">
         <div class="stat-num">{{ couponCount }}</div>
-        <div class="stat-label">我的优惠券</div>
+        <div class="stat-label">{{ t('user.dashboard.myCoupon') }}</div>
       </div>
       <div class="stat-card" @click="$router.push('/user/address')">
         <div class="stat-num">{{ addressCount }}</div>
-        <div class="stat-label">收货地址</div>
+        <div class="stat-label">{{ t('user.dashboard.myAddress') }}</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">0</div>
-        <div class="stat-label">我的足迹</div>
+        <div class="stat-label">{{ t('user.dashboard.myFootprint') }}</div>
       </div>
     </div>
 
     <!-- 快捷功能 -->
     <div class="quick-menu-section">
       <div class="section-header">
-        <h3>常用功能</h3>
+        <h3>{{ t('user.dashboard.commonFunctions') }}</h3>
       </div>
       <div class="quick-menu-grid">
         <div class="menu-item" @click="$router.push('/user/address')">
           <el-icon :size="24"><Location /></el-icon>
-          <span>收货地址</span>
+          <span>{{ t('user.center.myAddress') }}</span>
         </div>
         <div class="menu-item" @click="$router.push('/user/collection')">
           <el-icon :size="24"><Star /></el-icon>
-          <span>我的收藏</span>
+          <span>{{ t('user.center.myCollection') }}</span>
         </div>
         <div class="menu-item" @click="$router.push('/user/coupon')">
           <el-icon :size="24"><Ticket /></el-icon>
-          <span>优惠券</span>
+          <span>{{ t('user.dashboard.couponShort') }}</span>
         </div>
         <div class="menu-item" @click="$router.push('/user/order')">
           <el-icon :size="24"><List /></el-icon>
-          <span>全部订单</span>
+          <span>{{ t('user.dashboard.allOrders') }}</span>
         </div>
       </div>
     </div>
@@ -101,6 +101,7 @@
 <script setup>
 import { ref, onMounted, inject } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { User, Wallet, Box, Van, CircleCheck, Location, Star, Ticket, List } from '@element-plus/icons-vue'
 import { getOrderCount } from '@/api/order'
 import { getCollectionCount } from '@/api/collection'
@@ -108,6 +109,7 @@ import { getAddressList } from '@/api/address'
 import http from '@/utils/http'
 
 const router = useRouter()
+const { t } = useI18n()
 
 // 从父组件注入用户信息
 const userInfo = inject('userInfo', ref({}))
@@ -138,7 +140,7 @@ const fetchOrderCount = async () => {
       }
     }
   } catch (error) {
-    console.error('获取订单数量失败:', error)
+    console.error(t('user.dashboard.getOrderCountError'), ':', error)
   }
 }
 
@@ -147,7 +149,7 @@ const fetchCollectionCount = async () => {
     const { data } = await getCollectionCount()
     collectionCount.value = data || 0
   } catch (error) {
-    console.error('获取收藏数量失败:', error)
+    console.error(t('user.dashboard.getCollectionCountError'), ':', error)
   }
 }
 
@@ -156,7 +158,7 @@ const fetchAddressCount = async () => {
     const { data } = await getAddressList()
     addressCount.value = (data || []).length
   } catch (error) {
-    console.error('获取地址数量失败:', error)
+    console.error(t('user.dashboard.getAddressCountError'), ':', error)
   }
 }
 

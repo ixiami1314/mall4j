@@ -1,8 +1,8 @@
 <template>
   <div class="collection-page">
-    <h3>我的收藏</h3>
+    <h3>{{ t('user.collection.title') }}</h3>
     <div v-if="prodList.length === 0" class="empty-collection">
-      <el-empty description="暂无收藏商品" />
+      <el-empty :description="t('user.collection.empty')" />
     </div>
     <div v-else class="prod-grid">
       <div v-for="prod in prodList" :key="prod.prodId" class="prod-card" @click="goProd(prod.prodId)">
@@ -11,7 +11,7 @@
           <p class="prod-name">{{ prod.prodName }}</p>
           <p class="prod-price">¥{{ prod.price }}</p>
         </div>
-        <el-button type="danger" link class="remove-btn" @click.stop="handleRemove(prod.prodId)">取消收藏</el-button>
+        <el-button type="danger" link class="remove-btn" @click.stop="handleRemove(prod.prodId)">{{ t('user.collection.remove') }}</el-button>
       </div>
     </div>
   </div>
@@ -20,8 +20,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import http from '@/utils/http'
 import { ElMessageBox } from 'element-plus'
+
+const { t } = useI18n()
 
 const router = useRouter()
 const prodList = ref([])
@@ -41,7 +44,7 @@ const fetchCollection = async () => {
 }
 
 const handleRemove = async (prodId) => {
-  await ElMessageBox.confirm('确定取消收藏吗？')
+  await ElMessageBox.confirm(t('user.collection.removeConfirm'))
   await http({
     url: http.adornUrl('/p/user/collection/addOrCancel'),
     method: 'post',

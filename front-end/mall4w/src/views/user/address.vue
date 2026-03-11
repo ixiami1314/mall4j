@@ -1,45 +1,45 @@
 <template>
   <div class="address-page">
     <div class="page-header">
-      <h3>收货地址</h3>
-      <el-button type="primary" @click="showAddDialog">新增地址</el-button>
+      <h3>{{ t('user.address.title') }}</h3>
+      <el-button type="primary" @click="showAddDialog">{{ t('user.address.add') }}</el-button>
     </div>
     <div v-if="addressList.length === 0" class="empty-address">
-      <el-empty description="暂无收货地址" />
+      <el-empty :description="t('user.address.empty')" />
     </div>
     <div v-else class="address-list">
       <div v-for="addr in addressList" :key="addr.addrId" class="address-item">
         <div class="addr-info">
           <p><strong>{{ addr.receiver }}</strong> {{ addr.mobile }}</p>
           <p>{{ addr.province }}{{ addr.city }}{{ addr.area }}{{ addr.addr }}</p>
-          <el-tag v-if="addr.commonAddr === 1" type="danger" size="small">默认</el-tag>
+          <el-tag v-if="addr.commonAddr === 1" type="danger" size="small">{{ t('user.address.default') }}</el-tag>
         </div>
         <div class="addr-actions">
-          <el-button link @click="handleEdit(addr)">编辑</el-button>
-          <el-button link @click="handleSetDefault(addr.addrId)" v-if="addr.commonAddr !== 1">设为默认</el-button>
-          <el-button link type="danger" @click="handleDelete(addr.addrId)">删除</el-button>
+          <el-button link @click="handleEdit(addr)">{{ t('user.address.editBtn') }}</el-button>
+          <el-button link @click="handleSetDefault(addr.addrId)" v-if="addr.commonAddr !== 1">{{ t('user.address.setDefault') }}</el-button>
+          <el-button link type="danger" @click="handleDelete(addr.addrId)">{{ t('user.address.delete') }}</el-button>
         </div>
       </div>
     </div>
 
-    <el-dialog v-model="dialogVisible" :title="isEdit ? '编辑地址' : '新增地址'" width="500px">
+    <el-dialog v-model="dialogVisible" :title="isEdit ? t('user.address.edit') : t('user.address.add')" width="500px">
       <el-form ref="formRef" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="收货人" prop="receiver">
+        <el-form-item :label="t('user.address.consignee')" prop="receiver">
           <el-input v-model="form.receiver" />
         </el-form-item>
-        <el-form-item label="手机号" prop="mobile">
+        <el-form-item :label="t('user.address.phone')" prop="mobile">
           <el-input v-model="form.mobile" />
         </el-form-item>
-        <el-form-item label="所在地区" prop="province">
+        <el-form-item :label="t('user.address.area')" prop="province">
           <el-cascader v-model="form.areaArr" :options="areaOptions" style="width: 100%" />
         </el-form-item>
-        <el-form-item label="详细地址" prop="addr">
+        <el-form-item :label="t('user.address.detail')" prop="addr">
           <el-input v-model="form.addr" type="textarea" />
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="handleSubmit">确定</el-button>
+        <el-button @click="dialogVisible = false">{{ t('common.cancel') }}</el-button>
+        <el-button type="primary" @click="handleSubmit">{{ t('common.confirm') }}</el-button>
       </template>
     </el-dialog>
   </div>
@@ -47,8 +47,11 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { getAddressList, addAddress, updateAddress, deleteAddress, setDefaultAddress } from '@/api/address'
 import { ElMessage, ElMessageBox } from 'element-plus'
+
+const { t } = useI18n()
 
 const addressList = ref([])
 const dialogVisible = ref(false)
@@ -67,9 +70,9 @@ const form = reactive({
 })
 
 const rules = {
-  receiver: [{ required: true, message: '请输入收货人', trigger: 'blur' }],
-  mobile: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
-  addr: [{ required: true, message: '请输入详细地址', trigger: 'blur' }]
+  receiver: [{ required: true, message: t('user.address.consigneePlaceholder'), trigger: 'blur' }],
+  mobile: [{ required: true, message: t('user.address.phonePlaceholder'), trigger: 'blur' }],
+  addr: [{ required: true, message: t('user.address.detailPlaceholder'), trigger: 'blur' }]
 }
 
 const areaOptions = [] // 可接入实际省市区数据
@@ -101,10 +104,10 @@ const handleSubmit = async () => {
 
   if (isEdit.value) {
     await updateAddress(form)
-    ElMessage.success('修改成功')
+    ElMessage.success(t('user.address.modifySuccess'))
   } else {
     await addAddress(form)
-    ElMessage.success('添加成功')
+    ElMessage.success(t('user.address.addSuccess'))
   }
   dialogVisible.value = false
   fetchAddressList()
@@ -112,14 +115,14 @@ const handleSubmit = async () => {
 
 const handleSetDefault = async (addrId) => {
   await setDefaultAddress(addrId)
-  ElMessage.success('设置成功')
+  ElMessage.success(t('user.address.setSuccess'))
   fetchAddressList()
 }
 
 const handleDelete = async (addrId) => {
-  await ElMessageBox.confirm('确定删除该地址吗？')
+  await ElMessageBox.confirm(t('user.address.deleteConfirm'))
   await deleteAddress(addrId)
-  ElMessage.success('删除成功')
+  ElMessage.success(t('user.address.deleteSuccess'))
   fetchAddressList()
 }
 </script>
