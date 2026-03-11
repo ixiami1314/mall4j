@@ -1,7 +1,7 @@
 <template>
   <el-dropdown @command="handleChangeLocale" trigger="click">
     <span class="locale-switch">
-      <el-icon><Globe /></el-icon>
+      <el-icon><Platform /></el-icon>
       <span class="locale-label">{{ currentLocaleLabel }}</span>
       <el-icon class="arrow"><ArrowDown /></el-icon>
     </span>
@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { Globe, ArrowDown } from '@element-plus/icons-vue'
+import { Platform, ArrowDown } from '@element-plus/icons-vue'
 import { useLocale } from '@/composables/useLocale'
 
 const { locale, currentLocaleLabel, localeOptions, changeLocale } = useLocale()
