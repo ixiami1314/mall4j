@@ -1,15 +1,15 @@
 <template>
   <div class="search-result container">
     <div class="result-header">
-      <span>搜索 "{{ keyword }}" 的结果，共 {{ total }} 件商品</span>
+      <span>{{ t('search.resultInfo', { keyword: keyword, count: total }) }}</span>
       <el-radio-group v-model="orderBy" @change="fetchProducts">
-        <el-radio-button label="">综合</el-radio-button>
-        <el-radio-button label="sales">销量</el-radio-button>
-        <el-radio-button label="price">价格</el-radio-button>
+        <el-radio-button label="">{{ t('category.sortDefault') }}</el-radio-button>
+        <el-radio-button label="sales">{{ t('category.sortSales') }}</el-radio-button>
+        <el-radio-button label="price">{{ t('search.sortPrice') }}</el-radio-button>
       </el-radio-group>
     </div>
     <div v-if="prodList.length === 0" class="empty-result">
-      <el-empty description="没有找到相关商品" />
+      <el-empty :description="t('search.empty')" />
     </div>
     <div v-else class="prod-grid">
       <div v-for="prod in prodList" :key="prod.prodId" class="prod-card" @click="goProdDetail(prod.prodId)">
@@ -33,8 +33,10 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { searchProd } from '@/api/search'
 
+const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 

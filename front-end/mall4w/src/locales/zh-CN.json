@@ -256,18 +256,53 @@
     "sold": "已售",
     "reviews": "评价",
     "description": "商品详情",
-    "params": "规格参数"
+    "params": "规格参数",
+    "imageLoadFailed": "加载失败",
+    "promoPrice": "促销价",
+    "save": "省",
+    "items": "件",
+    "authenticGuarantee": "正品保证",
+    "fastDelivery": "极速发货",
+    "returnPolicy": "7天退换",
+    "afterSales": "售后无忧",
+    "reviewsTab": "商品评价 ({count})",
+    "noReviews": "暂无评价",
+    "pleaseLogin": "请先登录",
+    "goLogin": "去登录",
+    "selectSpec": "请选择商品规格",
+    "getInfoFailed": "获取商品信息失败",
+    "addedToCart": "已添加到购物车"
   },
   "search": {
-    "placeholder": "搜索商品",
-    "empty": "未找到相关商品",
-    "result": "搜索结果"
+    "placeholder": "请输入搜索关键词",
+    "empty": "没有找到相关商品",
+    "result": "搜索结果",
+    "history": "搜索历史",
+    "hot": "热门搜索",
+    "resultInfo": "搜索 \"{keyword}\" 的结果，共 {count} 件商品",
+    "sortPrice": "价格"
   },
   "category": {
-    "title": "全部分类"
+    "title": "全部分类",
+    "itemCount": "{count} 件商品",
+    "sortDefault": "综合",
+    "sortSales": "销量",
+    "sortPriceAsc": "价格↑",
+    "sortPriceDesc": "价格↓",
+    "emptyProducts": "该分类下暂无商品",
+    "goHome": "去首页看看"
   },
   "news": {
     "title": "新闻资讯",
-    "detail": "新闻详情"
+    "detail": "新闻详情",
+    "list": "新闻公告",
+    "empty": "暂无新闻"
+  },
+  "home": {
+    "categoryTitle": "商品分类",
+    "viewAllCategories": "全部分类",
+    "viewMore": "查看更多",
+    "viewDetail": "查看详情",
+    "emptyProducts": "暂无商品数据"
   }
 }

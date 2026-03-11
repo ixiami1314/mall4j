@@ -3,18 +3,18 @@
     <div class="search-box">
       <el-input
         v-model="keyword"
-        placeholder="请输入搜索关键词"
+        :placeholder="t('search.placeholder')"
         size="large"
         @keyup.enter="handleSearch"
       >
         <template #append>
-          <el-button type="primary" @click="handleSearch">搜索</el-button>
+          <el-button type="primary" @click="handleSearch">{{ t('common.search') }}</el-button>
         </template>
       </el-input>
     </div>
 
     <div class="search-history" v-if="searchHistory.length">
-      <h4>搜索历史</h4>
+      <h4>{{ t('search.history') }}</h4>
       <div class="history-list">
         <el-tag
           v-for="(item, index) in searchHistory"
@@ -29,7 +29,7 @@
     </div>
 
     <div class="hot-search" v-if="hotKeywords.length">
-      <h4>热门搜索</h4>
+      <h4>{{ t('search.hot') }}</h4>
       <div class="hot-list">
         <el-tag
           v-for="(item, index) in hotKeywords"
@@ -47,9 +47,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { getHotSearch } from '@/api/search'
 import { useAppStore } from '@/stores/app'
 
+const { t } = useI18n()
 const router = useRouter()
 const appStore = useAppStore()
 

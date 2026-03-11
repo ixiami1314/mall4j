@@ -13,7 +13,7 @@
             <template #error>
               <div class="image-error">
                 <el-icon><Picture /></el-icon>
-                <span>加载失败</span>
+                <span>{{ t('product.imageLoadFailed') }}</span>
               </div>
             </template>
           </el-image>
@@ -37,13 +37,13 @@
 
         <div class="price-section">
           <div class="price-row">
-            <span class="price-label">促销价</span>
+            <span class="price-label">{{ t('product.promoPrice') }}</span>
             <span class="price-value">¥{{ selectedSku?.price || prodInfo.price }}</span>
             <span v-if="prodInfo.oriPrice" class="ori-price">¥{{ prodInfo.oriPrice }}</span>
           </div>
           <div class="price-tags" v-if="prodInfo.oriPrice">
             <el-tag size="small" type="danger" effect="plain">
-              省 ¥{{ ((prodInfo.oriPrice - (selectedSku?.price || prodInfo.price)) || 0).toFixed(2) }}
+              {{ t('product.save') }} ¥{{ ((prodInfo.oriPrice - (selectedSku?.price || prodInfo.price)) || 0).toFixed(2) }}
             </el-tag>
           </div>
         </div>
@@ -66,7 +66,7 @@
         </div>
 
         <div class="quantity-section">
-          <span class="section-label">数量</span>
+          <span class="section-label">{{ t('product.quantity') }}</span>
           <el-input-number
             v-model="quantity"
             :min="1"
@@ -75,18 +75,18 @@
           />
           <span class="stocks-info">
             <el-icon><Box /></el-icon>
-            库存 {{ selectedSku?.stocks || prodInfo.stocks || 0 }} 件
+            {{ t('product.stock') }} {{ selectedSku?.stocks || prodInfo.stocks || 0 }} {{ t('product.items') }}
           </span>
         </div>
 
         <div class="action-section">
           <el-button type="primary" size="large" class="action-btn cart-btn" @click="handleAddToCart">
             <el-icon><ShoppingCart /></el-icon>
-            加入购物车
+            {{ t('product.addToCart') }}
           </el-button>
           <el-button type="danger" size="large" class="action-btn buy-btn" @click="handleBuyNow">
             <el-icon><Lightning /></el-icon>
-            立即购买
+            {{ t('product.buyNow') }}
           </el-button>
         </div>
 
@@ -94,19 +94,19 @@
         <div class="service-section">
           <div class="service-item">
             <el-icon><CircleCheck /></el-icon>
-            <span>正品保证</span>
+            <span>{{ t('product.authenticGuarantee') }}</span>
           </div>
           <div class="service-item">
             <el-icon><Van /></el-icon>
-            <span>极速发货</span>
+            <span>{{ t('product.fastDelivery') }}</span>
           </div>
           <div class="service-item">
             <el-icon><RefreshRight /></el-icon>
-            <span>7天退换</span>
+            <span>{{ t('product.returnPolicy') }}</span>
           </div>
           <div class="service-item">
             <el-icon><Service /></el-icon>
-            <span>售后无忧</span>
+            <span>{{ t('product.afterSales') }}</span>
           </div>
         </div>
       </div>
@@ -115,12 +115,12 @@
     <!-- 商品详情/评价 Tab -->
     <div class="prod-tabs">
       <el-tabs v-model="activeTab">
-        <el-tab-pane label="商品详情" name="detail">
+        <el-tab-pane :label="t('product.description')" name="detail">
           <div class="detail-content" v-html="prodInfo.content"></div>
         </el-tab-pane>
-        <el-tab-pane :label="`商品评价 (${commentTotal})`" name="comment">
+        <el-tab-pane :label="t('product.reviewsTab', { count: commentTotal })" name="comment">
           <div v-if="comments.length === 0" class="empty-comment">
-            <el-empty description="暂无评价" />
+            <el-empty :description="t('product.noReviews')" />
           </div>
           <div v-else class="comment-list">
             <div v-for="comm in comments" :key="comm.id" class="comment-item">
@@ -156,6 +156,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { getProdInfo, getProdCommPage } from '@/api/prod'
 import { changeCartItem } from '@/api/cart'
 import { useCartStore } from '@/stores/cart'
@@ -163,6 +164,7 @@ import { isLogin } from '@/utils'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Picture, Box, ShoppingCart, Lightning, CircleCheck, Van, RefreshRight, Service } from '@element-plus/icons-vue'
 
+const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const cartStore = useCartStore()
@@ -250,7 +252,7 @@ const fetchProdInfo = async () => {
     }
     fetchComments(prodId)
   } catch (error) {
-    ElMessage.error('获取商品信息失败')
+    ElMessage.error(t('product.getInfoFailed'))
   } finally {
     loading.value = false
   }
@@ -272,16 +274,16 @@ const selectSku = (name, value) => {
 
 const handleAddToCart = async () => {
   if (!isLogin()) {
-    ElMessageBox.confirm('请先登录', '提示', {
-      confirmButtonText: '去登录',
-      cancelButtonText: '取消',
+    ElMessageBox.confirm(t('product.pleaseLogin'), t('common.tip'), {
+      confirmButtonText: t('product.goLogin'),
+      cancelButtonText: t('common.cancel'),
       type: 'warning'
     }).then(() => router.push('/login'))
     return
   }
 
   if (prodInfo.value.skuList?.length && !selectedSku.value) {
-    ElMessage.warning('请选择商品规格')
+    ElMessage.warning(t('product.selectSpec'))
     return
   }
 
@@ -293,7 +295,7 @@ const handleAddToCart = async () => {
       shopId: prodInfo.value.shopId
     })
     cartStore.fetchCartCount()
-    ElMessage.success('已添加到购物车')
+    ElMessage.success(t('product.addedToCart'))
   } catch (error) {
     // 错误已在 http 拦截器处理
   }
@@ -306,7 +308,7 @@ const handleBuyNow = async () => {
   }
 
   if (prodInfo.value.skuList?.length && !selectedSku.value) {
-    ElMessage.warning('请选择商品规格')
+    ElMessage.warning(t('product.selectSpec'))
     return
   }
 

@@ -3,7 +3,7 @@
     <!-- 左侧分类 -->
     <div class="category-aside">
       <div class="aside-header">
-        <h3>商品分类</h3>
+        <h3>{{ t('category.title') }}</h3>
       </div>
       <div class="category-list">
         <div
@@ -26,23 +26,23 @@
         <div class="filter-left">
           <span class="current-category" v-if="currentCategory">
             {{ currentCategory.categoryName }}
-            <small>{{ total }} 件商品</small>
+            <small>{{ t('category.itemCount', { count: total }) }}</small>
           </span>
         </div>
         <div class="filter-right">
           <el-radio-group v-model="sortBy" size="small" @change="handleSort">
-            <el-radio-button label="default">综合</el-radio-button>
-            <el-radio-button label="sales">销量</el-radio-button>
-            <el-radio-button label="price_asc">价格↑</el-radio-button>
-            <el-radio-button label="price_desc">价格↓</el-radio-button>
+            <el-radio-button label="default">{{ t('category.sortDefault') }}</el-radio-button>
+            <el-radio-button label="sales">{{ t('category.sortSales') }}</el-radio-button>
+            <el-radio-button label="price_asc">{{ t('category.sortPriceAsc') }}</el-radio-button>
+            <el-radio-button label="price_desc">{{ t('category.sortPriceDesc') }}</el-radio-button>
           </el-radio-group>
         </div>
       </div>
 
       <!-- 商品列表 -->
       <div v-if="prodList.length === 0 && !loading" class="empty-prod">
-        <el-empty description="该分类下暂无商品">
-          <el-button type="primary" @click="$router.push('/')">去首页看看</el-button>
+        <el-empty :description="t('category.emptyProducts')">
+          <el-button type="primary" @click="$router.push('/')">{{ t('category.goHome') }}</el-button>
         </el-empty>
       </div>
 
@@ -56,7 +56,7 @@
           <div class="prod-img-wrapper">
             <img :src="prod.pic" class="prod-img" />
             <div class="prod-overlay">
-              <span>查看详情</span>
+              <span>{{ t('home.viewDetail') }}</span>
             </div>
             <div class="prod-tag" v-if="prod.tag">
               <el-tag size="small" effect="dark">{{ prod.tag }}</el-tag>
@@ -70,7 +70,7 @@
                 <span class="prod-price">¥{{ prod.price }}</span>
                 <span class="ori-price" v-if="prod.oriPrice">¥{{ prod.oriPrice }}</span>
               </div>
-              <span class="prod-sales" v-if="prod.sales">已售{{ prod.sales }}</span>
+              <span class="prod-sales" v-if="prod.sales">{{ t('product.sold') }}{{ prod.sales }}</span>
             </div>
           </div>
         </div>
@@ -94,9 +94,11 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { getCategoryInfo, getProdPage } from '@/api/prod'
 import { ArrowRight } from '@element-plus/icons-vue'
 
+const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 

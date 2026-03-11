@@ -1,8 +1,8 @@
 <template>
   <div class="news-list container">
-    <h2>新闻公告</h2>
+    <h2>{{ t('news.list') }}</h2>
     <div v-if="newsList.length === 0" class="empty-news">
-      <el-empty description="暂无新闻" />
+      <el-empty :description="t('news.empty')" />
     </div>
     <div v-else class="news-items">
       <div v-for="news in newsList" :key="news.id" class="news-item" @click="goDetail(news.id)">
@@ -16,8 +16,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { getNoticeList } from '@/api/index'
 
+const { t } = useI18n()
 const router = useRouter()
 const newsList = ref([])
 

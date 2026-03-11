@@ -256,18 +256,53 @@
     "sold": "Sold",
     "reviews": "Reviews",
     "description": "Details",
-    "params": "Specifications"
+    "params": "Specifications",
+    "imageLoadFailed": "Load failed",
+    "promoPrice": "Sale Price",
+    "save": "Save",
+    "items": "items",
+    "authenticGuarantee": "Authentic",
+    "fastDelivery": "Fast Delivery",
+    "returnPolicy": "7-Day Return",
+    "afterSales": "After-sales",
+    "reviewsTab": "Reviews ({count})",
+    "noReviews": "No reviews yet",
+    "pleaseLogin": "Please login first",
+    "goLogin": "Login",
+    "selectSpec": "Please select specification",
+    "getInfoFailed": "Failed to get product info",
+    "addedToCart": "Added to cart"
   },
   "search": {
-    "placeholder": "Search products",
+    "placeholder": "Enter search keywords",
     "empty": "No products found",
-    "result": "Search Results"
+    "result": "Search Results",
+    "history": "Search History",
+    "hot": "Hot Searches",
+    "resultInfo": "Results for \"{keyword}\", {count} items found",
+    "sortPrice": "Price"
   },
   "category": {
-    "title": "All Categories"
+    "title": "All Categories",
+    "itemCount": "{count} items",
+    "sortDefault": "Default",
+    "sortSales": "Sales",
+    "sortPriceAsc": "Price↑",
+    "sortPriceDesc": "Price↓",
+    "emptyProducts": "No products in this category",
+    "goHome": "Go to Homepage"
   },
   "news": {
     "title": "News",
-    "detail": "News Detail"
+    "detail": "News Detail",
+    "list": "News & Announcements",
+    "empty": "No news yet"
+  },
+  "home": {
+    "categoryTitle": "Categories",
+    "viewAllCategories": "All Categories",
+    "viewMore": "View More",
+    "viewDetail": "View Details",
+    "emptyProducts": "No products available"
   }
 }

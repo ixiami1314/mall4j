@@ -4,7 +4,7 @@
     <p class="news-time">{{ newsInfo.createTime }}</p>
     <div class="news-content" v-html="newsInfo.content"></div>
     <div class="back-btn">
-      <el-button @click="$router.back()">返回</el-button>
+      <el-button @click="$router.back()">{{ t('common.back') }}</el-button>
     </div>
   </div>
 </template>
@@ -12,8 +12,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import http from '@/utils/http'
 
+const { t } = useI18n()
 const route = useRoute()
 const loading = ref(true)
 const newsInfo = ref({})

@@ -22,8 +22,8 @@
     <section class="category-section">
       <div class="container">
         <div class="section-title">
-          <h3>商品分类</h3>
-          <router-link to="/category" class="view-all">全部分类 ></router-link>
+          <h3>{{ t('home.categoryTitle') }}</h3>
+          <router-link to="/category" class="view-all">{{ t('home.viewAllCategories') }}</router-link>
         </div>
         <div class="category-grid">
           <div
@@ -46,7 +46,7 @@
       <div class="container">
         <div class="section-title">
           <h3>{{ tag.title }}</h3>
-          <router-link to="/category" class="view-all">查看更多 ></router-link>
+          <router-link to="/category" class="view-all">{{ t('home.viewMore') }}</router-link>
         </div>
         <div class="prod-grid">
           <div
@@ -58,7 +58,7 @@
             <div class="prod-img-wrapper">
               <img :src="prod.pic" class="prod-img" />
               <div class="prod-overlay">
-                <span>查看详情</span>
+                <span>{{ t('home.viewDetail') }}</span>
               </div>
             </div>
             <div class="prod-info">
@@ -66,7 +66,7 @@
               <p class="prod-brief" v-if="prod.brief">{{ prod.brief }}</p>
               <div class="prod-price-row">
                 <span class="prod-price">¥{{ prod.price }}</span>
-                <span class="prod-sales" v-if="prod.sales">已售 {{ prod.sales }}</span>
+                <span class="prod-sales" v-if="prod.sales">{{ t('product.sold') }} {{ prod.sales }}</span>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
 
     <!-- 空状态 -->
     <div v-if="!loading && tagProdList.length === 0" class="empty-state">
-      <el-empty description="暂无商品数据" />
+      <el-empty :description="t('home.emptyProducts')" />
     </div>
   </div>
 </template>
@@ -84,10 +84,12 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { getIndexImgs, getTagProdList } from '@/api/index'
 import { getCategoryInfo } from '@/api/prod'
 import { useAppStore } from '@/stores/app'
 
+const { t } = useI18n()
 const router = useRouter()
 const appStore = useAppStore()
 

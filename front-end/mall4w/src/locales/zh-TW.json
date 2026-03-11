@@ -256,18 +256,53 @@
     "sold": "已售",
     "reviews": "評價",
     "description": "商品詳情",
-    "params": "規格參數"
+    "params": "規格參數",
+    "imageLoadFailed": "載入失敗",
+    "promoPrice": "促銷價",
+    "save": "省",
+    "items": "件",
+    "authenticGuarantee": "正品保證",
+    "fastDelivery": "極速出貨",
+    "returnPolicy": "7天退換",
+    "afterSales": "售後無憂",
+    "reviewsTab": "商品評價 ({count})",
+    "noReviews": "暫無評價",
+    "pleaseLogin": "請先登入",
+    "goLogin": "去登入",
+    "selectSpec": "請選擇商品規格",
+    "getInfoFailed": "獲取商品資訊失敗",
+    "addedToCart": "已加入購物車"
   },
   "search": {
-    "placeholder": "搜尋商品",
-    "empty": "未找到相關商品",
-    "result": "搜尋結果"
+    "placeholder": "請輸入搜尋關鍵字",
+    "empty": "沒有找到相關商品",
+    "result": "搜尋結果",
+    "history": "搜尋歷史",
+    "hot": "熱門搜尋",
+    "resultInfo": "搜尋「{keyword}」的結果，共 {count} 件商品",
+    "sortPrice": "價格"
   },
   "category": {
-    "title": "全部分類"
+    "title": "全部分類",
+    "itemCount": "{count} 件商品",
+    "sortDefault": "綜合",
+    "sortSales": "銷量",
+    "sortPriceAsc": "價格↑",
+    "sortPriceDesc": "價格↓",
+    "emptyProducts": "該分類下暫無商品",
+    "goHome": "去首頁看看"
   },
   "news": {
     "title": "新聞資訊",
-    "detail": "新聞詳情"
+    "detail": "新聞詳情",
+    "list": "新聞公告",
+    "empty": "暫無新聞"
+  },
+  "home": {
+    "categoryTitle": "商品分類",
+    "viewAllCategories": "全部分類",
+    "viewMore": "查看更多",
+    "viewDetail": "查看詳情",
+    "emptyProducts": "暫無商品資料"
   }
 }
