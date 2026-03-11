@@ -4,34 +4,34 @@
       <div class="footer-top">
         <div class="footer-links">
           <div class="link-group">
-            <h4>购物指南</h4>
-            <a href="javascript:;">购物流程</a>
-            <a href="javascript:;">会员介绍</a>
-            <a href="javascript:;">积分规则</a>
-            <a href="javascript:;">常见问题</a>
+            <h4>{{ t('footer.shoppingGuide') }}</h4>
+            <a href="javascript:;">{{ t('footer.shoppingProcess') }}</a>
+            <a href="javascript:;">{{ t('footer.memberIntro') }}</a>
+            <a href="javascript:;">{{ t('footer.pointsRule') }}</a>
+            <a href="javascript:;">{{ t('footer.faq') }}</a>
           </div>
           <div class="link-group">
-            <h4>配送方式</h4>
-            <a href="javascript:;">配送范围</a>
-            <a href="javascript:;">配送费用</a>
-            <a href="javascript:;">配送时效</a>
+            <h4>{{ t('footer.delivery') }}</h4>
+            <a href="javascript:;">{{ t('footer.deliveryRange') }}</a>
+            <a href="javascript:;">{{ t('footer.deliveryFee') }}</a>
+            <a href="javascript:;">{{ t('footer.deliveryTime') }}</a>
           </div>
           <div class="link-group">
-            <h4>支付方式</h4>
-            <a href="javascript:;">在线支付</a>
-            <a href="javascript:;">余额支付</a>
+            <h4>{{ t('footer.payment') }}</h4>
+            <a href="javascript:;">{{ t('footer.onlinePayment') }}</a>
+            <a href="javascript:;">{{ t('footer.balancePayment') }}</a>
           </div>
           <div class="link-group">
-            <h4>售后服务</h4>
-            <a href="javascript:;">退换货政策</a>
-            <a href="javascript:;">退换货流程</a>
-            <a href="javascript:;">退款说明</a>
+            <h4>{{ t('footer.afterSale') }}</h4>
+            <a href="javascript:;">{{ t('footer.returnPolicy') }}</a>
+            <a href="javascript:;">{{ t('footer.returnProcess') }}</a>
+            <a href="javascript:;">{{ t('footer.refundNote') }}</a>
           </div>
           <div class="link-group">
-            <h4>关于我们</h4>
-            <a href="javascript:;">公司介绍</a>
-            <a href="javascript:;">联系我们</a>
-            <a href="javascript:;">加入我们</a>
+            <h4>{{ t('footer.aboutUs') }}</h4>
+            <a href="javascript:;">{{ t('footer.companyIntro') }}</a>
+            <a href="javascript:;">{{ t('footer.contactUs') }}</a>
+            <a href="javascript:;">{{ t('footer.joinUs') }}</a>
           </div>
         </div>
       </div>
@@ -39,21 +39,21 @@
         <div class="footer-info">
           <div class="contact-item">
             <el-icon><Phone /></el-icon>
-            <span>客服热线：400-888-8888</span>
+            <span>{{ t('footer.serviceHotline', { phone: '400-888-8888' }) }}</span>
           </div>
           <div class="contact-item">
             <el-icon><Clock /></el-icon>
-            <span>服务时间：9:00-22:00</span>
+            <span>{{ t('footer.serviceTime', { time: '9:00-22:00' }) }}</span>
           </div>
           <div class="contact-item">
             <el-icon><Message /></el-icon>
-            <span>邮箱：service@mall4w.com</span>
+            <span>{{ t('footer.email', { email: 'service@mall4w.com' }) }}</span>
           </div>
         </div>
         <p class="copyright">
-          © 2024 mall4w 商城. All rights reserved. |
-          <a href="javascript:;">隐私政策</a> |
-          <a href="javascript:;">用户协议</a>
+          {{ t('footer.copyright') }} |
+          <a href="javascript:;">{{ t('footer.privacyPolicy') }}</a> |
+          <a href="javascript:;">{{ t('footer.userAgreement') }}</a>
         </p>
       </div>
     </div>
@@ -62,6 +62,9 @@
 
 <script setup>
 import { Phone, Clock, Message } from '@element-plus/icons-vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <style lang="scss" scoped>
