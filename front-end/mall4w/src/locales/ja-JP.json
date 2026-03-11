@@ -1,0 +1,211 @@
+{
+  "common": {
+    "submit": "送信",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "delete": "削除",
+    "edit": "編集",
+    "save": "保存",
+    "loading": "読み込み中...",
+    "search": "検索",
+    "all": "すべて",
+    "success": "成功",
+    "error": "失敗",
+    "back": "戻る"
+  },
+  "nav": {
+    "home": "ホーム",
+    "category": "カテゴリ",
+    "cart": "カート",
+    "user": "マイページ"
+  },
+  "auth": {
+    "login": {
+      "title": "ログイン",
+      "usernamePlaceholder": "電話番号/ユーザー名",
+      "passwordPlaceholder": "パスワード",
+      "submit": "ログイン",
+      "register": "アカウントをお持ちでない方は新規登録",
+      "success": "ログイン成功"
+    },
+    "register": {
+      "title": "新規登録",
+      "usernamePlaceholder": "ユーザー名",
+      "passwordPlaceholder": "パスワード",
+      "confirmPasswordPlaceholder": "パスワード確認",
+      "phonePlaceholder": "電話番号",
+      "submit": "登録",
+      "login": "アカウントをお持ちの方はログイン",
+      "success": "登録成功"
+    },
+    "validation": {
+      "usernameRequired": "電話番号/ユーザー名を入力してください",
+      "passwordRequired": "パスワードを入力してください",
+      "confirmPasswordRequired": "パスワードを確認してください",
+      "passwordMismatch": "パスワードが一致しません",
+      "phoneRequired": "電話番号を入力してください",
+      "phoneFormat": "電話番号の形式が正しくありません"
+    }
+  },
+  "header": {
+    "searchPlaceholder": "商品、ブランド、店舗を検索",
+    "userCenter": "マイアカウント",
+    "myOrders": "注文履歴",
+    "myCollection": "お気に入り",
+    "logout": "ログアウト",
+    "login": "ログイン",
+    "register": "新規登録"
+  },
+  "footer": {
+    "shoppingGuide": "ショッピングガイド",
+    "shoppingProcess": "ご購入の流れ",
+    "memberIntro": "会員紹介",
+    "pointsRule": "ポイントルール",
+    "faq": "よくある質問",
+    "delivery": "配送について",
+    "deliveryRange": "配送エリア",
+    "deliveryFee": "配送料",
+    "deliveryTime": "配送時間",
+    "payment": "支払い方法",
+    "onlinePayment": "オンライン決済",
+    "balancePayment": "残高決済",
+    "afterSale": "アフターサービス",
+    "returnPolicy": "返品ポリシー",
+    "returnProcess": "返品手順",
+    "refundNote": "返金について",
+    "aboutUs": "会社概要",
+    "companyIntro": "会社紹介",
+    "contactUs": "お問い合わせ",
+    "joinUs": "採用情報",
+    "serviceHotline": "カスタマーサービス：{phone}",
+    "serviceTime": "営業時間：{time}",
+    "email": "メール：{email}",
+    "copyright": "© 2024 mall4w. All rights reserved.",
+    "privacyPolicy": "プライバシーポリシー",
+    "userAgreement": "利用規約"
+  },
+  "cart": {
+    "title": "ショッピングカート",
+    "itemCount": "{count}点の商品",
+    "empty": "カートは空です。お買い物を始めましょう！",
+    "goShopping": "ショッピングへ",
+    "selectAll": "すべて選択",
+    "deleteSelected": "選択を削除",
+    "clearCart": "カートを空にする",
+    "selected": "{count}点選択中",
+    "total": "合計：",
+    "checkout": "レジへ進む",
+    "recommend": "おすすめ商品",
+    "confirmDelete": "この商品を削除しますか？",
+    "confirmDeleteTitle": "削除確認",
+    "confirmDeleteSelected": "選択した{count}点を削除しますか？",
+    "confirmClear": "カートを空にしますか？この操作は取り消せません。",
+    "confirmClearTitle": "カートを空にする",
+    "deleteSuccess": "削除しました",
+    "clearSuccess": "カートを空にしました",
+    "selectItems": "決済する商品を選択してください"
+  },
+  "order": {
+    "confirm": {
+      "title": "注文確認",
+      "shippingInfo": "配送先情報",
+      "addAddress": "住所を追加",
+      "productInfo": "商品情報",
+      "orderNote": "注文メモ",
+      "notePlaceholder": "任意",
+      "submit": "注文を確定"
+    },
+    "list": {
+      "title": "注文履歴",
+      "all": "すべて",
+      "pending": "未払い",
+      "paid": "発送待ち",
+      "shipped": "到着待ち",
+      "completed": "完了",
+      "cancelled": "キャンセル",
+      "pay": "支払う",
+      "cancel": "キャンセル",
+      "confirm": "受け取り確認",
+      "review": "レビュー",
+      "buyAgain": "再購入"
+    },
+    "detail": {
+      "title": "注文詳細",
+      "orderNo": "注文番号",
+      "createTime": "注文日時",
+      "payTime": "支払日時",
+      "deliveryTime": "発送日時",
+      "completeTime": "完了日時"
+    },
+    "payResult": {
+      "success": "支払い完了",
+      "failed": "支払い失敗",
+      "viewOrder": "注文を見る",
+      "continueShopping": "ショッピングを続ける"
+    }
+  },
+  "user": {
+    "center": {
+      "title": "マイページ",
+      "welcome": "こんにちは、{name}さん",
+      "myOrders": "注文履歴",
+      "myCollection": "お気に入り",
+      "myCoupon": "クーポン",
+      "myAddress": "住所",
+      "accountSettings": "設定"
+    },
+    "address": {
+      "title": "住所",
+      "add": "住所を追加",
+      "edit": "住所を編集",
+      "setDefault": "デフォルトに設定",
+      "default": "デフォルト",
+      "delete": "削除",
+      "consignee": "宛名",
+      "phone": "電話番号",
+      "area": "地域",
+      "detail": "住所",
+      "consigneePlaceholder": "宛名を入力",
+      "phonePlaceholder": "電話番号を入力",
+      "detailPlaceholder": "詳細住所を入力"
+    },
+    "collection": {
+      "title": "お気に入り",
+      "empty": "お気に入りに商品がありません",
+      "addToCart": "カートに入れる",
+      "remove": "削除"
+    },
+    "coupon": {
+      "title": "クーポン",
+      "unused": "未使用",
+      "used": "使用済み",
+      "expired": "期限切れ",
+      "empty": "クーポンがありません",
+      "validity": "有効期限：{start} - {end}",
+      "useNow": "今すぐ使う"
+    }
+  },
+  "product": {
+    "addToCart": "カートに入れる",
+    "buyNow": "今すぐ購入",
+    "spec": "仕様",
+    "quantity": "数量",
+    "stock": "在庫",
+    "sold": "販売数",
+    "reviews": "レビュー",
+    "description": "商品詳細",
+    "params": "仕様"
+  },
+  "search": {
+    "placeholder": "商品を検索",
+    "empty": "商品が見つかりません",
+    "result": "検索結果"
+  },
+  "category": {
+    "title": "すべてのカテゴリ"
+  },
+  "news": {
+    "title": "ニュース",
+    "detail": "ニュース詳細"
+  }
+}

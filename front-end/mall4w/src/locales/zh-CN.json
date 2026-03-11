@@ -1,0 +1,211 @@
+{
+  "common": {
+    "submit": "提交",
+    "cancel": "取消",
+    "confirm": "确定",
+    "delete": "删除",
+    "edit": "编辑",
+    "save": "保存",
+    "loading": "加载中...",
+    "search": "搜索",
+    "all": "全部",
+    "success": "操作成功",
+    "error": "操作失败",
+    "back": "返回"
+  },
+  "nav": {
+    "home": "首页",
+    "category": "全部分类",
+    "cart": "购物车",
+    "user": "我的"
+  },
+  "auth": {
+    "login": {
+      "title": "用户登录",
+      "usernamePlaceholder": "请输入手机号/用户名",
+      "passwordPlaceholder": "请输入密码",
+      "submit": "登录",
+      "register": "还没有账号？立即注册",
+      "success": "登录成功"
+    },
+    "register": {
+      "title": "用户注册",
+      "usernamePlaceholder": "请输入用户名",
+      "passwordPlaceholder": "请输入密码",
+      "confirmPasswordPlaceholder": "请确认密码",
+      "phonePlaceholder": "请输入手机号",
+      "submit": "注册",
+      "login": "已有账号？立即登录",
+      "success": "注册成功"
+    },
+    "validation": {
+      "usernameRequired": "请输入手机号/用户名",
+      "passwordRequired": "请输入密码",
+      "confirmPasswordRequired": "请确认密码",
+      "passwordMismatch": "两次密码输入不一致",
+      "phoneRequired": "请输入手机号",
+      "phoneFormat": "手机号格式不正确"
+    }
+  },
+  "header": {
+    "searchPlaceholder": "搜索商品、品牌、店铺",
+    "userCenter": "个人中心",
+    "myOrders": "我的订单",
+    "myCollection": "我的收藏",
+    "logout": "退出登录",
+    "login": "登录",
+    "register": "注册"
+  },
+  "footer": {
+    "shoppingGuide": "购物指南",
+    "shoppingProcess": "购物流程",
+    "memberIntro": "会员介绍",
+    "pointsRule": "积分规则",
+    "faq": "常见问题",
+    "delivery": "配送方式",
+    "deliveryRange": "配送范围",
+    "deliveryFee": "配送费用",
+    "deliveryTime": "配送时效",
+    "payment": "支付方式",
+    "onlinePayment": "在线支付",
+    "balancePayment": "余额支付",
+    "afterSale": "售后服务",
+    "returnPolicy": "退换货政策",
+    "returnProcess": "退换货流程",
+    "refundNote": "退款说明",
+    "aboutUs": "关于我们",
+    "companyIntro": "公司介绍",
+    "contactUs": "联系我们",
+    "joinUs": "加入我们",
+    "serviceHotline": "客服热线：{phone}",
+    "serviceTime": "服务时间：{time}",
+    "email": "邮箱：{email}",
+    "copyright": "© 2024 mall4w 商城. All rights reserved.",
+    "privacyPolicy": "隐私政策",
+    "userAgreement": "用户协议"
+  },
+  "cart": {
+    "title": "我的购物车",
+    "itemCount": "共 {count} 件商品",
+    "empty": "购物车还是空的，快去挑选心仪的商品吧~",
+    "goShopping": "去购物",
+    "selectAll": "全选",
+    "deleteSelected": "删除选中",
+    "clearCart": "清空购物车",
+    "selected": "已选 {count} 件",
+    "total": "合计：",
+    "checkout": "去结算",
+    "recommend": "猜你喜欢",
+    "confirmDelete": "确定要删除该商品吗？",
+    "confirmDeleteTitle": "删除确认",
+    "confirmDeleteSelected": "确定要删除选中的 {count} 件商品吗？",
+    "confirmClear": "确定要清空购物车吗？此操作不可恢复。",
+    "confirmClearTitle": "清空购物车",
+    "deleteSuccess": "删除成功",
+    "clearSuccess": "购物车已清空",
+    "selectItems": "请选择要结算的商品"
+  },
+  "order": {
+    "confirm": {
+      "title": "确认订单",
+      "shippingInfo": "收货信息",
+      "addAddress": "添加收货地址",
+      "productInfo": "商品信息",
+      "orderNote": "订单备注",
+      "notePlaceholder": "选填，建议先和商家协商一致",
+      "submit": "提交订单"
+    },
+    "list": {
+      "title": "我的订单",
+      "all": "全部",
+      "pending": "待付款",
+      "paid": "待发货",
+      "shipped": "待收货",
+      "completed": "已完成",
+      "cancelled": "已取消",
+      "pay": "去支付",
+      "cancel": "取消订单",
+      "confirm": "确认收货",
+      "review": "去评价",
+      "buyAgain": "再次购买"
+    },
+    "detail": {
+      "title": "订单详情",
+      "orderNo": "订单编号",
+      "createTime": "创建时间",
+      "payTime": "付款时间",
+      "deliveryTime": "发货时间",
+      "completeTime": "完成时间"
+    },
+    "payResult": {
+      "success": "支付成功",
+      "failed": "支付失败",
+      "viewOrder": "查看订单",
+      "continueShopping": "继续购物"
+    }
+  },
+  "user": {
+    "center": {
+      "title": "个人中心",
+      "welcome": "你好，{name}",
+      "myOrders": "我的订单",
+      "myCollection": "我的收藏",
+      "myCoupon": "我的优惠券",
+      "myAddress": "收货地址",
+      "accountSettings": "账号设置"
+    },
+    "address": {
+      "title": "收货地址",
+      "add": "新增地址",
+      "edit": "编辑地址",
+      "setDefault": "设为默认",
+      "default": "默认",
+      "delete": "删除",
+      "consignee": "收货人",
+      "phone": "手机号",
+      "area": "所在地区",
+      "detail": "详细地址",
+      "consigneePlaceholder": "请输入收货人姓名",
+      "phonePlaceholder": "请输入手机号",
+      "detailPlaceholder": "请输入详细地址"
+    },
+    "collection": {
+      "title": "我的收藏",
+      "empty": "暂无收藏商品",
+      "addToCart": "加入购物车",
+      "remove": "取消收藏"
+    },
+    "coupon": {
+      "title": "我的优惠券",
+      "unused": "未使用",
+      "used": "已使用",
+      "expired": "已过期",
+      "empty": "暂无优惠券",
+      "validity": "有效期：{start} - {end}",
+      "useNow": "立即使用"
+    }
+  },
+  "product": {
+    "addToCart": "加入购物车",
+    "buyNow": "立即购买",
+    "spec": "规格",
+    "quantity": "数量",
+    "stock": "库存",
+    "sold": "已售",
+    "reviews": "评价",
+    "description": "商品详情",
+    "params": "规格参数"
+  },
+  "search": {
+    "placeholder": "搜索商品",
+    "empty": "未找到相关商品",
+    "result": "搜索结果"
+  },
+  "category": {
+    "title": "全部分类"
+  },
+  "news": {
+    "title": "新闻资讯",
+    "detail": "新闻详情"
+  }
+}

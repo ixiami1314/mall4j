@@ -1,0 +1,211 @@
+{
+  "common": {
+    "submit": "提交",
+    "cancel": "取消",
+    "confirm": "確定",
+    "delete": "刪除",
+    "edit": "編輯",
+    "save": "儲存",
+    "loading": "載入中...",
+    "search": "搜尋",
+    "all": "全部",
+    "success": "操作成功",
+    "error": "操作失敗",
+    "back": "返回"
+  },
+  "nav": {
+    "home": "首頁",
+    "category": "全部分類",
+    "cart": "購物車",
+    "user": "我的"
+  },
+  "auth": {
+    "login": {
+      "title": "使用者登入",
+      "usernamePlaceholder": "請輸入手機號/使用者名稱",
+      "passwordPlaceholder": "請輸入密碼",
+      "submit": "登入",
+      "register": "還沒有帳號？立即註冊",
+      "success": "登入成功"
+    },
+    "register": {
+      "title": "使用者註冊",
+      "usernamePlaceholder": "請輸入使用者名稱",
+      "passwordPlaceholder": "請輸入密碼",
+      "confirmPasswordPlaceholder": "請確認密碼",
+      "phonePlaceholder": "請輸入手機號",
+      "submit": "註冊",
+      "login": "已有帳號？立即登入",
+      "success": "註冊成功"
+    },
+    "validation": {
+      "usernameRequired": "請輸入手機號/使用者名稱",
+      "passwordRequired": "請輸入密碼",
+      "confirmPasswordRequired": "請確認密碼",
+      "passwordMismatch": "兩次密碼輸入不一致",
+      "phoneRequired": "請輸入手機號",
+      "phoneFormat": "手機號格式不正確"
+    }
+  },
+  "header": {
+    "searchPlaceholder": "搜尋商品、品牌、店鋪",
+    "userCenter": "個人中心",
+    "myOrders": "我的訂單",
+    "myCollection": "我的收藏",
+    "logout": "登出",
+    "login": "登入",
+    "register": "註冊"
+  },
+  "footer": {
+    "shoppingGuide": "購物指南",
+    "shoppingProcess": "購物流程",
+    "memberIntro": "會員介紹",
+    "pointsRule": "積分規則",
+    "faq": "常見問題",
+    "delivery": "配送方式",
+    "deliveryRange": "配送範圍",
+    "deliveryFee": "配送費用",
+    "deliveryTime": "配送時效",
+    "payment": "支付方式",
+    "onlinePayment": "線上支付",
+    "balancePayment": "餘額支付",
+    "afterSale": "售後服務",
+    "returnPolicy": "退換貨政策",
+    "returnProcess": "退換貨流程",
+    "refundNote": "退款說明",
+    "aboutUs": "關於我們",
+    "companyIntro": "公司介紹",
+    "contactUs": "聯絡我們",
+    "joinUs": "加入我們",
+    "serviceHotline": "客服專線：{phone}",
+    "serviceTime": "服務時間：{time}",
+    "email": "信箱：{email}",
+    "copyright": "© 2024 mall4w 商城. All rights reserved.",
+    "privacyPolicy": "隱私權政策",
+    "userAgreement": "使用者協議"
+  },
+  "cart": {
+    "title": "我的購物車",
+    "itemCount": "共 {count} 件商品",
+    "empty": "購物車還是空的，快去挑選心儀的商品吧~",
+    "goShopping": "去購物",
+    "selectAll": "全選",
+    "deleteSelected": "刪除選中",
+    "clearCart": "清空購物車",
+    "selected": "已選 {count} 件",
+    "total": "合計：",
+    "checkout": "去結帳",
+    "recommend": "猜你喜歡",
+    "confirmDelete": "確定要刪除該商品嗎？",
+    "confirmDeleteTitle": "刪除確認",
+    "confirmDeleteSelected": "確定要刪除選中的 {count} 件商品嗎？",
+    "confirmClear": "確定要清空購物車嗎？此操作不可恢復。",
+    "confirmClearTitle": "清空購物車",
+    "deleteSuccess": "刪除成功",
+    "clearSuccess": "購物車已清空",
+    "selectItems": "請選擇要結帳的商品"
+  },
+  "order": {
+    "confirm": {
+      "title": "確認訂單",
+      "shippingInfo": "收貨資訊",
+      "addAddress": "新增收貨地址",
+      "productInfo": "商品資訊",
+      "orderNote": "訂單備註",
+      "notePlaceholder": "選填，建議先和商家協商一致",
+      "submit": "提交訂單"
+    },
+    "list": {
+      "title": "我的訂單",
+      "all": "全部",
+      "pending": "待付款",
+      "paid": "待出貨",
+      "shipped": "待收貨",
+      "completed": "已完成",
+      "cancelled": "已取消",
+      "pay": "去付款",
+      "cancel": "取消訂單",
+      "confirm": "確認收貨",
+      "review": "去評價",
+      "buyAgain": "再次購買"
+    },
+    "detail": {
+      "title": "訂單詳情",
+      "orderNo": "訂單編號",
+      "createTime": "建立時間",
+      "payTime": "付款時間",
+      "deliveryTime": "出貨時間",
+      "completeTime": "完成時間"
+    },
+    "payResult": {
+      "success": "付款成功",
+      "failed": "付款失敗",
+      "viewOrder": "查看訂單",
+      "continueShopping": "繼續購物"
+    }
+  },
+  "user": {
+    "center": {
+      "title": "個人中心",
+      "welcome": "你好，{name}",
+      "myOrders": "我的訂單",
+      "myCollection": "我的收藏",
+      "myCoupon": "我的優惠券",
+      "myAddress": "收貨地址",
+      "accountSettings": "帳號設定"
+    },
+    "address": {
+      "title": "收貨地址",
+      "add": "新增地址",
+      "edit": "編輯地址",
+      "setDefault": "設為預設",
+      "default": "預設",
+      "delete": "刪除",
+      "consignee": "收貨人",
+      "phone": "手機號",
+      "area": "所在地區",
+      "detail": "詳細地址",
+      "consigneePlaceholder": "請輸入收貨人姓名",
+      "phonePlaceholder": "請輸入手機號",
+      "detailPlaceholder": "請輸入詳細地址"
+    },
+    "collection": {
+      "title": "我的收藏",
+      "empty": "暫無收藏商品",
+      "addToCart": "加入購物車",
+      "remove": "取消收藏"
+    },
+    "coupon": {
+      "title": "我的優惠券",
+      "unused": "未使用",
+      "used": "已使用",
+      "expired": "已過期",
+      "empty": "暫無優惠券",
+      "validity": "有效期：{start} - {end}",
+      "useNow": "立即使用"
+    }
+  },
+  "product": {
+    "addToCart": "加入購物車",
+    "buyNow": "立即購買",
+    "spec": "規格",
+    "quantity": "數量",
+    "stock": "庫存",
+    "sold": "已售",
+    "reviews": "評價",
+    "description": "商品詳情",
+    "params": "規格參數"
+  },
+  "search": {
+    "placeholder": "搜尋商品",
+    "empty": "未找到相關商品",
+    "result": "搜尋結果"
+  },
+  "category": {
+    "title": "全部分類"
+  },
+  "news": {
+    "title": "新聞資訊",
+    "detail": "新聞詳情"
+  }
+}

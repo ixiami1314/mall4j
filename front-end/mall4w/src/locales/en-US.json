@@ -1,0 +1,211 @@
+{
+  "common": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "loading": "Loading...",
+    "search": "Search",
+    "all": "All",
+    "success": "Success",
+    "error": "Failed",
+    "back": "Back"
+  },
+  "nav": {
+    "home": "Home",
+    "category": "Categories",
+    "cart": "Cart",
+    "user": "My"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "usernamePlaceholder": "Phone / Username",
+      "passwordPlaceholder": "Password",
+      "submit": "Login",
+      "register": "No account? Register now",
+      "success": "Login successful"
+    },
+    "register": {
+      "title": "Register",
+      "usernamePlaceholder": "Username",
+      "passwordPlaceholder": "Password",
+      "confirmPasswordPlaceholder": "Confirm Password",
+      "phonePlaceholder": "Phone Number",
+      "submit": "Register",
+      "login": "Have an account? Login now",
+      "success": "Registration successful"
+    },
+    "validation": {
+      "usernameRequired": "Please enter phone/username",
+      "passwordRequired": "Please enter password",
+      "confirmPasswordRequired": "Please confirm password",
+      "passwordMismatch": "Passwords do not match",
+      "phoneRequired": "Please enter phone number",
+      "phoneFormat": "Invalid phone format"
+    }
+  },
+  "header": {
+    "searchPlaceholder": "Search products, brands, stores",
+    "userCenter": "My Account",
+    "myOrders": "My Orders",
+    "myCollection": "My Wishlist",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
+  },
+  "footer": {
+    "shoppingGuide": "Shopping Guide",
+    "shoppingProcess": "Shopping Process",
+    "memberIntro": "Membership",
+    "pointsRule": "Points Rules",
+    "faq": "FAQ",
+    "delivery": "Delivery",
+    "deliveryRange": "Delivery Range",
+    "deliveryFee": "Delivery Fee",
+    "deliveryTime": "Delivery Time",
+    "payment": "Payment",
+    "onlinePayment": "Online Payment",
+    "balancePayment": "Balance Payment",
+    "afterSale": "After-sales",
+    "returnPolicy": "Return Policy",
+    "returnProcess": "Return Process",
+    "refundNote": "Refund Info",
+    "aboutUs": "About Us",
+    "companyIntro": "Company",
+    "contactUs": "Contact Us",
+    "joinUs": "Join Us",
+    "serviceHotline": "Hotline: {phone}",
+    "serviceTime": "Service Time: {time}",
+    "email": "Email: {email}",
+    "copyright": "© 2024 mall4w. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "userAgreement": "User Agreement"
+  },
+  "cart": {
+    "title": "My Cart",
+    "itemCount": "{count} items",
+    "empty": "Your cart is empty. Start shopping now!",
+    "goShopping": "Start Shopping",
+    "selectAll": "Select All",
+    "deleteSelected": "Delete Selected",
+    "clearCart": "Clear Cart",
+    "selected": "{count} selected",
+    "total": "Total:",
+    "checkout": "Checkout",
+    "recommend": "You May Also Like",
+    "confirmDelete": "Delete this item?",
+    "confirmDeleteTitle": "Confirm Delete",
+    "confirmDeleteSelected": "Delete {count} selected items?",
+    "confirmClear": "Clear cart? This cannot be undone.",
+    "confirmClearTitle": "Clear Cart",
+    "deleteSuccess": "Deleted",
+    "clearSuccess": "Cart cleared",
+    "selectItems": "Please select items to checkout"
+  },
+  "order": {
+    "confirm": {
+      "title": "Confirm Order",
+      "shippingInfo": "Shipping Info",
+      "addAddress": "Add Address",
+      "productInfo": "Product Info",
+      "orderNote": "Order Note",
+      "notePlaceholder": "Optional",
+      "submit": "Submit Order"
+    },
+    "list": {
+      "title": "My Orders",
+      "all": "All",
+      "pending": "Pending",
+      "paid": "To Ship",
+      "shipped": "To Receive",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "pay": "Pay",
+      "cancel": "Cancel",
+      "confirm": "Confirm Receipt",
+      "review": "Review",
+      "buyAgain": "Buy Again"
+    },
+    "detail": {
+      "title": "Order Detail",
+      "orderNo": "Order No.",
+      "createTime": "Created",
+      "payTime": "Paid",
+      "deliveryTime": "Shipped",
+      "completeTime": "Completed"
+    },
+    "payResult": {
+      "success": "Payment Successful",
+      "failed": "Payment Failed",
+      "viewOrder": "View Order",
+      "continueShopping": "Continue Shopping"
+    }
+  },
+  "user": {
+    "center": {
+      "title": "My Account",
+      "welcome": "Hello, {name}",
+      "myOrders": "My Orders",
+      "myCollection": "My Wishlist",
+      "myCoupon": "My Coupons",
+      "myAddress": "Addresses",
+      "accountSettings": "Settings"
+    },
+    "address": {
+      "title": "Addresses",
+      "add": "Add Address",
+      "edit": "Edit Address",
+      "setDefault": "Set Default",
+      "default": "Default",
+      "delete": "Delete",
+      "consignee": "Name",
+      "phone": "Phone",
+      "area": "Region",
+      "detail": "Address",
+      "consigneePlaceholder": "Recipient name",
+      "phonePlaceholder": "Phone number",
+      "detailPlaceholder": "Detailed address"
+    },
+    "collection": {
+      "title": "My Wishlist",
+      "empty": "No items in wishlist",
+      "addToCart": "Add to Cart",
+      "remove": "Remove"
+    },
+    "coupon": {
+      "title": "My Coupons",
+      "unused": "Unused",
+      "used": "Used",
+      "expired": "Expired",
+      "empty": "No coupons",
+      "validity": "Valid: {start} - {end}",
+      "useNow": "Use Now"
+    }
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "spec": "Specification",
+    "quantity": "Quantity",
+    "stock": "Stock",
+    "sold": "Sold",
+    "reviews": "Reviews",
+    "description": "Details",
+    "params": "Specifications"
+  },
+  "search": {
+    "placeholder": "Search products",
+    "empty": "No products found",
+    "result": "Search Results"
+  },
+  "category": {
+    "title": "All Categories"
+  },
+  "news": {
+    "title": "News",
+    "detail": "News Detail"
+  }
+}
