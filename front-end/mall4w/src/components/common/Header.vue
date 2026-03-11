@@ -17,18 +17,18 @@
             <input
               v-model="searchKeyword"
               type="text"
-              placeholder="搜索商品、品牌、店铺"
+              :placeholder="t('header.searchPlaceholder')"
               @keyup.enter="handleSearch"
             />
           </div>
-          <button class="search-btn" @click="handleSearch">搜索</button>
+          <button class="search-btn" @click="handleSearch">{{ t('common.search') }}</button>
         </div>
       </div>
 
       <!-- 导航菜单 -->
       <nav class="nav-menu">
-        <router-link to="/" class="nav-item" exact-active-class="active">首页</router-link>
-        <router-link to="/category" class="nav-item" active-class="active">全部分类</router-link>
+        <router-link to="/" class="nav-item" exact-active-class="active">{{ t('nav.home') }}</router-link>
+        <router-link to="/category" class="nav-item" active-class="active">{{ t('nav.category') }}</router-link>
       </nav>
 
       <!-- 用户区域 -->
@@ -39,35 +39,38 @@
               <el-avatar :size="32" :src="userStore.pic">
                 {{ userStore.nickName?.charAt(0) || 'U' }}
               </el-avatar>
-              <span class="user-name">{{ userStore.nickName || '用户' }}</span>
+              <span class="user-name">{{ userStore.nickName || t('nav.user') }}</span>
               <el-icon><ArrowDown /></el-icon>
             </div>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item command="user">
                   <el-icon><User /></el-icon>
-                  个人中心
+                  {{ t('header.userCenter') }}
                 </el-dropdown-item>
                 <el-dropdown-item command="order">
                   <el-icon><List /></el-icon>
-                  我的订单
+                  {{ t('header.myOrders') }}
                 </el-dropdown-item>
                 <el-dropdown-item command="collection">
                   <el-icon><Star /></el-icon>
-                  我的收藏
+                  {{ t('header.myCollection') }}
                 </el-dropdown-item>
                 <el-dropdown-item divided command="logout">
                   <el-icon><SwitchButton /></el-icon>
-                  退出登录
+                  {{ t('header.logout') }}
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
         </template>
         <template v-else>
-          <router-link to="/login" class="auth-link login">登录</router-link>
-          <router-link to="/register" class="auth-link register">注册</router-link>
+          <router-link to="/login" class="auth-link login">{{ t('header.login') }}</router-link>
+          <router-link to="/register" class="auth-link register">{{ t('header.register') }}</router-link>
         </template>
+
+        <!-- 语言切换 -->
+        <LocaleSwitch />
 
         <!-- 购物车 -->
         <router-link to="/cart" class="cart-link">
@@ -76,7 +79,7 @@
               <el-icon :size="22"><ShoppingCart /></el-icon>
             </div>
           </el-badge>
-          <span class="cart-text">购物车</span>
+          <span class="cart-text">{{ t('nav.cart') }}</span>
         </router-link>
       </div>
     </div>
@@ -86,10 +89,14 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { Search, User, ShoppingCart, Shop, ArrowDown, List, Star, SwitchButton } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
 import { useCartStore } from '@/stores/cart'
 import { isLogin, clearLoginInfo } from '@/utils'
+import LocaleSwitch from './LocaleSwitch.vue'
+
+const { t } = useI18n()
 
 const router = useRouter()
 const userStore = useUserStore()
