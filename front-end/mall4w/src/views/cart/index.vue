@@ -3,17 +3,17 @@
     <div class="page-header">
       <h2>
         <el-icon><ShoppingCart /></el-icon>
-        我的购物车
+        {{ t('cart.title') }}
       </h2>
-      <span class="cart-count" v-if="cartItems.length">共 {{ totalCount }} 件商品</span>
+      <span class="cart-count" v-if="cartItems.length">{{ t('cart.itemCount', { count: totalCount }) }}</span>
     </div>
 
     <div v-if="cartItems.length === 0" class="empty-cart">
-      <el-empty description="购物车还是空的，快去挑选心仪的商品吧~">
+      <el-empty :description="t('cart.empty')">
         <template #image>
           <el-icon :size="100" color="#ddd"><ShoppingCart /></el-icon>
         </template>
-        <el-button type="primary" size="large" @click="$router.push('/')">去购物</el-button>
+        <el-button type="primary" size="large" @click="$router.push('/')">{{ t('cart.goShopping') }}</el-button>
       </el-empty>
     </div>
 
@@ -67,7 +67,7 @@
               <div class="item-actions">
                 <el-button type="danger" link @click="handleDelete(item.basketId)">
                   <el-icon><Delete /></el-icon>
-                  删除
+                  {{ t('common.delete') }}
                 </el-button>
               </div>
             </div>
@@ -78,21 +78,21 @@
       <!-- 结算区域 -->
       <div class="cart-footer">
         <div class="footer-left">
-          <el-checkbox v-model="allChecked" @change="handleAllCheck">全选</el-checkbox>
+          <el-checkbox v-model="allChecked" @change="handleAllCheck">{{ t('cart.selectAll') }}</el-checkbox>
           <el-button type="danger" link @click="handleDeleteSelected" :disabled="!hasSelected">
             <el-icon><Delete /></el-icon>
-            删除选中
+            {{ t('cart.deleteSelected') }}
           </el-button>
           <el-button type="warning" link @click="handleClearCart">
             <el-icon><DeleteFilled /></el-icon>
-            清空购物车
+            {{ t('cart.clearCart') }}
           </el-button>
         </div>
 
         <div class="footer-right">
           <div class="price-summary">
-            <span class="selected-count">已选 <em>{{ selectedCount }}</em> 件</span>
-            <span class="total-label">合计：</span>
+            <span class="selected-count">{{ t('cart.selected', { count: selectedCount }) }}</span>
+            <span class="total-label">{{ t('cart.total') }}</span>
             <span class="total-price">¥<em>{{ totalPrice }}</em></span>
           </div>
           <el-button
@@ -102,7 +102,7 @@
             :disabled="selectedCount === 0"
             @click="handleCheckout"
           >
-            去结算
+            {{ t('cart.checkout') }}
           </el-button>
         </div>
       </div>
@@ -110,7 +110,7 @@
 
     <!-- 推荐商品 -->
     <div class="recommend-section" v-if="recommendProds.length">
-      <h3>猜你喜欢</h3>
+      <h3>{{ t('cart.recommend') }}</h3>
       <div class="recommend-grid">
         <div
           v-for="prod in recommendProds"
@@ -130,6 +130,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 import { getCartInfo, changeCartItem, deleteCartItem, clearCart } from '@/api/cart'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { ShoppingCart, Shop, Delete, DeleteFilled } from '@element-plus/icons-vue'
@@ -249,13 +252,13 @@ const handleCountChange = async (item) => {
 
 const handleDelete = async (basketId) => {
   try {
-    await ElMessageBox.confirm('确定要删除该商品吗？', '删除确认', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
+    await ElMessageBox.confirm(t('cart.confirmDelete'), t('cart.confirmDeleteTitle'), {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
       type: 'warning'
     })
     await deleteCartItem([basketId])
-    ElMessage.success('删除成功')
+    ElMessage.success(t('cart.deleteSuccess'))
     fetchCart()
   } catch (error) {
     if (error !== 'cancel') {
@@ -276,13 +279,13 @@ const handleDeleteSelected = async () => {
   if (ids.length === 0) return
 
   try {
-    await ElMessageBox.confirm(`确定要删除选中的 ${ids.length} 件商品吗？`, '删除确认', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
+    await ElMessageBox.confirm(t('cart.confirmDeleteSelected', { count: ids.length }), t('cart.confirmDeleteTitle'), {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
       type: 'warning'
     })
     await deleteCartItem(ids)
-    ElMessage.success('删除成功')
+    ElMessage.success(t('cart.deleteSuccess'))
     fetchCart()
   } catch (error) {
     if (error !== 'cancel') {
@@ -293,13 +296,13 @@ const handleDeleteSelected = async () => {
 
 const handleClearCart = async () => {
   try {
-    await ElMessageBox.confirm('确定要清空购物车吗？此操作不可恢复。', '清空购物车', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
+    await ElMessageBox.confirm(t('cart.confirmClear'), t('cart.confirmClearTitle'), {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
       type: 'warning'
     })
     await clearCart()
-    ElMessage.success('购物车已清空')
+    ElMessage.success(t('cart.clearSuccess'))
     fetchCart()
   } catch (error) {
     if (error !== 'cancel') {
@@ -318,7 +321,7 @@ const handleCheckout = () => {
     })
   })
   if (ids.length === 0) {
-    ElMessage.warning('请选择要结算的商品')
+    ElMessage.warning(t('cart.selectItems'))
     return
   }
   router.push({ path: '/order/confirm', query: { basketIds: ids.join(',') } })
