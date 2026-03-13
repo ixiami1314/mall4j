@@ -50,7 +50,7 @@ window.addEventListener('resize', () => {
   documentClientHeight.value = document.documentElement.clientHeight
 })
 const siteContentViewHeight = computed(() => {
-  let height = documentClientHeight.value - 50 - 30 - 2
+  let height = documentClientHeight.value - 60 - 30 - 2
   if (route.meta.isTab) {
     height -= 40
     return isURL(route.meta.iframeUrl) ? { height: height + 'px' } : { minHeight: height + 'px' }
@@ -62,13 +62,15 @@ const commonStore = useCommonStore()
 const selectMenu = computed(() => commonStore.selectMenu)
 const homeHidden = computed(() => route.name !== 'home')
 </script>
-<style scoped>
+<style scoped lang="scss">
+@use '@/styles/variables' as *;
+
 .main-head {
   background: #ffffff;
   width: 100%;
   height: 40px;
   position: fixed;
-  top: 50px;
+  top: $navbar--height;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -80,6 +82,6 @@ const homeHidden = computed(() => route.name !== 'home')
   color: #155bd4 !important;
 }
 .card-content-h {
-  min-height: calc(100vh - 50px - 60px - 20px);
+  min-height: calc(100vh - #{$navbar--height} - 60px - 20px);
 }
 </style>

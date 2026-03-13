@@ -67,13 +67,12 @@ img {
 }
 .site-sidebar--fold {
   .site-navbar__header,
-  .site-navbar__brand,
-  .site-sidebar {
-    width: 100px;
+  .site-navbar__brand {
+    width: auto;
   }
   .site-navbar__body,
   .site-content__wrapper {
-    margin-left: 100px;
+    margin-left: $sidebar-width-collapsed;
     border-bottom: 1px solid #EBEDF0;
   }
   .site-navbar__brand {
@@ -83,10 +82,6 @@ img {
     &-mini {
       display: inline-block;
     }
-  }
-  .site-sidebar,
-  .site-sidebar__inner {
-    overflow: initial;
   }
 }
 // animation
@@ -190,11 +185,11 @@ img {
 ------------------------------ */
 .site-sidebar {
   position: fixed;
-  top: 50px;
+  top: $navbar--height;
   left: 0;
   bottom: 0;
   z-index: 1020;
-  width: 250px;
+  width: $sidebar-width-expanded;
   overflow: hidden;
 
   &--dark,
@@ -204,13 +199,12 @@ img {
   &__inner {
     position: relative;
     z-index: 1;
-    width: 250px;
+    width: $sidebar-width-expanded;
     height: 100%;
     padding-bottom: 15px;
     overflow-y: scroll;
   }
   &__menu.el-menu {
-    width: 100px;
     border-right: 0;
   }
   &__menu-icon {
@@ -232,10 +226,11 @@ img {
 
   &__wrapper {
     position: relative;
-    padding-top: 50px;
-    margin-left: 230px;
+    padding-top: $navbar--height;
+    margin-left: $sidebar-width-expanded;
     min-height: 100%;
     background: $content--background-color;
+    transition: margin-left $transition-base;
   }
   &--tabs {
     padding: 55px 0 0;
