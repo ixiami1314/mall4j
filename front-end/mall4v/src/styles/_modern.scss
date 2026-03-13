@@ -1,0 +1,365 @@
+// ========================================
+// Mall4v Modern UI Component Styles
+// ========================================
+
+@use './variables' as *;
+
+// ----------------------------------------
+// 1. Button Styles
+// ----------------------------------------
+
+.btn-modern {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-base;
+  font-weight: 500;
+  border-radius: $border-radius-md;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  outline: none;
+
+  // Primary variant
+  &--primary {
+    background-color: $--color-primary;
+    color: #FFFFFF;
+
+    &:hover {
+      background-color: $--color-primary-dark;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: $shadow-sm;
+    }
+
+    &:disabled {
+      background-color: lighten($--color-primary, 20%);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  // Secondary variant
+  &--secondary {
+    background-color: #FFFFFF;
+    color: $--color-text-primary;
+    border: 1px solid $--color-border;
+
+    &:hover {
+      background-color: $--color-background;
+      border-color: $--color-primary;
+      color: $--color-primary;
+    }
+  }
+
+  // Ghost variant
+  &--ghost {
+    background-color: transparent;
+    color: $--color-primary;
+
+    &:hover {
+      background-color: $--color-primary-light;
+    }
+  }
+
+  // Size variants
+  &--sm {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-sm;
+  }
+
+  &--lg {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-md;
+  }
+}
+
+// ----------------------------------------
+// 2. Card Styles
+// ----------------------------------------
+
+.card-modern {
+  background-color: #FFFFFF;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  border: 1px solid rgba($--color-border, 0.5);
+  overflow: hidden;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+
+  // Card header
+  &__header {
+    padding: $spacing-md $spacing-lg;
+    border-bottom: 1px solid $--color-border;
+    font-weight: 600;
+    font-size: $font-size-md;
+    color: $--color-text-primary;
+  }
+
+  // Card body
+  &__body {
+    padding: $spacing-lg;
+  }
+
+  // Card footer
+  &__footer {
+    padding: $spacing-md $spacing-lg;
+    border-top: 1px solid $--color-border;
+    background-color: $--color-background;
+  }
+
+  // Interactive card
+  &--interactive {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+  }
+}
+
+// ----------------------------------------
+// 3. Input Styles
+// ----------------------------------------
+
+.input-modern {
+  // Target Element Plus input wrapper
+  .el-input__wrapper {
+    border-radius: $border-radius-md;
+    border: 1px solid $--color-border;
+    box-shadow: none;
+    transition: all $transition-fast;
+    padding: $spacing-xs $spacing-sm;
+
+    &:hover {
+      border-color: darken($--color-border, 10%);
+    }
+
+    &.is-focus,
+    &:focus-within {
+      border-color: $--color-primary;
+      box-shadow: 0 0 0 3px rgba($--color-primary, 0.15);
+    }
+  }
+
+  // Placeholder styling
+  .el-input__inner {
+    &::placeholder {
+      color: $--color-text-placeholder;
+    }
+  }
+
+  // Error state
+  .el-input__wrapper.is-error {
+    border-color: $--color-danger;
+
+    &.is-focus,
+    &:focus-within {
+      box-shadow: 0 0 0 3px rgba($--color-danger, 0.15);
+    }
+  }
+}
+
+// Global input modernization for Element Plus
+.el-input {
+  .el-input__wrapper {
+    border-radius: $border-radius-md;
+    box-shadow: none;
+    border: 1px solid $--color-border;
+    transition: all $transition-fast;
+
+    &:hover {
+      border-color: darken($--color-border, 10%);
+    }
+
+    &.is-focus,
+    &:focus-within {
+      border-color: $--color-primary;
+      box-shadow: 0 0 0 3px rgba($--color-primary, 0.15);
+    }
+  }
+
+  .el-input__inner {
+    &::placeholder {
+      color: $--color-text-placeholder;
+    }
+  }
+}
+
+// ----------------------------------------
+// 4. Scrollbar Styles
+// ----------------------------------------
+
+.scrollbar-modern {
+  scrollbar-width: thin;
+  scrollbar-color: rgba($--color-text-secondary, 0.3) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: $border-radius-lg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($--color-text-secondary, 0.3);
+    border-radius: $border-radius-lg;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: rgba($--color-text-secondary, 0.5);
+    }
+  }
+}
+
+// Global scrollbar styles
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: $border-radius-lg;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba($--color-text-secondary, 0.3);
+  border-radius: $border-radius-lg;
+
+  &:hover {
+    background-color: rgba($--color-text-secondary, 0.5);
+  }
+}
+
+// ----------------------------------------
+// 5. Animation Utilities
+// ----------------------------------------
+
+// Fade In Animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Slide In Left Animation
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Slide In Up Animation
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animation utility classes
+.animate-fade-in {
+  animation: fadeIn $transition-base ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft $transition-base ease-out forwards;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp $transition-base ease-out forwards;
+}
+
+// Animation delay utilities
+@for $i from 1 through 5 {
+  .animate-delay-#{$i} {
+    animation-delay: #{$i * 0.1}s;
+  }
+}
+
+// ----------------------------------------
+// 6. Additional Utility Classes
+// ----------------------------------------
+
+// Text utilities
+.text-primary {
+  color: $--color-primary;
+}
+
+.text-secondary {
+  color: $--color-text-secondary;
+}
+
+.text-success {
+  color: $--color-success;
+}
+
+.text-warning {
+  color: $--color-warning;
+}
+
+.text-danger {
+  color: $--color-danger;
+}
+
+// Background utilities
+.bg-primary-light {
+  background-color: $--color-primary-light;
+}
+
+// Border utilities
+.rounded-md {
+  border-radius: $border-radius-md;
+}
+
+.rounded-lg {
+  border-radius: $border-radius-lg;
+}
+
+// Shadow utilities
+.shadow-sm {
+  box-shadow: $shadow-sm;
+}
+
+.shadow-md {
+  box-shadow: $shadow-md;
+}
+
+.shadow-lg {
+  box-shadow: $shadow-lg;
+}
+
+// Transition utilities
+.transition-base {
+  transition: all $transition-base;
+}
+
+.transition-fast {
+  transition: all $transition-fast;
+}
