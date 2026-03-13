@@ -1,14 +1,96 @@
+// ========================================
+// Mall4v Modern Design System Variables
+// ========================================
 
-// css 变量
-$--color-primary: #155BD4;
+// ----------------------------------------
+// 1. Color System
+// ----------------------------------------
 
-// Navbar
-$navbar--background-color: $--color-primary;
+// Primary Colors
+$--color-primary: #3B82F6;
+$--color-primary-light: #EFF6FF;
+$--color-primary-dark: #1D4ED8;
 
-// Sidebar
-$sidebar--background-color-dark: #263238;
-$sidebar--color-text-dark: #8a979e;
+// Status Colors
+$--color-success: #10B981;
+$--color-warning: #F59E0B;
+$--color-danger: #EF4444;
+$--color-info: #6366F1;
 
-// Content
-$content--background-color: #f1f4f5;
+// Text Colors
+$--color-text-primary: #1F2937;
+$--color-text-secondary: #6B7280;
+$--color-text-placeholder: #9CA3AF;
 
+// Background Colors
+$--color-background: #F9FAFB;
+$--color-border: #E5E7EB;
+
+// ----------------------------------------
+// 2. Sidebar Colors
+// ----------------------------------------
+$sidebar--background-color: #1F2937;
+$sidebar--background-color-dark: #111827;
+$sidebar--color-text: #9CA3AF;
+$sidebar--color-text-active: #FFFFFF;
+
+// ----------------------------------------
+// 3. Navbar
+// ----------------------------------------
+$navbar--background-color: #FFFFFF;
+$navbar--height: 60px;
+
+// ----------------------------------------
+// 4. Content
+// ----------------------------------------
+$content--background-color: #F9FAFB;
+
+// ----------------------------------------
+// 5. Spacing
+// ----------------------------------------
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// ----------------------------------------
+// 6. Border Radius
+// ----------------------------------------
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+
+// ----------------------------------------
+// 7. Shadows
+// ----------------------------------------
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// ----------------------------------------
+// 8. Typography
+// ----------------------------------------
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+$font-size-xs: 12px;
+$font-size-sm: 13px;
+$font-size-base: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+
+// ----------------------------------------
+// 9. Layout Dimensions
+// ----------------------------------------
+$sidebar-width-expanded: 220px;
+$sidebar-width-collapsed: 80px;
+
+// ----------------------------------------
+// 10. Transitions
+// ----------------------------------------
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
