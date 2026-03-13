@@ -3,44 +3,104 @@
     <!-- Left Brand Section -->
     <div class="login-brand">
       <!-- Decorative Circles -->
-      <div class="decorative-circle circle-1"></div>
-      <div class="decorative-circle circle-2"></div>
-      <div class="decorative-circle circle-3"></div>
+      <div class="decorative-circle circle-1" />
+      <div class="decorative-circle circle-2" />
+      <div class="decorative-circle circle-3" />
 
       <!-- Brand Content -->
       <div class="brand-content">
         <div class="brand-logo">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 12V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M10 14H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M16 7V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 12V16"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M10 14H14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
           </svg>
         </div>
-        <h1 class="brand-title">Mall4j</h1>
-        <p class="brand-subtitle">企业级电商管理平台</p>
+        <h1 class="brand-title">
+          Mall4j
+        </h1>
+        <p class="brand-subtitle">
+          企业级电商管理平台
+        </p>
 
         <ul class="brand-features">
           <li>
             <span class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 6L9 17L4 12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </span>
             <span>高效便捷的商品管理</span>
           </li>
           <li>
             <span class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 6L9 17L4 12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </span>
             <span>安全稳定的订单系统</span>
           </li>
           <li>
             <span class="feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 6L9 17L4 12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </span>
             <span>智能化的数据分析</span>
@@ -53,8 +113,12 @@
     <div class="login-form-section">
       <div class="login-card">
         <div class="card-header">
-          <h2 class="card-title">欢迎登录</h2>
-          <p class="card-subtitle">请输入您的账号信息</p>
+          <h2 class="card-title">
+            欢迎登录
+          </h2>
+          <p class="card-subtitle">
+            请输入您的账号信息
+          </p>
         </div>
 
         <el-form
@@ -135,19 +199,9 @@ const dataRule = {
   ]
 }
 
-onBeforeUnmount(() => {
-  document.removeEventListener('keyup', handerKeyup)
-})
 onMounted(() => {
   getCaptcha()
-  document.addEventListener('keyup', handerKeyup)
 })
-const handerKeyup = (e) => {
-  const keycode = document.all ? event.keyCode : e.which
-  if (keycode === 13) {
-    this.dataFormSubmit()
-  }
-}
 
 const verifyRef = ref(null)
 const dataFormRef = ref(null)
