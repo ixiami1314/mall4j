@@ -263,7 +263,7 @@ const getCaptcha = () => {
 </script>
 
 <style lang="scss" scoped>
-@use '@/styles/variables' as *;
+@import '@/styles/variables';
 
 .login-container {
   display: flex;

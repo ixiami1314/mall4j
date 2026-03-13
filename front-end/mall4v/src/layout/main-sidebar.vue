@@ -230,7 +230,7 @@ watch(() => route.name, () => {
 </script>
 
 <style scoped lang="scss">
-@use '@/styles/variables' as *;
+@import '@/styles/variables';
 
 .site-sidebar {
   width: $sidebar-width-expanded;

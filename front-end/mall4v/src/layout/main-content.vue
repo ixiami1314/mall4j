@@ -63,7 +63,7 @@ const selectMenu = computed(() => commonStore.selectMenu)
 const homeHidden = computed(() => route.name !== 'home')
 </script>
 <style scoped lang="scss">
-@use '@/styles/variables' as *;
+@import '@/styles/variables';
 
 .main-head {
   background: #ffffff;

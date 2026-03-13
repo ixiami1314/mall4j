@@ -3,13 +3,11 @@
 // Modern Design System Integration
 // ========================================
 
-// Use @use directives for modern module system
-@use './variables' as *;
-@use './modern';
-
-// Import base styles
-@use './normalize';
-@use './base';
+// Import variables and modern styles
+@import './variables';
+@import './modern';
+@import './normalize';
+@import './base';
 
 // ========================================
 // Element Plus Theme Configuration

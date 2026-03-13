@@ -58,13 +58,13 @@ const getUserInfo = () => {
 </script>
 
 <style lang="scss" scoped>
-@use '@/styles/variables' as *;
+@import '@/styles/variables';
 
 .app-layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: $--color-bg-page;
+  background: $--color-background;
 }
 
 .app-body {
