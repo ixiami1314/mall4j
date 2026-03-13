@@ -1,70 +1,59 @@
 <template>
-  <div>
-    <nav class="site-navbar">
-      <!--左侧-->
-      <div
-        class="site-navbar-header"
-        :style="{ 'margin-right': sidebarFold ? 0 : '20px' }"
+  <nav class="site-navbar">
+    <!-- Left Section -->
+    <div class="navbar-left">
+      <button
+        class="collapse-btn"
+        @click="setSidebarFold"
       >
-        <!--        <img-->
-        <!--          class="menu-image-logo"-->
-        <!--          :src="configuration.bsTopBarIcon"-->
-        <!--          alt="logo"-->
-        <!--        >-->
-        <span
-          v-if="!sidebarFold"
-          class="site-navbar-lg"
-        >
-          mall4j建站后台
-        </span>
-        <span
-          v-else
-          class="site-navbar-mini"
-          :style="fontCloseSize"
-        >
-          mall4j
-        </span>
-      </div>
-      <!--右侧数据-->
-      <div class="site-navbar-content">
-        <div class="navbar-content-left">
-          <svg-icon
-            class="left-item"
-            icon-class="icon-zhedie"
-            @click="setSidebarFold"
-          />
-        </div>
+        <svg-icon icon-class="icon-zhedie" />
+      </button>
+      <span class="brand-text">Mall4j</span>
+    </div>
 
-        <div class="navbar-content-right">
-          <el-dropdown
-            class="content-right-item"
-            :show-timeout="0"
-            placement="bottom"
-          >
-            <span class="el-dropdown-link">{{ userName }}</span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item @click="updatePasswordHandle">
-                  修改密码
-                </el-dropdown-item>
-                <el-dropdown-item @click="logoutHandle">
-                  退出
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
+    <!-- Right Section -->
+    <div class="navbar-right">
+      <el-dropdown
+        placement="bottom-end"
+        :show-timeout="0"
+      >
+        <div class="user-dropdown-trigger">
+          <div class="user-avatar">
+            {{ userInitials }}
+          </div>
+          <span class="user-name">{{ userName }}</span>
+          <el-icon class="dropdown-icon">
+            <ArrowDown />
+          </el-icon>
         </div>
-      </div>
-      <!-- 弹窗, 修改密码 -->
-      <UpdatePassword
-        v-if="updatePassowrdVisible"
-        ref="updatePassowrdRef"
-      />
-    </nav>
-  </div>
+        <template #dropdown>
+          <el-dropdown-menu class="user-dropdown-menu">
+            <el-dropdown-item @click="updatePasswordHandle">
+              <el-icon><Key /></el-icon>
+              <span>修改密码</span>
+            </el-dropdown-item>
+            <el-dropdown-item
+              divided
+              @click="logoutHandle"
+            >
+              <el-icon><SwitchButton /></el-icon>
+              <span>退出登录</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
+
+    <!-- 弹窗, 修改密码 -->
+    <UpdatePassword
+      v-if="updatePassowrdVisible"
+      ref="updatePassowrdRef"
+    />
+  </nav>
 </template>
 
 <script setup>
+import { ArrowDown, Key, SwitchButton } from '@element-plus/icons-vue'
 import { ElMessageBox } from 'element-plus'
 import UpdatePassword from './main-navbar-update-password.vue'
 
@@ -72,11 +61,14 @@ const route = useRoute()
 const router = useRouter()
 const userStore = useUserStore()
 const userName = computed(() => userStore.name)
-const fontCloseSize = reactive({
-  fontSize: '16px'
+const userInitials = computed(() => {
+  const name = userName.value || ''
+  return name.charAt(0).toUpperCase()
 })
+
 const commonStore = useCommonStore()
 const sidebarFold = computed(() => commonStore.sidebarFold)
+
 const setSidebarFold = () => {
   const len = commonStore.selectMenu.length
   const flag = sessionStorage.getItem('isExpand')
@@ -119,54 +111,129 @@ const updatePasswordHandle = () => {
 </script>
 
 <style lang="scss" scoped>
+@use '@/styles/variables' as *;
+
 .site-navbar {
   display: flex;
   align-items: center;
-  background-color: #ffffff;
-  color: #333333;
-  border-bottom: 1px solid #ebedf0;
-  .site-navbar-header {
+  justify-content: space-between;
+  height: $navbar--height;
+  background: $navbar--background-color;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  padding: 0 20px;
+  z-index: 10;
+}
+
+// Left Section
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .collapse-btn {
     display: flex;
     align-items: center;
-    margin-left: 20px;
-    color: #333;
-    font-weight: 700;
-    height: 50px;
-    line-height: 50px;
-    .site-navbar-lg {
-      font-size: 16px;
-      word-break: break-all;
-      word-wrap: break-word;
-    }
-    .site-navbar-lg,
-    .site-navbar-mini {
-      margin: 0 5px;
-    }
-  }
-  .site-navbar-content {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    font-size: 18px;
-    align-items: center;
-    .navbar-content-left {
-      flex: 1;
-      .left-item {
-        cursor: pointer;
-      }
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $--color-primary-light;
     }
 
-    .navbar-content-right {
-      display: flex;
+    :deep(.svg-icon) {
+      width: 20px;
+      height: 20px;
+      color: $--color-text-secondary;
+      transition: color $transition-fast;
+    }
+
+    &:hover :deep(.svg-icon) {
+      color: $--color-primary;
+    }
+  }
+
+  .brand-text {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $--color-text-primary;
+  }
+}
+
+// Right Section
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: $border-radius-md;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: $--color-background;
+  }
+}
+
+.user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: $--color-primary;
+  color: #fff;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.user-name {
+  font-size: $font-size-base;
+  font-weight: 500;
+  color: $--color-text-primary;
+}
+
+.dropdown-icon {
+  font-size: 12px;
+  color: $--color-text-secondary;
+  transition: transform $transition-fast;
+}
+
+// Dropdown Menu Styles
+:deep(.el-dropdown-menu__item) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: $font-size-base;
+  color: $--color-text-primary;
+  transition: all $transition-fast;
+
+  .el-icon {
+    font-size: 16px;
+    color: $--color-text-secondary;
+    transition: color $transition-fast;
+  }
+
+  &:hover {
+    background-color: $--color-primary-light;
+    color: $--color-primary;
+
+    .el-icon {
+      color: $--color-primary;
     }
   }
 }
-//.menu-image-logo {
-//  object-fit: contain;
-//  height: 18px;
-//  width: 59px;
-//  margin-right: 10px;
-//}
 </style>
