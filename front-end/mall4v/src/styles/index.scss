@@ -1,8 +1,104 @@
-@import "_normalize";       // api: https://github.com/necolas/normalize.css/
-@import "_variables";
-@import "_base";
-@import "@/styles/element-variables.scss";
+// ========================================
+// Mall4v Main Style Index
+// Modern Design System Integration
+// ========================================
 
+// Use @use directives for modern module system
+@use './variables' as *;
+@use './modern';
+
+// Import base styles
+@use './normalize';
+@use './base';
+
+// ========================================
+// Element Plus Theme Configuration
+// ========================================
+
+:root {
+  // Primary colors
+  --el-color-primary: #{$--color-primary};
+  --el-color-primary-light-3: #{$--color-primary-light};
+  --el-color-primary-dark-2: #{$--color-primary-dark};
+
+  // Typography
+  --el-font-family: #{$font-family};
+
+  // Border radius
+  --el-border-radius-base: #{$border-radius-md};
+  --el-border-radius-small: #{$border-radius-sm};
+  --el-border-radius-round: #{$border-radius-lg};
+}
+
+// ========================================
+// Global Styles
+// ========================================
+
+body {
+  font-family: $font-family;
+  background-color: $--color-background;
+  color: $--color-text-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ========================================
+// Element Plus Component Enhancements
+// ========================================
+
+// Primary Button
+.el-button--primary {
+  background-color: $--color-primary;
+  border-color: $--color-primary;
+
+  &:hover,
+  &:focus {
+    background-color: $--color-primary-dark;
+    border-color: $--color-primary-dark;
+  }
+
+  &:active {
+    background-color: darken($--color-primary, 10%);
+    border-color: darken($--color-primary, 10%);
+  }
+}
+
+// Card Component
+.el-card {
+  border-radius: $border-radius-lg;
+  border: 1px solid rgba($--color-border, 0.5);
+  box-shadow: $shadow-sm;
+  transition: box-shadow $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+// Table Component
+.el-table {
+  --el-table-border-color: #{$--color-border};
+
+  .el-table__header-wrapper {
+    .el-table__header {
+      th {
+        background-color: $--color-background;
+      }
+    }
+  }
+}
+
+// Dialog Component
+.el-dialog {
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+}
+
+// ========================================
+// Utility Classes
+// ========================================
+
+// Element Plus z-index fix
 .element-error-message-zindex {
-  z-index:3000 !important;
+  z-index: 3000 !important;
 }
