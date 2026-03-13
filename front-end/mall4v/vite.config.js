@@ -55,7 +55,16 @@ export default defineConfig(({ command })=> {
     server: {
       host: true,
       port: 9527,
-      open: true
+      open: true,
+      proxy: {
+        '/api': {
+          target: 'http://127.0.0.1:8085',
+          changeOrigin: true,
+          // 根据后端实际路由选择是否去掉 /api 前缀
+          // 如果后端实际路径是 /api/xxx，就把下面这一行改成：rewrite: path => path
+          rewrite: path => path.replace(/^\/api/, '')
+        }
+      }
     },
     resolve: {
       alias: {
