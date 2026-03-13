@@ -1,18 +1,17 @@
 <template>
   <div
     v-loading.fullscreen.lock="loading"
-    class="site-wrapper"
+    class="app-layout"
     :class="{ 'site-sidebar--fold': sidebarFold }"
     :element-loading-text="'拼命加载中'"
   >
     <template v-if="!loading">
       <MainNavbar />
-      <MainSidebar />
-      <div
-        class="site-content__wrapper"
-        :style="{ 'min-height': documentClientHeight + 'px' }"
-      >
-        <main-content />
+      <div class="app-body">
+        <MainSidebar />
+        <div class="app-content">
+          <main-content />
+        </div>
       </div>
     </template>
   </div>
@@ -57,3 +56,27 @@ const getUserInfo = () => {
   }).catch(() => {})
 }
 </script>
+
+<style lang="scss" scoped>
+@use '@/styles/variables' as *;
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: $--color-bg-page;
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.app-content {
+  flex: 1;
+  overflow: auto;
+  padding: $spacing-md;
+  min-width: 0;
+}
+</style>
