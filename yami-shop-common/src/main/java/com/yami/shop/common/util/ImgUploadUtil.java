@@ -47,11 +47,15 @@ public class ImgUploadUtil {
 
     public String upload(MultipartFile img, String fileName) {
         String filePath = imgUpload.getImagePath();
-        File file = new File(filePath + fileName);
-        if (!file.exists()) {
-            boolean result = file.mkdirs();
+        // 确保路径以分隔符结尾，正确拼接文件名
+        String fullPath = filePath.endsWith(File.separator) ? filePath : filePath + File.separator;
+        // fileName 可能包含日期子目录（如 2026/03/xxx.png），需要创建完整的父目录
+        File file = new File(fullPath + fileName);
+        File parentDir = file.getParentFile();
+        if (parentDir != null && !parentDir.exists()) {
+            boolean result = parentDir.mkdirs();
             if (!result) {
-                throw new YamiShopBindException("创建目录：" + filePath + "失败");
+                throw new YamiShopBindException("创建目录：" + parentDir.getAbsolutePath() + "失败");
             }
         }
         try {
@@ -64,7 +68,8 @@ public class ImgUploadUtil {
 
     public void delete(String fileName) {
         String filePath = imgUpload.getImagePath();
-        File file = new File(filePath + fileName);
+        String fullPath = filePath.endsWith(File.separator) ? filePath : filePath + File.separator;
+        File file = new File(fullPath + fileName);
         file.deleteOnExit();
     }
 }
