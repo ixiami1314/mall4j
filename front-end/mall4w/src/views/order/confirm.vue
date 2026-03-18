@@ -135,71 +135,225 @@ const handleSubmit = async () => {
 </script>
 
 <style lang="scss" scoped>
+// 颜色变量 - 淡蓝色系
+$primary: #4A9FD4;
+$primary-light: #6BB8E8;
+$primary-dark: #3A8BC4;
+$primary-bg: #F0F7FC;
+
+$danger: #DC2626;
+
+$text-primary: #1E293B;
+$text-regular: #334155;
+$text-secondary: #64748B;
+$text-tertiary: #94A3B8;
+
+$bg-page: #F8FAFC;
+$bg-secondary: #F1F5F9;
+
+$border-light: #E2E8F0;
+
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
 .order-confirm {
   background: #fff;
-  padding: 20px;
-  h2 { margin-bottom: 20px; }
+  padding: 24px;
+  border-radius: 20px;
+  margin: 20px auto;
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
+
+  h2 {
+    margin-bottom: 24px;
+    font-size: 22px;
+    font-weight: 600;
+    color: $text-primary;
+    font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+  }
 }
+
 .section {
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #eee;
-  h3 { margin-bottom: 15px; }
+  margin-bottom: 24px;
+  padding: 22px;
+  border: 1px solid $border-light;
+  border-radius: 16px;
+
+  h3 {
+    margin-bottom: 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-primary;
+  }
 }
+
 .address-info {
-  p { margin-bottom: 5px; }
+  p {
+    margin-bottom: 6px;
+    color: $text-regular;
+    font-size: 14px;
+  }
+
+  strong {
+    font-weight: 600;
+  }
 }
+
+.no-address {
+  text-align: center;
+  padding: 20px;
+}
+
 .shop-card {
-  border: 1px solid #eee;
-  margin-bottom: 15px;
+  border: 1px solid $border-light;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
 }
+
 .shop-header {
-  padding: 10px 15px;
-  background: #f5f5f5;
+  padding: 12px 18px;
+  background: $bg-page;
+  font-weight: 500;
+  color: $text-primary;
+  font-size: 14px;
 }
+
 .goods-item {
   display: flex;
   align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-  .goods-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    margin-right: 15px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+
+  &:last-child {
+    border-bottom: none;
   }
-  .goods-info { flex: 1; }
-  .goods-sku { color: #999; font-size: 12px; margin-top: 5px; }
-  .goods-price { width: 100px; text-align: center; }
-  .goods-count { width: 80px; text-align: center; }
+
+  .goods-img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    margin-right: 16px;
+    border-radius: 10px;
+  }
+
+  .goods-info {
+    flex: 1;
+  }
+
+  .goods-name {
+    font-size: 14px;
+    color: $text-regular;
+    font-weight: 400;
+  }
+
+  .goods-sku {
+    color: $text-tertiary;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  .goods-price {
+    width: 90px;
+    text-align: center;
+    font-size: 14px;
+    color: $text-regular;
+  }
+
+  .goods-count {
+    width: 70px;
+    text-align: center;
+    font-size: 13px;
+    color: $text-secondary;
+  }
 }
+
 .summary-row {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 12px 0;
+  font-size: 14px;
+  color: $text-secondary;
+
   &.total {
-    border-top: 1px solid #eee;
-    font-weight: bold;
-    .price { font-size: 20px; color: #e4393c; }
+    border-top: 1px solid $border-light;
+    margin-top: 8px;
+    padding-top: 16px;
+    font-weight: 600;
+    color: $text-primary;
+
+    .price {
+      font-size: 22px;
+      color: $danger;
+      font-family: 'Outfit', sans-serif;
+    }
   }
 }
+
 .submit-bar {
   position: sticky;
   bottom: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 20px;
-  padding: 15px 20px;
+  gap: 24px;
+  padding: 20px 24px;
   background: #fff;
-  border-top: 1px solid #eee;
-  em { font-size: 24px; color: #e4393c; font-style: normal; }
+  border-top: 1px solid $border-light;
+  border-radius: 0 0 20px 20px;
+  margin: 0 -24px -24px;
+
+  span {
+    font-size: 14px;
+    color: $text-secondary;
+  }
+
+  em {
+    font-size: 26px;
+    color: $danger;
+    font-style: normal;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+
+  :deep(.el-button) {
+    width: 160px;
+    height: 48px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 12px;
+    background: linear-gradient(135deg, $danger 0%, #B91C1C 100%);
+    border: none;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.28);
+    transition: all 0.25s $ease-out-expo;
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+      transform: translateY(-1px);
+    }
+  }
 }
+
 .address-item {
-  padding: 15px;
-  border: 1px solid #eee;
-  margin-bottom: 10px;
+  padding: 16px;
+  border: 1px solid $border-light;
+  margin-bottom: 12px;
   cursor: pointer;
-  &:hover { border-color: #3a86b9; }
+  border-radius: 10px;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: $primary;
+    background: $primary-bg;
+  }
+
+  p {
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: $text-regular;
+  }
+
+  strong {
+    font-weight: 600;
+  }
 }
 </style>

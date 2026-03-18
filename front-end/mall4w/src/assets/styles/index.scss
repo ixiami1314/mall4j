@@ -1,62 +1,114 @@
 // ============================================
-// 字体导入 - 使用更有特色的字体
+// 字体导入 - 精致国际化字体
 // ============================================
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
 
 // ============================================
-// 颜色变量定义 - 精致电商配色
+// 颜色变量定义 - 淡蓝色精致配色
 // ============================================
 
-// 主色调 - 温暖橙
-$color-primary: #ff6700;
-$color-primary-light: #ff8c42;
-$color-primary-dark: #e55d00;
-$color-primary-bg: #fff8f5;
+// 主色调 - 淡蓝色系 (Light Blue)
+$color-primary: #4A9FD4;
+$color-primary-light: #6BB8E8;
+$color-primary-dark: #3A8BC4;
+$color-primary-darker: #2A7AB4;
+$color-primary-bg: #F0F7FC;
+$color-primary-surface: #E8F2FA;
 
-// 强调色 - 活力红
-$color-danger: #e4393c;
-$color-danger-light: #ff4757;
-$color-danger-dark: #c41e24;
+// 强调色 - 深邃蓝 (用于重要操作)
+$color-accent: #2563EB;
+$color-accent-light: #3B82F6;
 
-// 金色点缀 - 用于高级感
-$color-gold: #d4a574;
-$color-gold-light: #e8c9a8;
+// 危险色 - 柔和红
+$color-danger: #DC2626;
+$color-danger-light: #EF4444;
+$color-danger-dark: #B91C1C;
 
-// 渐变色 - 更精致的渐变
-$gradient-primary: linear-gradient(135deg, #ff6700 0%, #ff4500 100%);
-$gradient-primary-soft: linear-gradient(135deg, #ff8c42 0%, #ff6700 100%);
-$gradient-danger: linear-gradient(135deg, #e4393c 0%, #c41e24 100%);
-$gradient-gold: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
-$gradient-hero: linear-gradient(135deg, #fff5f0 0%, #fff 50%, #fffaf5 100%);
+// 成功色
+$color-success: #059669;
+$color-success-light: #10B981;
 
-// 中性色 - 更柔和的层次
-$color-text-primary: #1a1a1a;
-$color-text-regular: #2d2d2d;
-$color-text-secondary: #5c5c5c;
-$color-text-tertiary: #8c8c8c;
-$color-text-placeholder: #bfbfbf;
+// 警告色
+$color-warning: #D97706;
+$color-warning-light: #F59E0B;
 
-// 背景色 - 温暖的背景
-$bg-color-page: #faf9f7;
-$bg-color-secondary: #f5f3f0;
-$bg-color-hover: #fff8f5;
-$bg-color-card: #ffffff;
+// 渐变色 - 清新蓝色渐变
+$gradient-primary: linear-gradient(135deg, #4A9FD4 0%, #3A8BC4 100%);
+$gradient-primary-soft: linear-gradient(135deg, #6BB8E8 0%, #4A9FD4 100%);
+$gradient-accent: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+$gradient-danger: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+$gradient-hero: linear-gradient(135deg, #F0F7FC 0%, #fff 50%, #F8FBFE 100%);
+$gradient-card: linear-gradient(180deg, #fff 0%, #FAFCFE 100%);
 
-// 边框色
-$border-color-light: #f0ede8;
-$border-color-base: #e8e4de;
-$border-color-dark: #d4cfc6;
+// 中性色 - 精致的灰阶
+$color-text-primary: #1E293B;
+$color-text-regular: #334155;
+$color-text-secondary: #64748B;
+$color-text-tertiary: #94A3B8;
+$color-text-placeholder: #CBD5E1;
+
+// 背景色 - 清爽的背景
+$bg-color-page: #F8FAFC;
+$bg-color-secondary: #F1F5F9;
+$bg-color-hover: #F0F7FC;
+$bg-color-card: #FFFFFF;
+
+// 边框色 - 柔和边框
+$border-color-light: #E2E8F0;
+$border-color-base: #CBD5E1;
+$border-color-dark: #94A3B8;
 
 // 阴影 - 多层次阴影
-$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
-$shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.1);
-$shadow-primary: 0 8px 24px rgba(255, 103, 0, 0.15);
-$shadow-danger: 0 8px 24px rgba(228, 57, 60, 0.15);
+$shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.02);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.03);
+$shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
+$shadow-primary: 0 8px 24px rgba(74, 159, 212, 0.2);
+$shadow-danger: 0 8px 24px rgba(220, 38, 38, 0.15);
 
 // ============================================
-// 基础重置样式 - 更精致的基础
+// 字体大小系统 - 精致层级
+// ============================================
+$font-size-xs: 11px;
+$font-size-sm: 12px;
+$font-size-base: 14px;
+$font-size-md: 15px;
+$font-size-lg: 16px;
+$font-size-xl: 18px;
+$font-size-2xl: 20px;
+$font-size-3xl: 24px;
+$font-size-4xl: 28px;
+$font-size-5xl: 32px;
+
+// 行高系统
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// 字重系统
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// 间距系统
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+
+// 圆角系统
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 14px;
+$radius-xl: 20px;
+$radius-full: 9999px;
+
+// ============================================
+// 基础重置样式
 // ============================================
 
 * {
@@ -68,14 +120,14 @@ $shadow-danger: 0 8px 24px rgba(228, 57, 60, 0.15);
 html, body {
   width: 100%;
   height: 100%;
-  font-family: 'DM Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 14px;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: $font-size-base;
   color: $color-text-regular;
   background-color: $bg-color-page;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: 0.01em;
-  line-height: 1.6;
+  line-height: $line-height-normal;
 }
 
 #app {
@@ -93,8 +145,8 @@ html, body {
     right: 0;
     bottom: 0;
     background-image:
-      radial-gradient(circle at 20% 20%, rgba(255, 103, 0, 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(228, 57, 60, 0.02) 0%, transparent 50%);
+      radial-gradient(circle at 15% 15%, rgba(74, 159, 212, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.02) 0%, transparent 50%);
     pointer-events: none;
     z-index: -1;
   }
@@ -103,7 +155,7 @@ html, body {
 a {
   color: $color-text-regular;
   text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
 
   &:hover {
     color: $color-primary;
@@ -112,7 +164,7 @@ a {
 
 // 选中文本样式
 ::selection {
-  background: rgba(255, 103, 0, 0.15);
+  background: rgba(74, 159, 212, 0.2);
   color: $color-text-primary;
 }
 
@@ -123,7 +175,7 @@ a {
 .container {
   width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 $spacing-lg;
 }
 
 .clearfix::after {
@@ -137,18 +189,17 @@ a {
 // ============================================
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ddd;
-  border-radius: 4px;
+  background: $border-color-base;
+  border-radius: 3px;
 
   &:hover {
     background: $color-primary;
@@ -156,18 +207,19 @@ a {
 }
 
 // ============================================
-// 通用动画 - 更精致的动效
+// 通用动画
 // ============================================
 
 // 缓动函数
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 $ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+$ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -178,7 +230,7 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -189,7 +241,7 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 @keyframes fadeInScale {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.96);
   }
   to {
     opacity: 1;
@@ -220,39 +272,39 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
 }
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 103, 0, 0.2);
+    box-shadow: 0 0 16px rgba(74, 159, 212, 0.15);
   }
   50% {
-    box-shadow: 0 0 30px rgba(255, 103, 0, 0.4);
+    box-shadow: 0 0 24px rgba(74, 159, 212, 0.3);
   }
 }
 
 // 动画类
 .fade-in {
-  animation: fadeIn 0.4s $ease-out-expo;
+  animation: fadeIn 0.3s $ease-out-expo;
 }
 
 .fade-in-up {
-  animation: fadeInUp 0.5s $ease-out-expo;
+  animation: fadeInUp 0.4s $ease-out-expo;
 }
 
 .fade-in-scale {
-  animation: fadeInScale 0.4s $ease-out-expo;
+  animation: fadeInScale 0.3s $ease-out-expo;
 }
 
 // 交错动画 - 用于列表
 .stagger-item {
   opacity: 0;
-  animation: fadeInUp 0.5s $ease-out-expo forwards;
+  animation: fadeInUp 0.4s $ease-out-expo forwards;
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
-      animation-delay: #{$i * 0.05}s;
+      animation-delay: #{$i * 0.04}s;
     }
   }
 }
@@ -266,25 +318,25 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
 // 悬浮效果
 .hover-lift {
-  transition: transform 0.3s $ease-out-expo, box-shadow 0.3s $ease-out-expo;
+  transition: transform 0.25s $ease-out-expo, box-shadow 0.25s $ease-out-expo;
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
     box-shadow: $shadow-lg;
   }
 }
 
 .hover-glow {
-  transition: box-shadow 0.3s $ease-out-expo;
+  transition: box-shadow 0.25s $ease-out-expo;
   &:hover {
     box-shadow: $shadow-primary;
   }
 }
 
 // ============================================
-// Element Plus 主题覆盖 - 更精致的主题
+// Element Plus 主题覆盖
 // ============================================
 
-// 主按钮 - 橙色渐变
+// 主按钮 - 蓝色
 .el-button--primary {
   --el-button-bg-color: #{$color-primary};
   --el-button-border-color: #{$color-primary};
@@ -292,10 +344,10 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   --el-button-hover-border-color: #{$color-primary-light};
   --el-button-active-bg-color: #{$color-primary-dark};
   --el-button-active-border-color: #{$color-primary-dark};
-  transition: all 0.25s $ease-out-expo;
+  transition: all 0.2s $ease-out-expo;
 }
 
-// 危险按钮 - 红色
+// 危险按钮
 .el-button--danger {
   --el-button-bg-color: #{$color-danger};
   --el-button-border-color: #{$color-danger};
@@ -303,13 +355,13 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   --el-button-hover-border-color: #{$color-danger-light};
   --el-button-active-bg-color: #{$color-danger-dark};
   --el-button-active-border-color: #{$color-danger-dark};
-  transition: all 0.25s $ease-out-expo;
+  transition: all 0.2s $ease-out-expo;
 }
 
 // 大号按钮增强
 .el-button--large {
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.01em;
 }
 
 // 链接
@@ -323,33 +375,33 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   --el-link-hover-text-color: #{$color-danger-light};
 }
 
-// Tag 标签 - 更精致
+// Tag 标签
 .el-tag--danger {
-  --el-tag-bg-color: #fff5f5;
-  --el-tag-border-color: #ffc9c9;
+  --el-tag-bg-color: #FEF2F2;
+  --el-tag-border-color: #FECACA;
   --el-tag-text-color: #{$color-danger};
-  font-weight: 500;
+  font-weight: $font-weight-medium;
 }
 
 .el-tag--warning {
-  --el-tag-bg-color: #fffbf5;
-  --el-tag-border-color: #ffd699;
-  --el-tag-text-color: #{$color-primary};
-  font-weight: 500;
+  --el-tag-bg-color: #FFFBEB;
+  --el-tag-border-color: #FDE68A;
+  --el-tag-text-color: #{$color-warning};
+  font-weight: $font-weight-medium;
 }
 
 .el-tag--success {
-  --el-tag-bg-color: #f0fdf4;
-  --el-tag-border-color: #86efac;
-  --el-tag-text-color: #16a34a;
-  font-weight: 500;
+  --el-tag-bg-color: #ECFDF5;
+  --el-tag-border-color: #A7F3D0;
+  --el-tag-text-color: #{$color-success};
+  font-weight: $font-weight-medium;
 }
 
 .el-tag--info {
-  --el-tag-bg-color: #fafafa;
-  --el-tag-border-color: #e5e5e5;
-  --el-tag-text-color: #525252;
-  font-weight: 500;
+  --el-tag-bg-color: #F8FAFC;
+  --el-tag-border-color: #E2E8F0;
+  --el-tag-text-color: #64748B;
+  font-weight: $font-weight-medium;
 }
 
 // 复选框选中色
@@ -364,10 +416,10 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   border-color: $color-primary !important;
 }
 
-// 分页器 - 更精致
+// 分页器
 .el-pagination.is-background .el-pager li:not(.is-disabled).is-active {
   background: $gradient-primary !important;
-  border-radius: 8px;
+  border-radius: $radius-sm;
 }
 
 .el-pagination.is-background .el-pager li:not(.is-disabled):hover {
@@ -377,53 +429,53 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 // Tabs 选中色
 .el-tabs__item.is-active {
   color: $color-primary !important;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
 }
 
 .el-tabs__active-bar {
   background: $gradient-primary !important;
-  height: 3px !important;
-  border-radius: 2px;
+  height: 2px !important;
+  border-radius: 1px;
 }
 
 // 输入框聚焦
 .el-input__wrapper:focus-within {
-  box-shadow: 0 0 0 2px rgba(255, 103, 0, 0.1) !important;
+  box-shadow: 0 0 0 2px rgba(74, 159, 212, 0.15) !important;
 }
 
 // 对话框
 .el-dialog {
-  border-radius: 16px !important;
+  border-radius: $radius-xl !important;
   overflow: hidden;
 }
 
 .el-dialog__header {
   border-bottom: 1px solid $border-color-light;
-  padding: 20px 24px !important;
+  padding: $spacing-lg $spacing-xl !important;
 }
 
 .el-dialog__body {
-  padding: 24px !important;
+  padding: $spacing-xl !important;
 }
 
 // 消息提示
 .el-message {
-  border-radius: 12px !important;
+  border-radius: $radius-lg !important;
   box-shadow: $shadow-lg !important;
 }
 
 // 下拉菜单
 .el-dropdown-menu {
-  border-radius: 12px !important;
+  border-radius: $radius-lg !important;
   border: 1px solid $border-color-light !important;
   box-shadow: $shadow-lg !important;
-  padding: 8px !important;
+  padding: $spacing-sm !important;
 }
 
 .el-dropdown-menu__item {
-  border-radius: 8px;
-  margin: 2px 0;
-  transition: all 0.2s;
+  border-radius: $radius-sm;
+  margin: 1px 0;
+  transition: all 0.15s;
 
   &:hover {
     background: $bg-color-hover !important;
@@ -433,9 +485,9 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
 // 徽章
 .el-badge__content {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  border-radius: 10px !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: $font-weight-semibold;
+  border-radius: $radius-full !important;
 }
 
 // 空状态
@@ -455,30 +507,30 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 // ============================================
-// 通用卡片样式 - 更精致的效果
+// 通用卡片样式
 // ============================================
 
 .card {
   background: $bg-color-card;
-  border-radius: 16px;
+  border-radius: $radius-xl;
   box-shadow: $shadow-sm;
   border: 1px solid $border-color-light;
-  transition: all 0.35s $ease-out-expo;
+  transition: all 0.3s $ease-out-expo;
 
   &:hover {
     box-shadow: $shadow-lg;
-    border-color: rgba(255, 103, 0, 0.15);
+    border-color: rgba(74, 159, 212, 0.2);
     transform: translateY(-2px);
   }
 }
 
-// 精品卡片 - 更强的效果
+// 精品卡片
 .card-premium {
   background: $bg-color-card;
-  border-radius: 20px;
+  border-radius: $radius-xl;
   box-shadow: $shadow-md;
   border: 1px solid $border-color-light;
-  transition: all 0.4s $ease-out-expo;
+  transition: all 0.3s $ease-out-expo;
   position: relative;
   overflow: hidden;
 
@@ -491,12 +543,12 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
     height: 3px;
     background: $gradient-primary;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.25s;
   }
 
   &:hover {
     box-shadow: $shadow-xl;
-    transform: translateY(-6px);
+    transform: translateY(-4px);
 
     &::before {
       opacity: 1;
@@ -505,17 +557,17 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 // ============================================
-// 通用页面标题 - 更精致
+// 通用页面标题
 // ============================================
 
 .page-title {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
   color: $color-text-primary;
-  margin-bottom: 28px;
+  margin-bottom: $spacing-xl;
   position: relative;
-  padding-left: 20px;
-  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  padding-left: $spacing-md;
+  font-family: 'Outfit', 'Noto Sans SC', sans-serif;
   letter-spacing: -0.02em;
 
   &::before {
@@ -524,72 +576,59 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 4px;
-    height: 28px;
+    width: 3px;
+    height: 24px;
     background: $gradient-primary;
     border-radius: 2px;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2px;
-    height: 16px;
-    background: $color-gold;
-    border-radius: 1px;
-    opacity: 0.6;
   }
 }
 
 // 区块标题
 .section-title {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
   color: $color-text-primary;
-  margin-bottom: 20px;
+  margin-bottom: $spacing-lg;
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  gap: $spacing-sm;
+  font-family: 'Outfit', 'Noto Sans SC', sans-serif;
 
   &::before {
     content: '';
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     background: $color-primary;
     border-radius: 50%;
   }
 }
 
 // ============================================
-// 价格样式 - 更醒目
+// 价格样式
 // ============================================
 
 .price {
   color: $color-danger;
-  font-weight: 700;
-  font-family: 'Space Grotesk', sans-serif;
+  font-weight: $font-weight-bold;
+  font-family: 'Outfit', sans-serif;
 
   &::before {
     content: '¥';
     font-size: 0.7em;
-    margin-right: 2px;
-    font-weight: 600;
+    margin-right: 1px;
+    font-weight: $font-weight-semibold;
   }
 
   &.price-lg {
-    font-size: 32px;
+    font-size: $font-size-5xl;
   }
 
   &.price-md {
-    font-size: 22px;
+    font-size: $font-size-2xl;
   }
 
   &.price-sm {
-    font-size: 16px;
+    font-size: $font-size-lg;
   }
 }
 
@@ -597,52 +636,52 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 .ori-price {
   color: $color-text-placeholder;
   text-decoration: line-through;
-  font-size: 14px;
-  margin-left: 10px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-size: $font-size-sm;
+  margin-left: $spacing-sm;
+  font-family: 'Outfit', sans-serif;
 }
 
 // ============================================
-// 促销标签 - 更精致
+// 促销标签
 // ============================================
 
 .promo-tag {
   display: inline-flex;
   align-items: center;
-  padding: 4px 12px;
+  padding: 3px 10px;
   background: $gradient-primary;
   color: #fff;
-  font-size: 12px;
-  border-radius: 4px;
-  font-weight: 600;
+  font-size: $font-size-xs;
+  border-radius: $radius-sm;
+  font-weight: $font-weight-semibold;
   letter-spacing: 0.02em;
-  box-shadow: 0 2px 8px rgba(255, 103, 0, 0.25);
+  box-shadow: 0 2px 6px rgba(74, 159, 212, 0.25);
 }
 
 // 小型标签
 .tag-small {
-  padding: 2px 8px;
-  font-size: 11px;
-  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: $font-size-xs;
+  border-radius: $radius-sm;
 }
 
 // ============================================
-// 渐变按钮样式 - 更精致
+// 渐变按钮样式
 // ============================================
 
 .btn-primary-gradient {
   background: $gradient-primary !important;
   border: none !important;
   color: #fff !important;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  box-shadow: 0 4px 12px rgba(255, 103, 0, 0.3);
-  transition: all 0.3s $ease-out-expo !important;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.01em;
+  box-shadow: 0 3px 10px rgba(74, 159, 212, 0.3);
+  transition: all 0.25s $ease-out-expo !important;
 
   &:hover {
     background: $gradient-primary-soft !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 103, 0, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 16px rgba(74, 159, 212, 0.35);
   }
 
   &:active {
@@ -654,15 +693,15 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   background: $gradient-danger !important;
   border: none !important;
   color: #fff !important;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  box-shadow: 0 4px 12px rgba(228, 57, 60, 0.3);
-  transition: all 0.3s $ease-out-expo !important;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.01em;
+  box-shadow: 0 3px 10px rgba(220, 38, 38, 0.25);
+  transition: all 0.25s $ease-out-expo !important;
 
   &:hover {
-    background: linear-gradient(135deg, #ff4757 0%, #e4393c 100%) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(228, 57, 60, 0.4);
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 16px rgba(220, 38, 38, 0.3);
   }
 
   &:active {
@@ -672,8 +711,8 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
 // 圆形图标按钮
 .btn-icon-circle {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -682,12 +721,12 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   color: #fff;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 103, 0, 0.3);
-  transition: all 0.3s $ease-out-expo;
+  box-shadow: 0 3px 10px rgba(74, 159, 212, 0.25);
+  transition: all 0.25s $ease-out-expo;
 
   &:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 103, 0, 0.4);
+    transform: scale(1.08);
+    box-shadow: 0 5px 16px rgba(74, 159, 212, 0.35);
   }
 }
 
@@ -703,16 +742,16 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 40px 40px 0;
+  border-width: 0 36px 36px 0;
   border-color: transparent $color-primary transparent transparent;
 
   &::after {
     content: 'HOT';
     position: absolute;
     top: 4px;
-    right: -36px;
-    font-size: 10px;
-    font-weight: 600;
+    right: -32px;
+    font-size: 9px;
+    font-weight: $font-weight-semibold;
     color: #fff;
     transform: rotate(45deg);
   }
@@ -722,17 +761,17 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 .divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, $border-color-base, transparent);
-  margin: 24px 0;
+  margin: $spacing-lg 0;
 }
 
 // 装饰性点
 .deco-dots {
   display: flex;
-  gap: 6px;
+  gap: 5px;
 
   span {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: $color-primary;
     opacity: 0.3;
@@ -754,29 +793,29 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 @media (max-width: 1240px) {
   .container {
     width: 100%;
-    padding: 0 24px;
+    padding: 0 $spacing-lg;
   }
 }
 
 @media (max-width: 768px) {
   html, body {
-    font-size: 13px;
+    font-size: $font-size-sm;
   }
   .container {
-    padding: 0 16px;
+    padding: 0 $spacing-md;
   }
 
   .page-title {
-    font-size: 22px;
-    padding-left: 16px;
+    font-size: $font-size-2xl;
+    padding-left: $spacing-sm;
 
     &::before {
-      height: 24px;
+      height: 20px;
     }
   }
 
   .card-premium {
-    border-radius: 16px;
+    border-radius: $radius-lg;
   }
 }
 
@@ -831,11 +870,11 @@ $ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 // 间距
-.gap-xs { gap: 4px; }
-.gap-sm { gap: 8px; }
-.gap-md { gap: 16px; }
-.gap-lg { gap: 24px; }
-.gap-xl { gap: 32px; }
+.gap-xs { gap: $spacing-xs; }
+.gap-sm { gap: $spacing-sm; }
+.gap-md { gap: $spacing-md; }
+.gap-lg { gap: $spacing-lg; }
+.gap-xl { gap: $spacing-xl; }
 
 // 隐藏滚动条但保持滚动
 .hide-scrollbar {

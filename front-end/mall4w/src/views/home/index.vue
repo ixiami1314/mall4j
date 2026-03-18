@@ -4,7 +4,7 @@
     <section class="banner-section">
       <div class="container">
         <el-carousel
-          height="420px"
+          height="400px"
           :interval="5000"
           arrow="hover"
           indicator-position="outside"
@@ -21,7 +21,7 @@
     <!-- 分类入口 -->
     <section class="category-section">
       <div class="container">
-        <div class="section-title">
+        <div class="section-header">
           <h3>{{ t('home.categoryTitle') }}</h3>
           <router-link to="/category" class="view-all">{{ t('home.viewAllCategories') }}</router-link>
         </div>
@@ -44,7 +44,7 @@
     <!-- 商品列表 -->
     <section v-for="tag in tagProdList" :key="tag.id" class="prod-section">
       <div class="container">
-        <div class="section-title">
+        <div class="section-header">
           <h3>{{ tag.title }}</h3>
           <router-link to="/category" class="view-all">{{ t('home.viewMore') }}</router-link>
         </div>
@@ -157,10 +157,31 @@ const goProdDetail = (prodId) => {
 // 缓动函数
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
+// 颜色变量 - 淡蓝色系
+$primary: #4A9FD4;
+$primary-light: #6BB8E8;
+$primary-dark: #3A8BC4;
+$primary-bg: #F0F7FC;
+$primary-surface: #E8F2FA;
+
+$danger: #DC2626;
+$danger-light: #EF4444;
+
+$text-primary: #1E293B;
+$text-regular: #334155;
+$text-secondary: #64748B;
+$text-tertiary: #94A3B8;
+
+$bg-page: #F8FAFC;
+$bg-secondary: #F1F5F9;
+
+$border-light: #E2E8F0;
+$border-base: #CBD5E1;
+
 .home-page {
-  background: linear-gradient(180deg, #faf9f7 0%, #f5f3f0 50%, #faf9f7 100%);
+  background: linear-gradient(180deg, $bg-page 0%, #F1F5F9 50%, $bg-page 100%);
   min-height: 100vh;
-  padding-bottom: 50px;
+  padding-bottom: 48px;
   position: relative;
 
   // 装饰性背景
@@ -170,8 +191,8 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     top: 0;
     left: 0;
     right: 0;
-    height: 400px;
-    background: linear-gradient(180deg, rgba(255, 103, 0, 0.03) 0%, transparent 100%);
+    height: 380px;
+    background: linear-gradient(180deg, rgba(74, 159, 212, 0.04) 0%, transparent 100%);
     pointer-events: none;
     z-index: -1;
   }
@@ -179,11 +200,11 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 // 轮播图区域
 .banner-section {
-  padding: 24px 0;
+  padding: 20px 0;
 
   .banner-item {
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 18px;
     overflow: hidden;
     height: 100%;
     position: relative;
@@ -192,55 +213,55 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: 20px;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
       pointer-events: none;
     }
   }
 
   .banner-img {
     width: 100%;
-    height: 420px;
+    height: 400px;
     object-fit: cover;
-    transition: transform 0.6s $ease-out-expo;
+    transition: transform 0.5s $ease-out-expo;
   }
 
   .banner-item:hover .banner-img {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 
   :deep(.el-carousel__indicators--outside) {
-    margin-top: 20px;
+    margin-top: 16px;
   }
 
   :deep(.el-carousel__indicator--horizontal .el-carousel__button) {
-    width: 32px;
-    height: 4px;
+    width: 28px;
+    height: 3px;
     border-radius: 2px;
-    background: #e0ddd8;
-    transition: all 0.3s $ease-out-expo;
+    background: #E2E8F0;
+    transition: all 0.25s $ease-out-expo;
   }
 
   :deep(.el-carousel__indicator--horizontal.is-active .el-carousel__button) {
-    width: 48px;
-    background: linear-gradient(90deg, #ff6700, #ff4500);
+    width: 42px;
+    background: linear-gradient(90deg, $primary, $primary-dark);
   }
 }
 
-// 通用标题 - 更精致
-.section-title {
+// 通用标题 - 精致简洁
+.section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 
   h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: 600;
+    color: $text-primary;
     position: relative;
-    padding-left: 20px;
-    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    padding-left: 14px;
+    font-family: 'Outfit', 'Noto Sans SC', sans-serif;
     letter-spacing: -0.01em;
 
     &::before {
@@ -249,120 +270,107 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 4px;
-      height: 26px;
-      background: linear-gradient(180deg, #ff6700, #ff4500);
+      width: 3px;
+      height: 22px;
+      background: linear-gradient(180deg, $primary, $primary-dark);
       border-radius: 2px;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 2px;
-      height: 14px;
-      background: #d4a574;
-      border-radius: 1px;
-      opacity: 0.5;
     }
   }
 
   .view-all {
-    color: #666;
-    font-size: 14px;
+    color: $text-secondary;
+    font-size: 13px;
     font-weight: 500;
-    padding: 6px 16px;
-    border-radius: 20px;
-    transition: all 0.25s $ease-out-expo;
+    padding: 5px 14px;
+    border-radius: 16px;
+    transition: all 0.2s $ease-out-expo;
 
     &:hover {
-      color: #ff6700;
-      background: rgba(255, 103, 0, 0.06);
+      color: $primary;
+      background: rgba(74, 159, 212, 0.08);
     }
   }
 }
 
 // 分类区域
 .category-section {
-  background: linear-gradient(135deg, #ffffff 0%, #faf9f7 100%);
-  padding: 36px 0;
-  margin-bottom: 24px;
-  border-radius: 24px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  background: linear-gradient(135deg, #ffffff 0%, #FAFCFE 100%);
+  padding: 32px 0;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .category-grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
 
 .category-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 8px;
-  border-radius: 16px;
+  padding: 18px 6px;
+  border-radius: 14px;
   cursor: pointer;
-  transition: all 0.35s $ease-out-expo;
+  transition: all 0.3s $ease-out-expo;
   position: relative;
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #fff8f5 0%, #ffefea 100%);
+    border-radius: 14px;
+    background: linear-gradient(135deg, $primary-bg 0%, $primary-surface 100%);
     opacity: 0;
-    transition: opacity 0.35s $ease-out-expo;
+    transition: opacity 0.3s $ease-out-expo;
   }
 
   &:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
 
     &::before {
       opacity: 1;
     }
 
     .category-icon {
-      transform: scale(1.15);
-      box-shadow: 0 8px 24px rgba(255, 103, 0, 0.2);
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(74, 159, 212, 0.18);
     }
 
     .category-name {
-      color: #ff6700;
+      color: $primary;
     }
   }
 
   .category-icon {
-    width: 68px;
-    height: 68px;
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #f5f3f0 0%, #e8e4de 100%);
+    background: linear-gradient(135deg, $bg-secondary 0%, #E8E8E8 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 14px;
-    transition: all 0.35s $ease-out-expo;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    margin-bottom: 12px;
+    transition: all 0.3s $ease-out-expo;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
     position: relative;
     z-index: 1;
   }
 
   .category-img {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     object-fit: contain;
   }
 
   .category-name {
-    font-size: 13px;
-    color: #333;
+    font-size: 12px;
+    color: $text-regular;
     font-weight: 500;
-    transition: color 0.25s;
+    transition: color 0.2s;
     position: relative;
     z-index: 1;
   }
@@ -371,25 +379,25 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 // 商品区域
 .prod-section {
   background: #fff;
-  padding: 36px 0;
-  margin-bottom: 24px;
-  border-radius: 24px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  padding: 32px 0;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .prod-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 
 .prod-card {
   background: #fff;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.4s $ease-out-expo;
+  transition: all 0.3s $ease-out-expo;
   border: 1px solid rgba(0, 0, 0, 0.04);
   position: relative;
 
@@ -397,16 +405,16 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(228, 57, 60, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 16px 32px rgba(74, 159, 212, 0.1);
     opacity: 0;
-    transition: opacity 0.4s $ease-out-expo;
+    transition: opacity 0.3s $ease-out-expo;
     pointer-events: none;
   }
 
   &:hover {
-    transform: translateY(-8px);
-    border-color: rgba(255, 103, 0, 0.1);
+    transform: translateY(-6px);
+    border-color: rgba(74, 159, 212, 0.12);
 
     &::before {
       opacity: 1;
@@ -417,17 +425,12 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .prod-img {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
 
     .prod-price {
-      color: #ff4757;
-      transform: scale(1.08);
-    }
-
-    .prod-action {
-      opacity: 1;
-      transform: translateY(0);
+      color: $danger-light;
+      transform: scale(1.04);
     }
   }
 
@@ -438,9 +441,9 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   .prod-img {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
-    transition: transform 0.5s $ease-out-expo;
+    transition: transform 0.4s $ease-out-expo;
   }
 
   .prod-overlay {
@@ -449,33 +452,33 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(228, 57, 60, 0.75), rgba(255, 103, 0, 0.75));
+    background: linear-gradient(135deg, rgba(74, 159, 212, 0.75), rgba(58, 139, 196, 0.75));
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.35s $ease-out-expo;
+    transition: opacity 0.3s $ease-out-expo;
 
     span {
       color: #fff;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
-      padding: 10px 24px;
+      padding: 8px 20px;
       border: 1.5px solid #fff;
-      border-radius: 24px;
+      border-radius: 20px;
       backdrop-filter: blur(4px);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
     }
   }
 
   .prod-info {
-    padding: 18px;
+    padding: 16px;
     position: relative;
   }
 
   .prod-name {
-    font-size: 14px;
-    color: #333;
+    font-size: 13px;
+    color: $text-regular;
     font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -483,22 +486,22 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     line-height: 1.5;
-    height: 42px;
-    margin-bottom: 12px;
-    transition: color 0.25s;
+    height: 39px;
+    margin-bottom: 10px;
+    transition: color 0.2s;
 
     &:hover {
-      color: #ff6700;
+      color: $primary;
     }
   }
 
   .prod-brief {
-    font-size: 12px;
-    color: #999;
+    font-size: 11px;
+    color: $text-tertiary;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .prod-price-row {
@@ -508,41 +511,41 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .prod-price {
-    font-size: 22px;
-    color: #e4393c;
+    font-size: 20px;
+    color: $danger;
     font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
-    transition: all 0.3s $ease-out-expo;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.25s $ease-out-expo;
 
     &::before {
       content: '¥';
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
     }
   }
 
   .prod-sales {
-    font-size: 12px;
-    color: #999;
+    font-size: 11px;
+    color: $text-tertiary;
     font-weight: 450;
   }
 
   .prod-action {
     position: absolute;
-    bottom: 18px;
-    right: 18px;
+    bottom: 16px;
+    right: 16px;
     opacity: 0;
-    transform: translateY(8px);
-    transition: all 0.3s $ease-out-expo;
+    transform: translateY(6px);
+    transition: all 0.25s $ease-out-expo;
   }
 }
 
 .empty-state {
-  padding: 80px 0;
+  padding: 72px 0;
   background: #fff;
-  border-radius: 24px;
-  margin: 24px 0;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 20px;
+  margin: 20px 0;
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
 }
 
 // 响应式
@@ -570,22 +573,22 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   }
   .prod-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 10px;
   }
 
   .prod-card {
-    border-radius: 16px;
+    border-radius: 14px;
 
     .prod-img {
-      height: 180px;
+      height: 160px;
     }
 
     .prod-info {
-      padding: 14px;
+      padding: 12px;
     }
 
     .prod-price {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 }

@@ -88,12 +88,25 @@ const handleLogin = async () => {
 // 缓动函数
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
+// 颜色变量 - 淡蓝色系
+$primary: #4A9FD4;
+$primary-light: #6BB8E8;
+$primary-dark: #3A8BC4;
+$primary-bg: #F0F7FC;
+
+$text-primary: #1E293B;
+$text-regular: #334155;
+$text-secondary: #64748B;
+$text-tertiary: #94A3B8;
+
+$border-light: #E2E8F0;
+
 .login-page {
   min-height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #e4393c 0%, #ff6700 50%, #ff4500 100%);
+  background: linear-gradient(135deg, $primary 0%, $primary-light 50%, $primary-dark 100%);
   position: relative;
   overflow: hidden;
 
@@ -139,18 +152,18 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .login-box {
-  width: 420px;
-  padding: 48px 44px;
+  width: 400px;
+  padding: 44px 40px;
   background: rgba(255, 255, 255, 0.98);
-  border-radius: 24px;
+  border-radius: 20px;
   box-shadow:
-    0 25px 80px rgba(0, 0, 0, 0.25),
-    0 10px 30px rgba(0, 0, 0, 0.1);
+    0 22px 70px rgba(0, 0, 0, 0.2),
+    0 8px 25px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 1;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  animation: fadeInUp 0.6s $ease-out-expo;
+  animation: fadeInUp 0.5s $ease-out-expo;
 
   &::before {
     content: '';
@@ -158,77 +171,77 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #ff6700, #ff4500, #e4393c);
-    border-radius: 24px 24px 0 0;
+    height: 3px;
+    background: linear-gradient(90deg, $primary, $primary-light, $primary-dark);
+    border-radius: 20px 20px 0 0;
   }
 
   h2 {
     text-align: center;
-    margin-bottom: 36px;
-    color: #1a1a1a;
-    font-weight: 700;
-    font-size: 26px;
-    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    margin-bottom: 32px;
+    color: $text-primary;
+    font-weight: 600;
+    font-size: 24px;
+    font-family: 'Outfit', 'Noto Sans SC', sans-serif;
     letter-spacing: -0.02em;
   }
 
   :deep(.el-form-item) {
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
 
   :deep(.el-input__wrapper) {
-    border-radius: 12px;
-    padding: 4px 16px;
+    border-radius: 10px;
+    padding: 3px 14px;
     box-shadow: none;
-    border: 2px solid #e8e4de;
-    background: #faf9f7;
-    transition: all 0.3s $ease-out-expo;
+    border: 1.5px solid $border-light;
+    background: $primary-bg;
+    transition: all 0.25s $ease-out-expo;
 
     &:hover {
-      border-color: #d4cfc6;
+      border-color: #CBD5E1;
     }
 
     &.is-focus {
-      border-color: #ff6700;
+      border-color: $primary;
       background: #fff;
-      box-shadow: 0 0 0 4px rgba(255, 103, 0, 0.1);
+      box-shadow: 0 0 0 3px rgba(74, 159, 212, 0.12);
     }
   }
 
   :deep(.el-input__inner) {
-    height: 48px;
-    font-size: 15px;
-    font-weight: 450;
+    height: 44px;
+    font-size: 14px;
+    font-weight: 400;
 
     &::placeholder {
-      color: #999;
+      color: $text-tertiary;
       font-weight: 400;
     }
   }
 
   :deep(.el-input__prefix) {
-    font-size: 18px;
-    color: #999;
+    font-size: 16px;
+    color: $text-tertiary;
   }
 
   .login-btn {
     width: 100%;
-    height: 52px;
-    font-size: 16px;
+    height: 48px;
+    font-size: 15px;
     font-weight: 600;
-    letter-spacing: 0.05em;
-    background: linear-gradient(135deg, #ff6700 0%, #ff4500 100%);
+    letter-spacing: 0.03em;
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
     border: none;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(255, 103, 0, 0.35);
-    transition: all 0.35s $ease-out-expo;
-    margin-top: 8px;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(74, 159, 212, 0.32);
+    transition: all 0.3s $ease-out-expo;
+    margin-top: 6px;
 
     &:hover {
-      background: linear-gradient(135deg, #ff8c42 0%, #ff6700 100%);
+      background: linear-gradient(135deg, $primary-light 0%, $primary 100%);
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(255, 103, 0, 0.45);
+      box-shadow: 0 7px 24px rgba(74, 159, 212, 0.4);
     }
 
     &:active {
@@ -238,21 +251,21 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   .login-footer {
     text-align: center;
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 1px solid #f0ede8;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid $border-light;
 
     a {
-      color: #666;
-      font-size: 14px;
-      font-weight: 450;
-      transition: all 0.25s $ease-out-expo;
-      padding: 6px 12px;
-      border-radius: 8px;
+      color: $text-secondary;
+      font-size: 13px;
+      font-weight: 400;
+      transition: all 0.2s $ease-out-expo;
+      padding: 5px 12px;
+      border-radius: 6px;
 
       &:hover {
-        color: #ff6700;
-        background: rgba(255, 103, 0, 0.06);
+        color: $primary;
+        background: $primary-bg;
       }
     }
   }
@@ -261,7 +274,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -272,17 +285,17 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 // 响应式
 @media (max-width: 480px) {
   .login-page {
-    padding: 20px;
+    padding: 18px;
   }
 
   .login-box {
     width: 100%;
-    padding: 36px 28px;
-    border-radius: 20px;
+    padding: 32px 24px;
+    border-radius: 16px;
 
     h2 {
-      font-size: 22px;
-      margin-bottom: 28px;
+      font-size: 20px;
+      margin-bottom: 26px;
     }
   }
 }

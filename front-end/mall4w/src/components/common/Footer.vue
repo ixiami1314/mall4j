@@ -68,64 +68,85 @@ const { t } = useI18n()
 </script>
 
 <style lang="scss" scoped>
+// 颜色变量 - 淡蓝色系
+$primary: #4A9FD4;
+$primary-light: #6BB8E8;
+
 .footer {
-  background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%);
+  background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
   color: #fff;
   margin-top: auto;
 }
+
 .footer-top {
-  padding: 40px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 44px 0 36px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 .footer-links {
   display: flex;
   justify-content: space-between;
 }
+
 .link-group {
   h4 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     color: #fff;
+    font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+    letter-spacing: 0.01em;
   }
+
   a {
     display: block;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 13px;
-    line-height: 2.2;
-    transition: color 0.2s;
+    line-height: 2.1;
+    transition: all 0.2s ease;
+
     &:hover {
-      color: #fff;
+      color: $primary-light;
+      transform: translateX(2px);
     }
   }
 }
+
 .footer-bottom {
   padding: 24px 0;
   text-align: center;
 }
+
 .footer-info {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-bottom: 20px;
+  gap: 36px;
+  margin-bottom: 18px;
 }
+
 .contact-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 13px;
+
   .el-icon {
-    color: #3a86b9;
+    color: $primary;
+    font-size: 15px;
   }
 }
+
 .copyright {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.4);
+
   a {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.2s;
+
     &:hover {
-      color: #fff;
+      color: $primary-light;
     }
   }
 }
@@ -133,20 +154,22 @@ const { t } = useI18n()
 @media (max-width: 992px) {
   .footer-links {
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 28px;
   }
+
   .link-group {
-    flex: 0 0 calc(33.33% - 20px);
+    flex: 0 0 calc(33.33% - 18px);
   }
 }
 
 @media (max-width: 576px) {
   .link-group {
-    flex: 0 0 calc(50% - 15px);
+    flex: 0 0 calc(50% - 14px);
   }
+
   .footer-info {
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 }
 </style>

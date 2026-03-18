@@ -11,7 +11,7 @@
     <div v-if="cartItems.length === 0" class="empty-cart">
       <el-empty :description="t('cart.empty')">
         <template #image>
-          <el-icon :size="100" color="#ddd"><ShoppingCart /></el-icon>
+          <el-icon :size="88" color="#CBD5E1"><ShoppingCart /></el-icon>
         </template>
         <el-button type="primary" size="large" @click="$router.push('/')">{{ t('cart.goShopping') }}</el-button>
       </el-empty>
@@ -336,46 +336,65 @@ const goProd = (prodId) => {
 // 缓动函数
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
+// 颜色变量 - 淡蓝色系
+$primary: #4A9FD4;
+$primary-light: #6BB8E8;
+$primary-dark: #3A8BC4;
+$primary-bg: #F0F7FC;
+
+$danger: #DC2626;
+$danger-light: #EF4444;
+
+$text-primary: #1E293B;
+$text-regular: #334155;
+$text-secondary: #64748B;
+$text-tertiary: #94A3B8;
+
+$bg-page: #F8FAFC;
+$bg-secondary: #F1F5F9;
+
+$border-light: #E2E8F0;
+
 .cart-page {
   max-width: 1200px;
-  margin: 24px auto;
+  margin: 20px auto;
 }
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
-  animation: fadeIn 0.5s $ease-out-expo;
+  margin-bottom: 20px;
+  animation: fadeIn 0.4s $ease-out-expo;
 
   h2 {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 24px;
-    font-weight: 700;
-    color: #1a1a1a;
-    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    color: $text-primary;
+    font-family: 'Outfit', 'Noto Sans SC', sans-serif;
 
     .el-icon {
-      color: #ff6700;
+      color: $primary;
     }
   }
 
   .cart-count {
-    color: #666;
-    font-size: 14px;
-    font-weight: 450;
-    padding: 6px 16px;
-    background: rgba(255, 103, 0, 0.06);
-    border-radius: 20px;
+    color: $text-secondary;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 5px 14px;
+    background: $bg-page;
+    border-radius: 16px;
   }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -385,18 +404,18 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 .empty-cart {
   background: #fff;
-  border-radius: 24px;
-  padding: 100px 0;
+  border-radius: 20px;
+  padding: 88px 0;
   text-align: center;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .cart-content {
   background: #fff;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
@@ -405,79 +424,79 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   margin-bottom: 0;
 
   &:not(:last-child) {
-    border-bottom: 1px solid #f0ede8;
+    border-bottom: 1px solid $border-light;
   }
 }
 
 .shop-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 20px 24px;
-  background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 100%);
-  border-bottom: 1px solid #f0ede8;
+  gap: 12px;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, $bg-page 0%, $bg-secondary 100%);
+  border-bottom: 1px solid $border-light;
 }
 
 .shop-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 
   .el-icon {
-    color: #ff6700;
-    font-size: 18px;
+    color: $primary;
+    font-size: 17px;
   }
 }
 
 .shop-name {
   font-weight: 600;
-  color: #1a1a1a;
-  font-size: 15px;
+  color: $text-primary;
+  font-size: 14px;
 }
 
 // 商品项
 .discount-section {
-  padding: 0 24px;
+  padding: 0 22px;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
-  padding: 24px 0;
-  border-bottom: 1px solid #f5f3f0;
-  gap: 20px;
-  transition: background 0.25s $ease-out-expo;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  gap: 18px;
+  transition: background 0.2s $ease-out-expo;
 
   &:last-child {
     border-bottom: none;
   }
 
   &:hover {
-    background: rgba(255, 103, 0, 0.02);
-    margin: 0 -24px;
-    padding-left: 24px;
-    padding-right: 24px;
+    background: rgba(74, 159, 212, 0.02);
+    margin: 0 -22px;
+    padding-left: 22px;
+    padding-right: 22px;
   }
 }
 
 .item-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 16px;
+  width: 90px;
+  height: 90px;
+  border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
   flex-shrink: 0;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s $ease-out-expo;
+    transition: transform 0.35s $ease-out-expo;
   }
 
   &:hover img {
-    transform: scale(1.08);
+    transform: scale(1.06);
   }
 }
 
@@ -486,82 +505,82 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   min-width: 0;
 
   .item-name {
-    font-size: 15px;
-    color: #333;
+    font-size: 14px;
+    color: $text-regular;
     cursor: pointer;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: 1.5;
-    font-weight: 450;
-    transition: color 0.25s;
+    font-weight: 400;
+    transition: color 0.2s;
 
     &:hover {
-      color: #ff6700;
+      color: $primary;
     }
   }
 
   .item-sku {
-    margin-top: 10px;
+    margin-top: 8px;
   }
 }
 
 .item-price {
-  width: 100px;
+  width: 90px;
   text-align: center;
 
   .price {
-    font-size: 16px;
-    color: #666;
-    font-weight: 450;
+    font-size: 14px;
+    color: $text-secondary;
+    font-weight: 400;
   }
 }
 
 .item-count {
-  width: 140px;
+  width: 130px;
   text-align: center;
 
   :deep(.el-input-number) {
-    width: 120px;
+    width: 110px;
   }
 
   :deep(.el-input__wrapper) {
-    border-radius: 10px;
-    border-color: #e8e4de;
+    border-radius: 8px;
+    border-color: $border-light;
 
     &:hover {
-      border-color: #d4cfc6;
+      border-color: $border-light;
     }
   }
 }
 
 .item-total {
-  width: 120px;
+  width: 110px;
   text-align: center;
 
   .total {
-    font-size: 20px;
-    color: #e4393c;
+    font-size: 18px;
+    color: $danger;
     font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', sans-serif;
 
     &::before {
       content: '¥';
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 }
 
 .item-actions {
-  width: 80px;
+  width: 70px;
   text-align: center;
 
   .el-button {
-    transition: all 0.25s $ease-out-expo;
+    transition: all 0.2s $ease-out-expo;
 
     &:hover {
-      color: #ff4757;
+      color: $danger-light;
     }
   }
 }
@@ -571,9 +590,9 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 28px;
-  background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 100%);
-  border-top: 1px solid #f0ede8;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, $bg-page 0%, $bg-secondary 100%);
+  border-top: 1px solid $border-light;
   position: sticky;
   bottom: 0;
 }
@@ -581,73 +600,73 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .footer-left {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 
   .el-button {
-    font-weight: 450;
+    font-weight: 400;
   }
 }
 
 .footer-right {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 .price-summary {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 8px;
 }
 
 .selected-count {
-  color: #666;
-  font-size: 14px;
-  font-weight: 450;
+  color: $text-secondary;
+  font-size: 13px;
+  font-weight: 400;
 
   em {
-    color: #ff6700;
+    color: $primary;
     font-weight: 600;
     font-style: normal;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', sans-serif;
   }
 }
 
 .total-label {
-  color: #333;
-  font-size: 14px;
-  font-weight: 450;
+  color: $text-regular;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .total-price {
-  color: #e4393c;
-  font-size: 14px;
-  font-weight: 450;
+  color: $danger;
+  font-size: 13px;
+  font-weight: 400;
 
   em {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     font-style: normal;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', sans-serif;
   }
 }
 
 .checkout-btn {
-  width: 180px;
-  height: 52px;
-  font-size: 16px;
+  width: 160px;
+  height: 48px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #e4393c 0%, #c41e24 100%);
+  letter-spacing: 0.01em;
+  border-radius: 12px;
+  background: linear-gradient(135deg, $danger 0%, #B91C1C 100%);
   border: none;
-  box-shadow: 0 6px 20px rgba(228, 57, 60, 0.35);
-  transition: all 0.35s $ease-out-expo;
+  box-shadow: 0 5px 16px rgba(220, 38, 38, 0.3);
+  transition: all 0.3s $ease-out-expo;
 
   &:hover:not(:disabled) {
-    background: linear-gradient(135deg, #ff4757 0%, #e4393c 100%);
+    background: linear-gradient(135deg, $danger-light 0%, $danger 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(228, 57, 60, 0.45);
+    box-shadow: 0 7px 22px rgba(220, 38, 38, 0.38);
   }
 
   &:disabled {
@@ -658,75 +677,75 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 // 推荐商品
 .recommend-section {
-  margin-top: 32px;
+  margin-top: 28px;
   background: #fff;
-  border-radius: 24px;
-  padding: 28px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
-  animation: fadeIn 0.6s $ease-out-expo 0.1s both;
+  animation: fadeIn 0.5s $ease-out-expo 0.1s both;
 
   h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    padding-left: 16px;
-    border-left: 4px solid #ff6700;
-    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
-    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-left: 14px;
+    border-left: 3px solid $primary;
+    font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+    color: $text-primary;
   }
 }
 
 .recommend-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  gap: 14px;
 }
 
 .recommend-item {
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
-  transition: all 0.35s $ease-out-expo;
+  transition: all 0.3s $ease-out-expo;
   border: 1px solid rgba(0, 0, 0, 0.04);
 
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-    border-color: rgba(255, 103, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(74, 159, 212, 0.12);
+    border-color: rgba(74, 159, 212, 0.15);
 
     img {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
   }
 
   img {
     width: 100%;
-    height: 160px;
+    height: 150px;
     object-fit: cover;
-    transition: transform 0.4s $ease-out-expo;
+    transition: transform 0.35s $ease-out-expo;
   }
 
   .rec-name {
-    padding: 12px;
-    font-size: 13px;
-    color: #333;
+    padding: 10px;
+    font-size: 12px;
+    color: $text-regular;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-weight: 450;
+    font-weight: 400;
   }
 
   .rec-price {
-    padding: 0 12px 12px;
-    font-size: 18px;
-    color: #e4393c;
+    padding: 0 10px 10px;
+    font-size: 16px;
+    color: $danger;
     font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', sans-serif;
 
     &::before {
       content: '¥';
-      font-size: 12px;
+      font-size: 11px;
     }
   }
 }
@@ -740,20 +759,20 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 @media (max-width: 768px) {
   .cart-page {
-    margin: 16px auto;
+    margin: 14px auto;
   }
 
   .page-header h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .cart-item {
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
   }
 
   .item-info {
-    width: calc(100% - 120px);
+    width: calc(100% - 110px);
   }
 
   .item-price, .item-count, .item-total, .item-actions {

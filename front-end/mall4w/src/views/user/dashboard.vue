@@ -7,7 +7,7 @@
         <p>{{ t('user.dashboard.welcomeSubtitle') }}</p>
       </div>
       <div class="welcome-img">
-        <el-icon :size="80" color="#ff6700"><User /></el-icon>
+        <el-icon :size="72" color="#4A9FD4"><User /></el-icon>
       </div>
     </div>
 
@@ -21,7 +21,7 @@
         <div class="shortcut-item" @click="goOrder(1)">
           <div class="shortcut-icon">
             <el-badge :value="orderCount.unPay" :hidden="!orderCount.unPay" :max="99">
-              <el-icon :size="28"><Wallet /></el-icon>
+              <el-icon :size="26"><Wallet /></el-icon>
             </el-badge>
           </div>
           <span>{{ t('user.dashboard.pendingPayment') }}</span>
@@ -29,7 +29,7 @@
         <div class="shortcut-item" @click="goOrder(2)">
           <div class="shortcut-icon">
             <el-badge :value="orderCount.payed" :hidden="!orderCount.payed" :max="99">
-              <el-icon :size="28"><Box /></el-icon>
+              <el-icon :size="26"><Box /></el-icon>
             </el-badge>
           </div>
           <span>{{ t('user.dashboard.pendingShipment') }}</span>
@@ -37,14 +37,14 @@
         <div class="shortcut-item" @click="goOrder(3)">
           <div class="shortcut-icon">
             <el-badge :value="orderCount.consignment" :hidden="!orderCount.consignment" :max="99">
-              <el-icon :size="28"><Van /></el-icon>
+              <el-icon :size="26"><Van /></el-icon>
             </el-badge>
           </div>
           <span>{{ t('user.dashboard.pendingReceipt') }}</span>
         </div>
         <div class="shortcut-item" @click="goOrder(5)">
           <div class="shortcut-icon">
-            <el-icon :size="28"><CircleCheck /></el-icon>
+            <el-icon :size="26"><CircleCheck /></el-icon>
           </div>
           <span>{{ t('user.dashboard.completed') }}</span>
         </div>
@@ -78,19 +78,19 @@
       </div>
       <div class="quick-menu-grid">
         <div class="menu-item" @click="$router.push('/user/address')">
-          <el-icon :size="24"><Location /></el-icon>
+          <el-icon :size="22"><Location /></el-icon>
           <span>{{ t('user.center.myAddress') }}</span>
         </div>
         <div class="menu-item" @click="$router.push('/user/collection')">
-          <el-icon :size="24"><Star /></el-icon>
+          <el-icon :size="22"><Star /></el-icon>
           <span>{{ t('user.center.myCollection') }}</span>
         </div>
         <div class="menu-item" @click="$router.push('/user/coupon')">
-          <el-icon :size="24"><Ticket /></el-icon>
+          <el-icon :size="22"><Ticket /></el-icon>
           <span>{{ t('user.dashboard.couponShort') }}</span>
         </div>
         <div class="menu-item" @click="$router.push('/user/order')">
-          <el-icon :size="24"><List /></el-icon>
+          <el-icon :size="22"><List /></el-icon>
           <span>{{ t('user.dashboard.allOrders') }}</span>
         </div>
       </div>
@@ -106,7 +106,6 @@ import { User, Wallet, Box, Van, CircleCheck, Location, Star, Ticket, List } fro
 import { getOrderCount } from '@/api/order'
 import { getCollectionCount } from '@/api/collection'
 import { getAddressList } from '@/api/address'
-import http from '@/utils/http'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -171,8 +170,27 @@ const goOrder = (status) => {
 // 缓动函数
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
+// 颜色变量 - 淡蓝色系
+$primary: #4A9FD4;
+$primary-light: #6BB8E8;
+$primary-dark: #3A8BC4;
+$primary-bg: #F0F7FC;
+$primary-surface: #E8F2FA;
+
+$danger: #DC2626;
+
+$text-primary: #1E293B;
+$text-regular: #334155;
+$text-secondary: #64748B;
+$text-tertiary: #94A3B8;
+
+$bg-page: #F8FAFC;
+$bg-secondary: #F1F5F9;
+
+$border-light: #E2E8F0;
+
 .user-dashboard {
-  padding: 12px;
+  padding: 10px;
 }
 
 // 欢迎区域
@@ -180,13 +198,13 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #fff8f5 0%, #fff5f0 100%);
-  border-radius: 20px;
-  padding: 28px 32px;
-  margin-bottom: 28px;
+  background: linear-gradient(135deg, $primary-bg 0%, $primary-surface 100%);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 103, 0, 0.08);
+  border: 1px solid rgba(74, 159, 212, 0.1);
 
   &::before {
     content: '';
@@ -194,19 +212,19 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #ff6700, #ff4500);
+    height: 2px;
+    background: linear-gradient(90deg, $primary, $primary-dark);
   }
 
   // 装饰性背景
   &::after {
     content: '';
     position: absolute;
-    right: -50px;
-    top: -50px;
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle, rgba(255, 103, 0, 0.1) 0%, transparent 70%);
+    right: -40px;
+    top: -40px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(74, 159, 212, 0.12) 0%, transparent 70%);
     border-radius: 50%;
   }
 
@@ -215,18 +233,18 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1;
 
     h2 {
-      font-size: 26px;
-      color: #1a1a1a;
-      margin-bottom: 10px;
-      font-weight: 700;
-      font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+      font-size: 24px;
+      color: $text-primary;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-family: 'Outfit', 'Noto Sans SC', sans-serif;
       letter-spacing: -0.01em;
     }
 
     p {
-      color: #666;
-      font-size: 15px;
-      font-weight: 450;
+      color: $text-secondary;
+      font-size: 14px;
+      font-weight: 400;
     }
   }
 
@@ -243,7 +261,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
 }
 
@@ -252,37 +270,37 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 
   h3 {
-    font-size: 20px;
-    font-weight: 700;
-    color: #1a1a1a;
-    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: $text-primary;
+    font-family: 'Outfit', 'Noto Sans SC', sans-serif;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 
     &::before {
       content: '';
-      width: 5px;
-      height: 5px;
-      background: #ff6700;
+      width: 4px;
+      height: 4px;
+      background: $primary;
       border-radius: 50%;
     }
   }
 
   .view-all {
-    color: #666;
-    font-size: 14px;
-    font-weight: 450;
-    padding: 6px 14px;
-    border-radius: 16px;
-    transition: all 0.25s $ease-out-expo;
+    color: $text-secondary;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 5px 12px;
+    border-radius: 14px;
+    transition: all 0.2s $ease-out-expo;
 
     &:hover {
-      color: #ff6700;
-      background: rgba(255, 103, 0, 0.06);
+      color: $primary;
+      background: rgba(74, 159, 212, 0.08);
     }
   }
 }
@@ -290,11 +308,11 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 // 订单快捷入口
 .order-section {
   background: #fff;
-  border-radius: 20px;
-  padding: 24px;
-  margin-bottom: 28px;
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 24px;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.03);
 }
 
 .order-shortcuts {
@@ -306,20 +324,20 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 36px;
+  padding: 18px 32px;
   cursor: pointer;
-  border-radius: 16px;
-  transition: all 0.35s $ease-out-expo;
+  border-radius: 14px;
+  transition: all 0.3s $ease-out-expo;
   position: relative;
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #fff8f5 0%, #ffefea 100%);
+    border-radius: 14px;
+    background: linear-gradient(135deg, $primary-bg 0%, $primary-surface 100%);
     opacity: 0;
-    transition: opacity 0.35s $ease-out-expo;
+    transition: opacity 0.3s $ease-out-expo;
   }
 
   &:hover {
@@ -328,23 +346,23 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .shortcut-icon {
-      color: #ff6700;
-      transform: scale(1.15);
+      color: $primary;
+      transform: scale(1.1);
     }
   }
 
   .shortcut-icon {
-    color: #666;
-    margin-bottom: 12px;
-    transition: all 0.35s $ease-out-expo;
+    color: $text-secondary;
+    margin-bottom: 10px;
+    transition: all 0.3s $ease-out-expo;
     position: relative;
     z-index: 1;
   }
 
   span {
-    font-size: 14px;
-    color: #333;
-    font-weight: 450;
+    font-size: 13px;
+    color: $text-regular;
+    font-weight: 400;
     position: relative;
     z-index: 1;
   }
@@ -354,21 +372,21 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .stats-section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin-bottom: 28px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .stat-card {
   background: #fff;
-  border-radius: 20px;
-  padding: 28px 20px;
+  border-radius: 16px;
+  padding: 24px 18px;
   text-align: center;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  transition: all 0.35s $ease-out-expo;
+  transition: all 0.3s $ease-out-expo;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.03);
 
   &::before {
     content: '';
@@ -376,100 +394,100 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 2px;
     background: transparent;
-    transition: background 0.35s $ease-out-expo;
+    transition: background 0.3s $ease-out-expo;
   }
 
   &:hover {
-    border-color: rgba(255, 103, 0, 0.15);
-    box-shadow: 0 8px 24px rgba(255, 103, 0, 0.1);
-    transform: translateY(-4px);
+    border-color: rgba(74, 159, 212, 0.15);
+    box-shadow: 0 6px 20px rgba(74, 159, 212, 0.1);
+    transform: translateY(-3px);
 
     &::before {
-      background: linear-gradient(90deg, #ff6700, #ff4500);
+      background: linear-gradient(90deg, $primary, $primary-dark);
     }
 
     .stat-num {
-      color: #ff6700;
-      transform: scale(1.05);
+      color: $primary;
+      transform: scale(1.04);
     }
   }
 
   .stat-num {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 700;
-    color: #e4393c;
-    margin-bottom: 10px;
-    font-family: 'Space Grotesk', sans-serif;
-    transition: all 0.3s $ease-out-expo;
+    color: $danger;
+    margin-bottom: 8px;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.25s $ease-out-expo;
   }
 
   .stat-label {
-    font-size: 14px;
-    color: #666;
-    font-weight: 450;
+    font-size: 13px;
+    color: $text-secondary;
+    font-weight: 400;
   }
 }
 
 // 快捷功能
 .quick-menu-section {
   background: #fff;
-  border-radius: 20px;
-  padding: 24px;
+  border-radius: 16px;
+  padding: 22px;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.03);
 }
 
 .quick-menu-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 14px;
 }
 
 .menu-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 16px;
+  padding: 20px 14px;
   cursor: pointer;
-  border-radius: 16px;
-  transition: all 0.35s $ease-out-expo;
-  color: #666;
+  border-radius: 14px;
+  transition: all 0.3s $ease-out-expo;
+  color: $text-secondary;
   position: relative;
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #fff8f5 0%, #ffefea 100%);
+    border-radius: 14px;
+    background: linear-gradient(135deg, $primary-bg 0%, $primary-surface 100%);
     opacity: 0;
-    transition: opacity 0.35s $ease-out-expo;
+    transition: opacity 0.3s $ease-out-expo;
   }
 
   &:hover {
-    color: #ff6700;
+    color: $primary;
 
     &::before {
       opacity: 1;
     }
 
     .el-icon {
-      transform: scale(1.15) translateY(-4px);
+      transform: scale(1.1) translateY(-3px);
     }
   }
 
   .el-icon {
-    margin-bottom: 12px;
-    transition: all 0.35s $ease-out-expo;
+    margin-bottom: 10px;
+    transition: all 0.3s $ease-out-expo;
     position: relative;
     z-index: 1;
   }
 
   span {
-    font-size: 14px;
-    font-weight: 450;
+    font-size: 13px;
+    font-weight: 400;
     position: relative;
     z-index: 1;
   }
@@ -488,10 +506,10 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 @media (max-width: 768px) {
   .welcome-section {
-    padding: 20px 24px;
+    padding: 18px 20px;
 
     .welcome-text h2 {
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .welcome-img {
@@ -501,18 +519,18 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   .order-shortcuts {
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
 
   .shortcut-item {
-    padding: 16px 24px;
+    padding: 14px 20px;
   }
 
   .stat-card {
-    padding: 24px 16px;
+    padding: 20px 14px;
 
     .stat-num {
-      font-size: 28px;
+      font-size: 26px;
     }
   }
 }

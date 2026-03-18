@@ -5,7 +5,7 @@
       <!-- 用户信息卡片 -->
       <div class="user-card">
         <div class="user-avatar">
-          <el-avatar :size="80" :src="userInfo.pic">
+          <el-avatar :size="76" :src="userInfo.pic">
             {{ userInfo.nickName?.charAt(0) || 'U' }}
           </el-avatar>
           <div class="user-level" v-if="userInfo.level">
@@ -123,19 +123,36 @@ const handleLogout = async () => {
 // 缓动函数
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
+// 颜色变量 - 淡蓝色系
+$primary: #4A9FD4;
+$primary-light: #6BB8E8;
+$primary-dark: #3A8BC4;
+$primary-bg: #F0F7FC;
+
+$danger: #DC2626;
+
+$text-primary: #1E293B;
+$text-regular: #334155;
+$text-secondary: #64748B;
+
+$bg-page: #F8FAFC;
+$bg-secondary: #F1F5F9;
+
+$border-light: #E2E8F0;
+
 .user-center {
   display: flex;
-  gap: 28px;
+  gap: 24px;
   max-width: 1200px;
-  margin: 24px auto;
+  margin: 20px auto;
   min-height: calc(100vh - 180px);
-  animation: fadeIn 0.5s $ease-out-expo;
+  animation: fadeIn 0.4s $ease-out-expo;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -145,21 +162,21 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 // 侧边栏
 .user-aside {
-  width: 280px;
+  width: 260px;
   flex-shrink: 0;
 }
 
 // 用户卡片
 .user-card {
-  background: linear-gradient(135deg, #ff6700 0%, #ff4500 100%);
-  border-radius: 24px;
-  padding: 36px 24px;
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+  border-radius: 20px;
+  padding: 32px 22px;
   text-align: center;
   color: #fff;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(255, 103, 0, 0.25);
+  box-shadow: 0 6px 28px rgba(74, 159, 212, 0.25);
 
   &::before {
     content: '';
@@ -168,7 +185,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     right: -50%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -179,7 +196,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     left: -30%;
     width: 80%;
     height: 80%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
     pointer-events: none;
   }
 }
@@ -187,97 +204,97 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .user-avatar {
   position: relative;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 
   :deep(.el-avatar) {
-    border: 4px solid rgba(255, 255, 255, 0.35);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.18);
     font-weight: 600;
   }
 }
 
 .user-level {
   position: absolute;
-  bottom: -6px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
 
   :deep(.el-tag) {
     font-weight: 600;
     border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   }
 }
 
 .user-name {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: 0.01em;
 }
 
 .user-phone {
-  font-size: 14px;
+  font-size: 13px;
   opacity: 0.85;
-  font-weight: 450;
+  font-weight: 400;
 }
 
 // 菜单区域
 .menu-section {
   background: #fff;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .user-menu {
   border-right: none;
-  padding: 8px;
+  padding: 6px;
 
   :deep(.el-menu-item) {
-    height: 56px;
-    line-height: 56px;
-    margin: 4px 0;
-    border-radius: 12px;
-    transition: all 0.3s $ease-out-expo;
-    font-weight: 450;
+    height: 52px;
+    line-height: 52px;
+    margin: 3px 0;
+    border-radius: 10px;
+    transition: all 0.25s $ease-out-expo;
+    font-weight: 400;
 
     &:hover {
-      background: rgba(255, 103, 0, 0.04);
+      background: rgba(74, 159, 212, 0.04);
     }
 
     &.is-active {
-      background: linear-gradient(135deg, #fff8f5 0%, #fff3ed 100%);
-      color: #ff6700;
+      background: linear-gradient(135deg, $primary-bg 0%, #E8F2FA 100%);
+      color: $primary;
       font-weight: 600;
-      box-shadow: inset 3px 0 0 #ff6700;
+      box-shadow: inset 3px 0 0 $primary;
     }
 
     .el-icon {
-      font-size: 18px;
-      margin-right: 14px;
+      font-size: 17px;
+      margin-right: 12px;
     }
   }
 }
 
 // 退出登录
 .logout-section {
-  margin-top: 24px;
-  padding: 0 8px;
+  margin-top: 20px;
+  padding: 0 6px;
 
   .el-button {
     width: 100%;
-    height: 52px;
-    font-size: 15px;
+    height: 48px;
+    font-size: 14px;
     font-weight: 500;
-    border-radius: 14px;
-    transition: all 0.3s $ease-out-expo;
+    border-radius: 12px;
+    transition: all 0.25s $ease-out-expo;
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(228, 57, 60, 0.25);
+      box-shadow: 0 5px 18px rgba(220, 38, 38, 0.22);
     }
   }
 }
@@ -286,10 +303,10 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .user-main {
   flex: 1;
   background: #fff;
-  border-radius: 24px;
-  padding: 28px;
-  min-height: 600px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 20px;
+  padding: 24px;
+  min-height: 560px;
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
@@ -297,7 +314,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 @media (max-width: 992px) {
   .user-center {
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
   }
 
   .user-aside {
@@ -308,8 +325,8 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     align-items: center;
     text-align: left;
-    padding: 24px;
-    gap: 20px;
+    padding: 20px;
+    gap: 18px;
 
     .user-avatar {
       margin-bottom: 0;
@@ -329,15 +346,15 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px;
-      padding: 12px;
+      gap: 6px;
+      padding: 10px;
     }
 
     :deep(.el-menu-item) {
       flex: 0 0 auto;
-      height: 44px;
-      line-height: 44px;
-      padding: 0 20px !important;
+      height: 42px;
+      line-height: 42px;
+      padding: 0 18px !important;
     }
   }
 
@@ -348,8 +365,8 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 @media (max-width: 576px) {
   .user-main {
-    padding: 20px;
-    border-radius: 20px;
+    padding: 18px;
+    border-radius: 16px;
   }
 }
 </style>

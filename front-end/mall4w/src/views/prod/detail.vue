@@ -330,20 +330,41 @@ const handleBuyNow = async () => {
 // 缓动函数
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
+// 颜色变量 - 淡蓝色系
+$primary: #4A9FD4;
+$primary-light: #6BB8E8;
+$primary-dark: #3A8BC4;
+$primary-bg: #F0F7FC;
+$primary-surface: #E8F2FA;
+
+$danger: #DC2626;
+$danger-light: #EF4444;
+
+$text-primary: #1E293B;
+$text-regular: #334155;
+$text-secondary: #64748B;
+$text-tertiary: #94A3B8;
+
+$bg-page: #F8FAFC;
+$bg-secondary: #F1F5F9;
+
+$border-light: #E2E8F0;
+$border-base: #CBD5E1;
+
 .prod-detail {
   background: #fff;
-  border-radius: 24px;
-  padding: 32px;
-  margin: 24px auto;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 20px;
+  padding: 28px;
+  margin: 20px auto;
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.03);
-  animation: fadeIn 0.5s $ease-out-expo;
+  animation: fadeIn 0.4s $ease-out-expo;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -353,59 +374,59 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 .prod-main {
   display: flex;
-  gap: 48px;
-  margin-bottom: 40px;
+  gap: 40px;
+  margin-bottom: 36px;
 }
 
 // 商品图片区
 .prod-gallery {
-  width: 500px;
+  width: 480px;
   flex-shrink: 0;
 
   .main-image-wrapper {
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
-    background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 100%);
-    border: 1px solid #f0ede8;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    background: linear-gradient(135deg, $bg-page 0%, $bg-secondary 100%);
+    border: 1px solid $border-light;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.03);
   }
 
   .main-image {
     width: 100%;
-    height: 500px;
+    height: 480px;
   }
 
   .image-error {
     width: 100%;
-    height: 500px;
+    height: 480px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #999;
+    color: $text-tertiary;
 
     .el-icon {
-      font-size: 56px;
-      margin-bottom: 12px;
+      font-size: 48px;
+      margin-bottom: 10px;
       opacity: 0.5;
     }
   }
 
   .image-thumbs {
     display: flex;
-    gap: 12px;
-    margin-top: 16px;
+    gap: 10px;
+    margin-top: 14px;
   }
 
   .thumb-item {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: all 0.3s $ease-out-expo;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.25s $ease-out-expo;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 
     img {
       width: 100%;
@@ -414,8 +435,8 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     &:hover, &.active {
-      border-color: #ff6700;
-      box-shadow: 0 4px 16px rgba(255, 103, 0, 0.2);
+      border-color: $primary;
+      box-shadow: 0 3px 12px rgba(74, 159, 212, 0.2);
       transform: translateY(-2px);
     }
   }
@@ -426,31 +447,31 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   flex: 1;
 
   .prod-name {
-    font-size: 26px;
-    font-weight: 700;
-    color: #1a1a1a;
+    font-size: 24px;
+    font-weight: 600;
+    color: $text-primary;
     line-height: 1.4;
-    margin-bottom: 14px;
-    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    margin-bottom: 12px;
+    font-family: 'Outfit', 'Noto Sans SC', sans-serif;
     letter-spacing: -0.01em;
   }
 
   .prod-brief {
-    color: #666;
-    font-size: 15px;
-    margin-bottom: 24px;
+    color: $text-secondary;
+    font-size: 14px;
+    margin-bottom: 22px;
     line-height: 1.7;
-    font-weight: 450;
+    font-weight: 400;
   }
 }
 
 // 价格区域
 .price-section {
-  background: linear-gradient(135deg, #fff8f5 0%, #fff5f0 100%);
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 28px;
-  border: 1px solid rgba(255, 103, 0, 0.1);
+  background: linear-gradient(135deg, $primary-bg 0%, $primary-surface 100%);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(74, 159, 212, 0.12);
   position: relative;
   overflow: hidden;
 
@@ -460,109 +481,109 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #ff6700, #ff4500, #e4393c);
+    height: 2px;
+    background: linear-gradient(90deg, $primary, $primary-dark);
   }
 }
 
 .price-row {
   display: flex;
   align-items: baseline;
-  gap: 14px;
+  gap: 12px;
 }
 
 .price-label {
-  color: #999;
-  font-size: 14px;
-  font-weight: 450;
+  color: $text-tertiary;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .price-value {
-  font-size: 36px;
-  color: #e4393c;
+  font-size: 32px;
+  color: $danger;
   font-weight: 700;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Outfit', sans-serif;
 
   &::before {
     content: '¥';
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     margin-right: 2px;
   }
 }
 
 .ori-price {
-  color: #999;
-  font-size: 18px;
+  color: $text-tertiary;
+  font-size: 16px;
   text-decoration: line-through;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
 .price-tags {
-  margin-top: 12px;
+  margin-top: 10px;
 
   .el-tag {
     font-weight: 500;
-    border-radius: 6px;
+    border-radius: 5px;
   }
 }
 
 // SKU 选择
 .sku-section {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .sku-row {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .sku-label {
-  width: 70px;
-  color: #666;
-  font-size: 14px;
-  padding-top: 10px;
+  width: 65px;
+  color: $text-secondary;
+  font-size: 13px;
+  padding-top: 9px;
   flex-shrink: 0;
-  font-weight: 450;
+  font-weight: 400;
 }
 
 .sku-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
 .sku-option {
-  padding: 10px 24px;
-  border: 1.5px solid #e8e4de;
-  border-radius: 10px;
+  padding: 8px 20px;
+  border: 1.5px solid $border-light;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 450;
-  transition: all 0.3s $ease-out-expo;
+  transition: all 0.25s $ease-out-expo;
   background: #fff;
 
   &:hover:not(.disabled) {
-    border-color: #ff6700;
-    color: #ff6700;
-    background: rgba(255, 103, 0, 0.04);
+    border-color: $primary;
+    color: $primary;
+    background: rgba(74, 159, 212, 0.04);
   }
 
   &.active {
-    border-color: #ff6700;
-    background: linear-gradient(135deg, #ff6700 0%, #ff4500 100%);
+    border-color: $primary;
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
     color: #fff;
-    box-shadow: 0 4px 12px rgba(255, 103, 0, 0.25);
+    box-shadow: 0 3px 10px rgba(74, 159, 212, 0.25);
     font-weight: 500;
   }
 
   &.disabled {
-    background: #f5f3f0;
-    color: #ccc;
+    background: $bg-secondary;
+    color: $text-tertiary;
     cursor: not-allowed;
     text-decoration: line-through;
-    border-color: #e8e4de;
+    border-color: $border-light;
   }
 }
 
@@ -570,40 +591,40 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .quantity-section {
   display: flex;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 
   .section-label {
-    width: 70px;
-    color: #666;
-    font-size: 14px;
-    font-weight: 450;
+    width: 65px;
+    color: $text-secondary;
+    font-size: 13px;
+    font-weight: 400;
   }
 
   :deep(.el-input-number) {
-    width: 140px;
+    width: 130px;
   }
 
   :deep(.el-input__wrapper) {
-    border-radius: 10px;
-    border-color: #e8e4de;
-    padding: 4px 12px;
+    border-radius: 8px;
+    border-color: $border-light;
+    padding: 3px 10px;
 
     &:hover {
-      border-color: #d4cfc6;
+      border-color: $border-base;
     }
   }
 
   .stocks-info {
-    margin-left: 24px;
-    color: #999;
-    font-size: 13px;
+    margin-left: 20px;
+    color: $text-tertiary;
+    font-size: 12px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-weight: 450;
+    gap: 5px;
+    font-weight: 400;
 
     .el-icon {
-      color: #ff6700;
+      color: $primary;
     }
   }
 }
@@ -611,90 +632,90 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 // 操作按钮
 .action-section {
   display: flex;
-  gap: 18px;
-  margin-bottom: 28px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .action-btn {
   flex: 1;
-  height: 56px;
-  font-size: 17px;
-  border-radius: 14px;
+  height: 52px;
+  font-size: 15px;
+  border-radius: 12px;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  transition: all 0.35s $ease-out-expo;
+  letter-spacing: 0.01em;
+  transition: all 0.3s $ease-out-expo;
 }
 
 .cart-btn {
-  background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
+  background: linear-gradient(135deg, $primary-light 0%, $primary 100%);
   border: none;
-  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.3);
+  box-shadow: 0 5px 16px rgba(74, 159, 212, 0.25);
 
   &:hover {
-    background: linear-gradient(135deg, #ff8c00 0%, #ff5f00 100%);
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(255, 107, 0, 0.4);
+    box-shadow: 0 7px 22px rgba(74, 159, 212, 0.32);
   }
 }
 
 .buy-btn {
-  background: linear-gradient(135deg, #e4393c 0%, #c41e24 100%);
+  background: linear-gradient(135deg, $danger 0%, #B91C1C 100%);
   border: none;
-  box-shadow: 0 6px 20px rgba(228, 57, 60, 0.3);
+  box-shadow: 0 5px 16px rgba(220, 38, 38, 0.25);
 
   &:hover {
-    background: linear-gradient(135deg, #d63031 0%, #b71c1c 100%);
+    background: linear-gradient(135deg, $danger-light 0%, $danger 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(228, 57, 60, 0.4);
+    box-shadow: 0 7px 22px rgba(220, 38, 38, 0.32);
   }
 }
 
 // 服务保障
 .service-section {
   display: flex;
-  gap: 28px;
-  padding-top: 24px;
-  border-top: 1px solid #f0ede8;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid $border-light;
 }
 
 .service-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #666;
-  font-size: 13px;
-  font-weight: 450;
-  padding: 8px 16px;
-  background: rgba(255, 103, 0, 0.04);
-  border-radius: 8px;
-  transition: all 0.25s $ease-out-expo;
+  gap: 6px;
+  color: $text-secondary;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 7px 14px;
+  background: $bg-page;
+  border-radius: 6px;
+  transition: all 0.2s $ease-out-expo;
 
   &:hover {
-    background: rgba(255, 103, 0, 0.08);
-    color: #ff6700;
+    background: $primary-bg;
+    color: $primary;
   }
 
   .el-icon {
-    color: #ff6700;
-    font-size: 16px;
+    color: $primary;
+    font-size: 14px;
   }
 }
 
 // Tab 区域
 .prod-tabs {
-  margin-top: 40px;
+  margin-top: 36px;
 
   :deep(.el-tabs__nav-wrap::after) {
     height: 1px;
-    background: #f0ede8;
+    background: $border-light;
   }
 
   :deep(.el-tabs__item) {
-    font-size: 16px;
-    padding: 0 28px;
+    font-size: 15px;
+    padding: 0 24px;
     font-weight: 450;
-    height: 52px;
-    line-height: 52px;
+    height: 48px;
+    line-height: 48px;
 
     &.is-active {
       font-weight: 600;
@@ -702,52 +723,52 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   :deep(.el-tabs__active-bar) {
-    height: 3px;
-    border-radius: 2px;
+    height: 2px;
+    border-radius: 1px;
   }
 }
 
 .detail-content {
-  padding: 28px 0;
-  min-height: 300px;
-  line-height: 1.9;
-  font-size: 15px;
-  color: #333;
+  padding: 24px 0;
+  min-height: 280px;
+  line-height: 1.85;
+  font-size: 14px;
+  color: $text-regular;
 
   :deep(img) {
     max-width: 100%;
     display: block;
-    margin: 20px auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    margin: 16px auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.05);
   }
 
   :deep(p) {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 }
 
 // 评论区域
 .comment-list {
-  padding: 24px 0;
+  padding: 20px 0;
 }
 
 .comment-item {
   display: flex;
-  gap: 18px;
-  padding: 24px 0;
-  border-bottom: 1px solid #f5f3f0;
-  transition: background 0.25s;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid $border-light;
+  transition: background 0.2s;
 
   &:last-child {
     border-bottom: none;
   }
 
   &:hover {
-    background: rgba(255, 103, 0, 0.02);
-    margin: 0 -16px;
-    padding-left: 16px;
-    padding-right: 16px;
+    background: rgba(74, 159, 212, 0.02);
+    margin: 0 -14px;
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }
 
@@ -755,7 +776,7 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
 
   :deep(.el-avatar) {
-    background: linear-gradient(135deg, #ff6700 0%, #ff4500 100%);
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
     font-weight: 500;
   }
 }
@@ -767,80 +788,80 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 .comm-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
 .user-name {
   font-weight: 500;
-  color: #333;
-  font-size: 14px;
+  color: $text-regular;
+  font-size: 13px;
 }
 
 .comm-time {
-  color: #999;
-  font-size: 12px;
+  color: $text-tertiary;
+  font-size: 11px;
   margin-left: auto;
-  font-weight: 450;
+  font-weight: 400;
 }
 
 .comm-text {
-  color: #555;
+  color: $text-secondary;
   line-height: 1.7;
-  margin-bottom: 14px;
-  font-size: 14px;
+  margin-bottom: 12px;
+  font-size: 13px;
 }
 
 .comm-images {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .comm-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 10px;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s $ease-out-expo;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s $ease-out-expo;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: scale(1.04);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
   }
 }
 
 .empty-comment {
-  padding: 80px 0;
+  padding: 72px 0;
 }
 
 // 响应式
 @media (max-width: 1024px) {
   .prod-main {
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
   }
 
   .prod-gallery {
     width: 100%;
-    max-width: 500px;
+    max-width: 480px;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 768px) {
   .prod-detail {
-    padding: 20px;
-    border-radius: 20px;
+    padding: 18px;
+    border-radius: 16px;
   }
 
   .prod-info .prod-name {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .price-value {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .action-section {
@@ -849,12 +870,12 @@ $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   .service-section {
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
   }
 
   .service-item {
-    font-size: 12px;
-    padding: 6px 12px;
+    font-size: 11px;
+    padding: 5px 10px;
   }
 }
 </style>
