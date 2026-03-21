@@ -142,100 +142,62 @@ $border-light: #E2E8F0;
 
 .user-center {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   max-width: 1200px;
-  margin: 20px auto;
-  min-height: calc(100vh - 180px);
-  animation: fadeIn 0.4s $ease-out-expo;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin: 16px auto;
+  min-height: calc(100vh - 160px);
 }
 
 // 侧边栏
 .user-aside {
-  width: 260px;
+  width: 220px;
   flex-shrink: 0;
 }
 
 // 用户卡片
 .user-card {
-  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
-  border-radius: 20px;
-  padding: 32px 22px;
+  background: $primary;
+  border-radius: 10px;
+  padding: 24px 18px;
   text-align: center;
   color: #fff;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 6px 28px rgba(74, 159, 212, 0.25);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -30%;
-    left: -30%;
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
+  margin-bottom: 16px;
 }
 
 .user-avatar {
   position: relative;
   display: inline-block;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 
   :deep(.el-avatar) {
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    background: rgba(255, 255, 255, 0.18);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     font-weight: 600;
   }
 }
 
 .user-level {
   position: absolute;
-  bottom: -5px;
+  bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
 
   :deep(.el-tag) {
     font-weight: 600;
     border: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    font-size: 10px;
   }
 }
 
 .user-name {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
-  margin-bottom: 8px;
-  letter-spacing: 0.01em;
+  margin-bottom: 6px;
 }
 
 .user-phone {
-  font-size: 13px;
+  font-size: 12px;
   opacity: 0.85;
   font-weight: 400;
 }
@@ -243,59 +205,55 @@ $border-light: #E2E8F0;
 // 菜单区域
 .menu-section {
   background: #fff;
-  border-radius: 18px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .user-menu {
   border-right: none;
-  padding: 6px;
+  padding: 4px;
 
   :deep(.el-menu-item) {
-    height: 52px;
-    line-height: 52px;
-    margin: 3px 0;
-    border-radius: 10px;
-    transition: all 0.25s $ease-out-expo;
+    height: 44px;
+    line-height: 44px;
+    margin: 2px 0;
+    border-radius: 6px;
+    transition: all 0.15s $ease-out-expo;
     font-weight: 400;
+    font-size: 13px;
 
     &:hover {
       background: rgba(74, 159, 212, 0.04);
     }
 
     &.is-active {
-      background: linear-gradient(135deg, $primary-bg 0%, #E8F2FA 100%);
+      background: $primary-bg;
       color: $primary;
-      font-weight: 600;
-      box-shadow: inset 3px 0 0 $primary;
+      font-weight: 500;
+      box-shadow: inset 2px 0 0 $primary;
     }
 
     .el-icon {
-      font-size: 17px;
-      margin-right: 12px;
+      font-size: 15px;
+      margin-right: 10px;
     }
   }
 }
 
 // 退出登录
 .logout-section {
-  margin-top: 20px;
-  padding: 0 6px;
+  margin-top: 16px;
+  padding: 0 4px;
 
   .el-button {
     width: 100%;
-    height: 48px;
-    font-size: 14px;
+    height: 42px;
+    font-size: 13px;
     font-weight: 500;
-    border-radius: 12px;
-    transition: all 0.25s $ease-out-expo;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 18px rgba(220, 38, 38, 0.22);
-    }
+    border-radius: 8px;
+    transition: all 0.2s $ease-out-expo;
   }
 }
 
@@ -303,18 +261,18 @@ $border-light: #E2E8F0;
 .user-main {
   flex: 1;
   background: #fff;
-  border-radius: 20px;
-  padding: 24px;
-  min-height: 560px;
-  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 500px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 // 响应式
 @media (max-width: 992px) {
   .user-center {
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
 
   .user-aside {
@@ -325,8 +283,8 @@ $border-light: #E2E8F0;
     display: flex;
     align-items: center;
     text-align: left;
-    padding: 20px;
-    gap: 18px;
+    padding: 16px;
+    gap: 14px;
 
     .user-avatar {
       margin-bottom: 0;
@@ -346,15 +304,15 @@ $border-light: #E2E8F0;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 6px;
-      padding: 10px;
+      gap: 4px;
+      padding: 8px;
     }
 
     :deep(.el-menu-item) {
       flex: 0 0 auto;
-      height: 42px;
-      line-height: 42px;
-      padding: 0 18px !important;
+      height: 36px;
+      line-height: 36px;
+      padding: 0 14px !important;
     }
   }
 
@@ -365,8 +323,8 @@ $border-light: #E2E8F0;
 
 @media (max-width: 576px) {
   .user-main {
-    padding: 18px;
-    border-radius: 16px;
+    padding: 16px;
+    border-radius: 8px;
   }
 }
 </style>

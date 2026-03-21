@@ -4,25 +4,9 @@
       <!-- Logo -->
       <div class="logo" @click="$router.push('/')">
         <div class="logo-icon">
-          <el-icon :size="26"><Shop /></el-icon>
+          <el-icon :size="22"><Shop /></el-icon>
         </div>
         <span class="logo-text">mall4w</span>
-      </div>
-
-      <!-- 搜索框 -->
-      <div class="search-box">
-        <div class="search-wrapper">
-          <div class="search-input">
-            <el-icon class="search-icon"><Search /></el-icon>
-            <input
-              v-model="searchKeyword"
-              type="text"
-              :placeholder="t('header.searchPlaceholder')"
-              @keyup.enter="handleSearch"
-            />
-          </div>
-          <button class="search-btn" @click="handleSearch">{{ t('common.search') }}</button>
-        </div>
       </div>
 
       <!-- 导航菜单 -->
@@ -31,16 +15,41 @@
         <router-link to="/category" class="nav-item" active-class="active">{{ t('nav.category') }}</router-link>
       </nav>
 
+      <!-- 搜索框 -->
+      <div class="search-box">
+        <div class="search-wrapper">
+          <el-icon class="search-icon"><Search /></el-icon>
+          <input
+            v-model="searchKeyword"
+            type="text"
+            :placeholder="t('header.searchPlaceholder')"
+            @keyup.enter="handleSearch"
+          />
+          <button class="search-btn" @click="handleSearch">
+            <el-icon :size="14"><Search /></el-icon>
+          </button>
+        </div>
+      </div>
+
       <!-- 用户区域 -->
       <div class="user-area">
+        <!-- 购物车 -->
+        <router-link to="/cart" class="cart-link">
+          <el-badge :value="cartCount" :hidden="cartCount === 0" :max="99">
+            <div class="cart-icon">
+              <el-icon :size="18"><ShoppingCart /></el-icon>
+            </div>
+          </el-badge>
+        </router-link>
+
         <template v-if="isLogin">
           <el-dropdown @command="handleCommand" trigger="click">
             <div class="user-info">
-              <el-avatar :size="32" :src="userStore.pic">
+              <el-avatar :size="30" :src="userStore.pic">
                 {{ userStore.nickName?.charAt(0) || 'U' }}
               </el-avatar>
               <span class="user-name">{{ userStore.nickName || t('nav.user') }}</span>
-              <el-icon><ArrowDown /></el-icon>
+              <el-icon :size="12"><ArrowDown /></el-icon>
             </div>
             <template #dropdown>
               <el-dropdown-menu>
@@ -71,16 +80,6 @@
 
         <!-- 语言切换 -->
         <LocaleSwitch />
-
-        <!-- 购物车 -->
-        <router-link to="/cart" class="cart-link">
-          <el-badge :value="cartCount" :hidden="cartCount === 0" :max="99">
-            <div class="cart-icon">
-              <el-icon :size="20"><ShoppingCart /></el-icon>
-            </div>
-          </el-badge>
-          <span class="cart-text">{{ t('nav.cart') }}</span>
-        </router-link>
       </div>
     </div>
   </header>
@@ -146,10 +145,10 @@ $primary-dark: #3A8BC4;
 $primary-bg: #F0F7FC;
 
 .header {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -159,15 +158,15 @@ $primary-bg: #F0F7FC;
 .header-content {
   display: flex;
   align-items: center;
-  height: 68px;
-  gap: 28px;
+  height: 56px;
+  gap: 20px;
 }
 
-// Logo
+// Logo - 更紧凑
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
   flex-shrink: 0;
   transition: transform 0.25s $ease-out-expo;
@@ -178,25 +177,24 @@ $primary-bg: #F0F7FC;
 }
 
 .logo-icon {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  box-shadow: 0 3px 10px rgba(74, 159, 212, 0.25);
+  box-shadow: 0 2px 8px rgba(74, 159, 212, 0.2);
   transition: all 0.25s $ease-out-expo;
 
   &:hover {
-    box-shadow: 0 5px 16px rgba(74, 159, 212, 0.35);
-    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 159, 212, 0.3);
   }
 }
 
 .logo-text {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   font-family: 'Outfit', sans-serif;
   background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
@@ -206,48 +204,65 @@ $primary-bg: #F0F7FC;
   letter-spacing: -0.02em;
 }
 
-// 搜索框
+// 导航菜单 - 更精致
+.nav-menu {
+  display: flex;
+  gap: 2px;
+}
+
+.nav-item {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+  border-radius: 6px;
+  transition: all 0.2s $ease-out-expo;
+
+  &:hover {
+    color: $primary;
+    background: rgba(74, 159, 212, 0.06);
+  }
+
+  &.active {
+    color: $primary;
+    background: $primary-bg;
+  }
+}
+
+// 搜索框 - 更简洁
 .search-box {
   flex: 1;
-  max-width: 480px;
+  max-width: 400px;
 }
 
 .search-wrapper {
   display: flex;
   align-items: center;
-  height: 44px;
-  border-radius: 24px;
+  height: 36px;
+  border-radius: 8px;
   overflow: hidden;
-  border: 1.5px solid #E2E8F0;
-  background: #fff;
-  transition: all 0.25s $ease-out-expo;
+  border: 1px solid #E2E8F0;
+  background: #F8FAFC;
+  transition: all 0.2s $ease-out-expo;
+  padding: 0 4px 0 12px;
+  gap: 8px;
 
   &:hover {
     border-color: #CBD5E1;
-    background: #FAFCFE;
   }
 
   &:focus-within {
     border-color: $primary;
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(74, 159, 212, 0.12);
+    box-shadow: 0 0 0 2px rgba(74, 159, 212, 0.1);
 
     .search-icon {
       color: $primary;
     }
   }
-}
-
-.search-input {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  padding: 0 14px 0 18px;
-  gap: 10px;
-  height: 100%;
 
   .search-icon {
-    font-size: 16px;
+    font-size: 14px;
     color: #94A3B8;
     flex-shrink: 0;
     transition: color 0.2s;
@@ -257,98 +272,52 @@ $primary-bg: #F0F7FC;
     flex: 1;
     border: none;
     outline: none;
-    font-size: 14px;
-    font-weight: 450;
+    font-size: 13px;
     color: #334155;
     background: transparent;
     height: 100%;
 
     &::placeholder {
       color: #94A3B8;
-      font-weight: 400;
+      font-size: 13px;
     }
   }
-}
 
-.search-btn {
-  height: 100%;
-  padding: 0 28px;
-  border: none;
-  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  transition: all 0.25s $ease-out-expo;
-  white-space: nowrap;
-
-  &:hover {
-    background: linear-gradient(135deg, $primary-light 0%, $primary 100%);
-  }
-
-  &:active {
-    background: linear-gradient(135deg, $primary-dark 0%, #2A7AB4 100%);
-  }
-}
-
-// 导航菜单
-.nav-menu {
-  display: flex;
-  gap: 4px;
-}
-
-.nav-item {
-  padding: 8px 18px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #334155;
-  border-radius: 20px;
-  transition: all 0.2s $ease-out-expo;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+  .search-btn {
+    width: 32px;
+    height: 28px;
+    border: none;
     background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
-    opacity: 0;
-    transition: opacity 0.2s $ease-out-expo;
-    z-index: -1;
-  }
-
-  &:hover {
-    color: $primary;
-    background: rgba(74, 159, 212, 0.06);
-  }
-
-  &.active {
     color: #fff;
-    background: transparent;
-    box-shadow: 0 3px 10px rgba(74, 159, 212, 0.25);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s $ease-out-expo;
+    flex-shrink: 0;
 
-    &::before {
-      opacity: 1;
+    &:hover {
+      background: linear-gradient(135deg, $primary-light 0%, $primary 100%);
     }
   }
 }
 
-// 用户区域
+// 用户区域 - 更紧凑
 .user-area {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
 .user-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
-  padding: 5px 12px;
-  border-radius: 20px;
+  padding: 4px 10px;
+  border-radius: 8px;
   transition: all 0.2s $ease-out-expo;
 
   &:hover {
@@ -356,83 +325,67 @@ $primary-bg: #F0F7FC;
   }
 
   .user-name {
-    max-width: 80px;
+    max-width: 72px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
+    color: #334155;
   }
 }
 
 .auth-link {
-  padding: 8px 20px;
-  border-radius: 20px;
+  padding: 6px 14px;
+  border-radius: 6px;
   font-size: 13px;
   font-weight: 500;
   transition: all 0.2s $ease-out-expo;
-  position: relative;
-  overflow: hidden;
 
   &.login {
     color: $primary;
-    border: 1px solid transparent;
 
     &:hover {
       background: rgba(74, 159, 212, 0.06);
-      border-color: rgba(74, 159, 212, 0.15);
     }
   }
 
   &.register {
     color: #fff;
     background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
-    box-shadow: 0 3px 10px rgba(74, 159, 212, 0.25);
+    box-shadow: 0 2px 8px rgba(74, 159, 212, 0.2);
 
     &:hover {
-      box-shadow: 0 5px 16px rgba(74, 159, 212, 0.35);
-      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(74, 159, 212, 0.3);
     }
   }
 }
 
-// 购物车
+// 购物车 - 更简洁
 .cart-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 5px 12px;
-  border-radius: 10px;
+  padding: 4px 8px;
+  border-radius: 8px;
   transition: all 0.2s $ease-out-expo;
 
   &:hover {
     background: rgba(74, 159, 212, 0.06);
 
     .cart-icon {
-      transform: scale(1.08) translateY(-2px);
-      box-shadow: 0 6px 16px rgba(74, 159, 212, 0.3);
+      transform: scale(1.05);
     }
   }
 }
 
 .cart-icon {
-  width: 38px;
-  height: 38px;
-  background: linear-gradient(135deg, $primary-light 0%, $primary 100%);
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  background: $primary-bg;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: $primary;
   transition: all 0.25s $ease-out-expo;
-  box-shadow: 0 3px 10px rgba(74, 159, 212, 0.25);
-}
-
-.cart-text {
-  font-size: 10px;
-  color: #64748B;
-  font-weight: 500;
 }
 
 :deep(.el-badge__content) {
@@ -440,9 +393,11 @@ $primary-bg: #F0F7FC;
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
   font-size: 10px;
-  height: 17px;
-  line-height: 17px;
-  padding: 0 5px;
+  height: 16px;
+  line-height: 16px;
+  padding: 0 4px;
+  top: 2px;
+  right: calc(50% - 18px);
 }
 
 // 响应式
@@ -454,8 +409,8 @@ $primary-bg: #F0F7FC;
 
 @media (max-width: 768px) {
   .header-content {
-    height: 60px;
-    gap: 14px;
+    height: 52px;
+    gap: 12px;
   }
 
   .logo-text {
@@ -466,12 +421,8 @@ $primary-bg: #F0F7FC;
     max-width: none;
   }
 
-  .cart-text {
-    display: none;
-  }
-
   .auth-link {
-    padding: 7px 14px;
+    padding: 5px 10px;
     font-size: 12px;
   }
 }

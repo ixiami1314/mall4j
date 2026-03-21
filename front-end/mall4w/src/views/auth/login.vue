@@ -102,15 +102,15 @@ $text-tertiary: #94A3B8;
 $border-light: #E2E8F0;
 
 .login-page {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 120px);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, $primary 0%, $primary-light 50%, $primary-dark 100%);
+  background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
   position: relative;
   overflow: hidden;
 
-  // 装饰性背景元素
+  // 装饰性背景
   &::before {
     content: '';
     position: absolute;
@@ -119,23 +119,9 @@ $border-light: #E2E8F0;
     width: 200%;
     height: 200%;
     background:
-      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
-      radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06) 0%, transparent 40%);
     animation: float 20s ease-in-out infinite;
-  }
-
-  // 装饰性圆形
-  &::after {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    top: -200px;
-    right: -200px;
-    pointer-events: none;
   }
 }
 
@@ -143,60 +129,41 @@ $border-light: #E2E8F0;
   0%, 100% {
     transform: translate(0, 0) rotate(0deg);
   }
-  33% {
-    transform: translate(20px, -20px) rotate(5deg);
-  }
-  66% {
-    transform: translate(-20px, 20px) rotate(-5deg);
+  50% {
+    transform: translate(10px, -10px) rotate(2deg);
   }
 }
 
 .login-box {
-  width: 400px;
-  padding: 44px 40px;
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 20px;
-  box-shadow:
-    0 22px 70px rgba(0, 0, 0, 0.2),
-    0 8px 25px rgba(0, 0, 0, 0.08);
+  width: 360px;
+  padding: 36px 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   position: relative;
   z-index: 1;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  animation: fadeInUp 0.5s $ease-out-expo;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, $primary, $primary-light, $primary-dark);
-    border-radius: 20px 20px 0 0;
-  }
+  animation: fadeInUp 0.4s $ease-out-expo;
 
   h2 {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     color: $text-primary;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'Outfit', 'Noto Sans SC', sans-serif;
-    letter-spacing: -0.02em;
   }
 
   :deep(.el-form-item) {
-    margin-bottom: 22px;
+    margin-bottom: 18px;
   }
 
   :deep(.el-input__wrapper) {
-    border-radius: 10px;
-    padding: 3px 14px;
+    border-radius: 8px;
+    padding: 2px 12px;
     box-shadow: none;
-    border: 1.5px solid $border-light;
-    background: $primary-bg;
-    transition: all 0.25s $ease-out-expo;
+    border: 1px solid $border-light;
+    background: #F8FAFC;
+    transition: all 0.2s $ease-out-expo;
 
     &:hover {
       border-color: #CBD5E1;
@@ -205,67 +172,53 @@ $border-light: #E2E8F0;
     &.is-focus {
       border-color: $primary;
       background: #fff;
-      box-shadow: 0 0 0 3px rgba(74, 159, 212, 0.12);
+      box-shadow: 0 0 0 2px rgba(74, 159, 212, 0.1);
     }
   }
 
   :deep(.el-input__inner) {
-    height: 44px;
-    font-size: 14px;
-    font-weight: 400;
+    height: 40px;
+    font-size: 13px;
 
     &::placeholder {
       color: $text-tertiary;
-      font-weight: 400;
     }
   }
 
   :deep(.el-input__prefix) {
-    font-size: 16px;
+    font-size: 14px;
     color: $text-tertiary;
   }
 
   .login-btn {
     width: 100%;
-    height: 48px;
-    font-size: 15px;
+    height: 42px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.03em;
-    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+    background: $primary;
     border: none;
-    border-radius: 12px;
-    box-shadow: 0 5px 18px rgba(74, 159, 212, 0.32);
-    transition: all 0.3s $ease-out-expo;
-    margin-top: 6px;
+    border-radius: 8px;
+    transition: all 0.2s $ease-out-expo;
+    margin-top: 4px;
 
     &:hover {
-      background: linear-gradient(135deg, $primary-light 0%, $primary 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 7px 24px rgba(74, 159, 212, 0.4);
-    }
-
-    &:active {
-      transform: translateY(0);
+      background: $primary-dark;
     }
   }
 
   .login-footer {
     text-align: center;
-    margin-top: 24px;
-    padding-top: 20px;
+    margin-top: 20px;
+    padding-top: 16px;
     border-top: 1px solid $border-light;
 
     a {
       color: $text-secondary;
-      font-size: 13px;
-      font-weight: 400;
+      font-size: 12px;
       transition: all 0.2s $ease-out-expo;
-      padding: 5px 12px;
-      border-radius: 6px;
 
       &:hover {
         color: $primary;
-        background: $primary-bg;
       }
     }
   }
@@ -274,7 +227,7 @@ $border-light: #E2E8F0;
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -285,17 +238,17 @@ $border-light: #E2E8F0;
 // 响应式
 @media (max-width: 480px) {
   .login-page {
-    padding: 18px;
+    padding: 16px;
   }
 
   .login-box {
     width: 100%;
-    padding: 32px 24px;
-    border-radius: 16px;
+    padding: 28px 20px;
+    border-radius: 10px;
 
     h2 {
-      font-size: 20px;
-      margin-bottom: 26px;
+      font-size: 18px;
+      margin-bottom: 24px;
     }
   }
 }

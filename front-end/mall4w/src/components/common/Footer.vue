@@ -73,76 +73,77 @@ $primary: #4A9FD4;
 $primary-light: #6BB8E8;
 
 .footer {
-  background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+  background: #0F172A;
   color: #fff;
   margin-top: auto;
 }
 
 .footer-top {
-  padding: 44px 0 36px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 36px 0 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .footer-links {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .link-group {
   h4 {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
-    margin-bottom: 18px;
-    color: #fff;
+    margin-bottom: 14px;
+    color: rgba(255, 255, 255, 0.9);
     font-family: 'Outfit', 'Noto Sans SC', sans-serif;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
   a {
     display: block;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 13px;
-    line-height: 2.1;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    line-height: 2;
     transition: all 0.2s ease;
 
     &:hover {
       color: $primary-light;
-      transform: translateX(2px);
     }
   }
 }
 
 .footer-bottom {
-  padding: 24px 0;
+  padding: 20px 0;
   text-align: center;
 }
 
 .footer-info {
   display: flex;
   justify-content: center;
-  gap: 36px;
-  margin-bottom: 18px;
+  gap: 28px;
+  margin-bottom: 16px;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 13px;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
 
   .el-icon {
     color: $primary;
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
 .copyright {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
 
   a {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.35);
     transition: color 0.2s;
 
     &:hover {
@@ -154,22 +155,22 @@ $primary-light: #6BB8E8;
 @media (max-width: 992px) {
   .footer-links {
     flex-wrap: wrap;
-    gap: 28px;
+    gap: 20px;
   }
 
   .link-group {
-    flex: 0 0 calc(33.33% - 18px);
+    flex: 0 0 calc(33.33% - 14px);
   }
 }
 
 @media (max-width: 576px) {
   .link-group {
-    flex: 0 0 calc(50% - 14px);
+    flex: 0 0 calc(50% - 10px);
   }
 
   .footer-info {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 }
 </style>

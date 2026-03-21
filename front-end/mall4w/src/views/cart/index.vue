@@ -357,21 +357,20 @@ $border-light: #E2E8F0;
 
 .cart-page {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 16px auto;
 }
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  animation: fadeIn 0.4s $ease-out-expo;
+  margin-bottom: 16px;
 
   h2 {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 22px;
+    gap: 8px;
+    font-size: 18px;
     font-weight: 600;
     color: $text-primary;
     font-family: 'Outfit', 'Noto Sans SC', sans-serif;
@@ -383,40 +382,29 @@ $border-light: #E2E8F0;
 
   .cart-count {
     color: $text-secondary;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
-    padding: 5px 14px;
+    padding: 4px 10px;
     background: $bg-page;
-    border-radius: 16px;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    border-radius: 4px;
   }
 }
 
 .empty-cart {
   background: #fff;
-  border-radius: 20px;
-  padding: 88px 0;
+  border-radius: 10px;
+  padding: 60px 0;
   text-align: center;
-  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .cart-content {
   background: #fff;
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 // 店铺卡片
@@ -431,41 +419,41 @@ $border-light: #E2E8F0;
 .shop-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 18px 22px;
-  background: linear-gradient(135deg, $bg-page 0%, $bg-secondary 100%);
+  gap: 10px;
+  padding: 14px 18px;
+  background: $bg-page;
   border-bottom: 1px solid $border-light;
 }
 
 .shop-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 
   .el-icon {
     color: $primary;
-    font-size: 17px;
+    font-size: 15px;
   }
 }
 
 .shop-name {
   font-weight: 600;
   color: $text-primary;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 // 商品项
 .discount-section {
-  padding: 0 22px;
+  padding: 0 18px;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  padding: 16px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-  gap: 18px;
-  transition: background 0.2s $ease-out-expo;
+  gap: 14px;
+  transition: background 0.15s $ease-out-expo;
 
   &:last-child {
     border-bottom: none;
@@ -473,30 +461,29 @@ $border-light: #E2E8F0;
 
   &:hover {
     background: rgba(74, 159, 212, 0.02);
-    margin: 0 -22px;
-    padding-left: 22px;
-    padding-right: 22px;
+    margin: 0 -18px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
 
 .item-image {
-  width: 90px;
-  height: 90px;
-  border-radius: 14px;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
   flex-shrink: 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.35s $ease-out-expo;
+    transition: transform 0.3s $ease-out-expo;
   }
 
   &:hover img {
-    transform: scale(1.06);
+    transform: scale(1.05);
   }
 }
 
@@ -505,14 +492,14 @@ $border-light: #E2E8F0;
   min-width: 0;
 
   .item-name {
-    font-size: 14px;
+    font-size: 13px;
     color: $text-regular;
     cursor: pointer;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    line-height: 1.5;
+    line-height: 1.4;
     font-weight: 400;
     transition: color 0.2s;
 
@@ -522,61 +509,58 @@ $border-light: #E2E8F0;
   }
 
   .item-sku {
-    margin-top: 8px;
+    margin-top: 6px;
   }
 }
 
 .item-price {
-  width: 90px;
+  width: 80px;
   text-align: center;
 
   .price {
-    font-size: 14px;
+    font-size: 13px;
     color: $text-secondary;
     font-weight: 400;
   }
 }
 
 .item-count {
-  width: 130px;
+  width: 110px;
   text-align: center;
 
   :deep(.el-input-number) {
-    width: 110px;
+    width: 100px;
   }
 
   :deep(.el-input__wrapper) {
-    border-radius: 8px;
+    border-radius: 6px;
     border-color: $border-light;
-
-    &:hover {
-      border-color: $border-light;
-    }
   }
 }
 
 .item-total {
-  width: 110px;
+  width: 100px;
   text-align: center;
 
   .total {
-    font-size: 18px;
+    font-size: 15px;
     color: $danger;
     font-weight: 700;
     font-family: 'Outfit', sans-serif;
 
     &::before {
       content: '¥';
-      font-size: 12px;
+      font-size: 11px;
     }
   }
 }
 
 .item-actions {
-  width: 70px;
+  width: 60px;
   text-align: center;
 
   .el-button {
+    font-size: 12px;
     transition: all 0.2s $ease-out-expo;
 
     &:hover {
@@ -590,8 +574,8 @@ $border-light: #E2E8F0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 24px;
-  background: linear-gradient(135deg, $bg-page 0%, $bg-secondary 100%);
+  padding: 16px 18px;
+  background: $bg-page;
   border-top: 1px solid $border-light;
   position: sticky;
   bottom: 0;
@@ -600,28 +584,29 @@ $border-light: #E2E8F0;
 .footer-left {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 
   .el-button {
     font-weight: 400;
+    font-size: 12px;
   }
 }
 
 .footer-right {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 .price-summary {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 6px;
 }
 
 .selected-count {
   color: $text-secondary;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
 
   em {
@@ -634,17 +619,17 @@ $border-light: #E2E8F0;
 
 .total-label {
   color: $text-regular;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
 }
 
 .total-price {
   color: $danger;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
 
   em {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
     font-style: normal;
     font-family: 'Outfit', sans-serif;
@@ -652,21 +637,17 @@ $border-light: #E2E8F0;
 }
 
 .checkout-btn {
-  width: 160px;
-  height: 48px;
-  font-size: 15px;
+  width: 140px;
+  height: 42px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.01em;
-  border-radius: 12px;
-  background: linear-gradient(135deg, $danger 0%, #B91C1C 100%);
+  border-radius: 8px;
+  background: $danger;
   border: none;
-  box-shadow: 0 5px 16px rgba(220, 38, 38, 0.3);
-  transition: all 0.3s $ease-out-expo;
+  transition: all 0.2s $ease-out-expo;
 
   &:hover:not(:disabled) {
-    background: linear-gradient(135deg, $danger-light 0%, $danger 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 7px 22px rgba(220, 38, 38, 0.38);
+    background: $danger-light;
   }
 
   &:disabled {
@@ -677,20 +658,19 @@ $border-light: #E2E8F0;
 
 // 推荐商品
 .recommend-section {
-  margin-top: 28px;
+  margin-top: 20px;
   background: #fff;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  animation: fadeIn 0.5s $ease-out-expo 0.1s both;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 
   h3 {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: 20px;
-    padding-left: 14px;
-    border-left: 3px solid $primary;
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 2px solid $primary;
     font-family: 'Outfit', 'Noto Sans SC', sans-serif;
     color: $text-primary;
   }
@@ -699,36 +679,36 @@ $border-light: #E2E8F0;
 .recommend-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
+  gap: 12px;
 }
 
 .recommend-item {
   cursor: pointer;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
-  transition: all 0.3s $ease-out-expo;
+  transition: all 0.2s $ease-out-expo;
   border: 1px solid rgba(0, 0, 0, 0.04);
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 24px rgba(74, 159, 212, 0.12);
-    border-color: rgba(74, 159, 212, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(74, 159, 212, 0.1);
+    border-color: rgba(74, 159, 212, 0.1);
 
     img {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
   }
 
   img {
     width: 100%;
-    height: 150px;
+    height: 130px;
     object-fit: cover;
-    transition: transform 0.35s $ease-out-expo;
+    transition: transform 0.3s $ease-out-expo;
   }
 
   .rec-name {
-    padding: 10px;
-    font-size: 12px;
+    padding: 8px;
+    font-size: 11px;
     color: $text-regular;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -737,15 +717,15 @@ $border-light: #E2E8F0;
   }
 
   .rec-price {
-    padding: 0 10px 10px;
-    font-size: 16px;
+    padding: 0 8px 8px;
+    font-size: 14px;
     color: $danger;
     font-weight: 700;
     font-family: 'Outfit', sans-serif;
 
     &::before {
       content: '¥';
-      font-size: 11px;
+      font-size: 10px;
     }
   }
 }
@@ -759,20 +739,20 @@ $border-light: #E2E8F0;
 
 @media (max-width: 768px) {
   .cart-page {
-    margin: 14px auto;
+    margin: 12px auto;
   }
 
   .page-header h2 {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .cart-item {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
 
   .item-info {
-    width: calc(100% - 110px);
+    width: calc(100% - 90px);
   }
 
   .item-price, .item-count, .item-total, .item-actions {

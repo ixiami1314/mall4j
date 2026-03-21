@@ -1,10 +1,10 @@
 <template>
   <div class="home-page">
     <!-- 轮播图 -->
-    <section class="banner-section">
+    <section class="banner-section" v-if="bannerList.length > 0">
       <div class="container">
         <el-carousel
-          height="400px"
+          height="340px"
           :interval="5000"
           arrow="hover"
           indicator-position="outside"
@@ -19,7 +19,7 @@
     </section>
 
     <!-- 分类入口 -->
-    <section class="category-section">
+    <section class="category-section" v-if="categoryList.length > 0">
       <div class="container">
         <div class="section-header">
           <h3>{{ t('home.categoryTitle') }}</h3>
@@ -74,10 +74,22 @@
       </div>
     </section>
 
-    <!-- 空状态 -->
-    <div v-if="!loading && tagProdList.length === 0" class="empty-state">
-      <el-empty :description="t('home.emptyProducts')" />
-    </div>
+    <!-- 空状态 - 更精致的设计 -->
+    <section v-if="!loading && tagProdList.length === 0 && bannerList.length === 0" class="empty-state">
+      <div class="container">
+        <div class="empty-content">
+          <div class="empty-icon">
+            <el-icon :size="48"><Shop /></el-icon>
+          </div>
+          <h3>{{ t('home.emptyProducts') }}</h3>
+          <p>商品正在上架中，敬请期待</p>
+          <router-link to="/category" class="browse-btn">
+            浏览分类
+            <el-icon><ArrowRight /></el-icon>
+          </router-link>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -85,6 +97,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { Shop, ArrowRight } from '@element-plus/icons-vue'
 import { getIndexImgs, getTagProdList } from '@/api/index'
 import { getCategoryInfo } from '@/api/prod'
 import { useAppStore } from '@/stores/app'
@@ -179,49 +192,26 @@ $border-light: #E2E8F0;
 $border-base: #CBD5E1;
 
 .home-page {
-  background: linear-gradient(180deg, $bg-page 0%, #F1F5F9 50%, $bg-page 100%);
+  background: $bg-page;
   min-height: 100vh;
-  padding-bottom: 48px;
-  position: relative;
-
-  // 装饰性背景
-  &::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 380px;
-    background: linear-gradient(180deg, rgba(74, 159, 212, 0.04) 0%, transparent 100%);
-    pointer-events: none;
-    z-index: -1;
-  }
+  padding-bottom: 32px;
 }
 
 // 轮播图区域
 .banner-section {
-  padding: 20px 0;
+  padding: 16px 0 8px;
 
   .banner-item {
     cursor: pointer;
-    border-radius: 18px;
+    border-radius: 12px;
     overflow: hidden;
     height: 100%;
     position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 18px;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-      pointer-events: none;
-    }
   }
 
   .banner-img {
     width: 100%;
-    height: 400px;
+    height: 340px;
     object-fit: cover;
     transition: transform 0.5s $ease-out-expo;
   }
@@ -231,11 +221,11 @@ $border-base: #CBD5E1;
   }
 
   :deep(.el-carousel__indicators--outside) {
-    margin-top: 16px;
+    margin-top: 12px;
   }
 
   :deep(.el-carousel__indicator--horizontal .el-carousel__button) {
-    width: 28px;
+    width: 24px;
     height: 3px;
     border-radius: 2px;
     background: #E2E8F0;
@@ -243,26 +233,25 @@ $border-base: #CBD5E1;
   }
 
   :deep(.el-carousel__indicator--horizontal.is-active .el-carousel__button) {
-    width: 42px;
-    background: linear-gradient(90deg, $primary, $primary-dark);
+    width: 36px;
+    background: $primary;
   }
 }
 
-// 通用标题 - 精致简洁
+// 通用标题 - 更精致
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 
   h3 {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     color: $text-primary;
     position: relative;
-    padding-left: 14px;
+    padding-left: 12px;
     font-family: 'Outfit', 'Noto Sans SC', sans-serif;
-    letter-spacing: -0.01em;
 
     &::before {
       content: '';
@@ -271,73 +260,57 @@ $border-base: #CBD5E1;
       top: 50%;
       transform: translateY(-50%);
       width: 3px;
-      height: 22px;
-      background: linear-gradient(180deg, $primary, $primary-dark);
+      height: 18px;
+      background: $primary;
       border-radius: 2px;
     }
   }
 
   .view-all {
-    color: $text-secondary;
-    font-size: 13px;
+    color: $text-tertiary;
+    font-size: 12px;
     font-weight: 500;
-    padding: 5px 14px;
-    border-radius: 16px;
+    padding: 4px 10px;
+    border-radius: 4px;
     transition: all 0.2s $ease-out-expo;
 
     &:hover {
       color: $primary;
-      background: rgba(74, 159, 212, 0.08);
+      background: $primary-bg;
     }
   }
 }
 
 // 分类区域
 .category-section {
-  background: linear-gradient(135deg, #ffffff 0%, #FAFCFE 100%);
-  padding: 32px 0;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  background: #fff;
+  padding: 24px 0;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .category-grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
 .category-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 18px 6px;
-  border-radius: 14px;
+  padding: 12px 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s $ease-out-expo;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 14px;
-    background: linear-gradient(135deg, $primary-bg 0%, $primary-surface 100%);
-    opacity: 0;
-    transition: opacity 0.3s $ease-out-expo;
-  }
+  transition: all 0.2s $ease-out-expo;
 
   &:hover {
-    transform: translateY(-4px);
-
-    &::before {
-      opacity: 1;
-    }
+    background: $primary-bg;
 
     .category-icon {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(74, 159, 212, 0.18);
+      transform: scale(1.08);
     }
 
     .category-name {
@@ -346,90 +319,66 @@ $border-base: #CBD5E1;
   }
 
   .category-icon {
-    width: 62px;
-    height: 62px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: linear-gradient(135deg, $bg-secondary 0%, #E8E8E8 100%);
+    background: $bg-secondary;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 12px;
-    transition: all 0.3s $ease-out-expo;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
-    position: relative;
-    z-index: 1;
+    margin-bottom: 8px;
+    transition: all 0.2s $ease-out-expo;
   }
 
   .category-img {
-    width: 38px;
-    height: 38px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
   }
 
   .category-name {
-    font-size: 12px;
+    font-size: 11px;
     color: $text-regular;
     font-weight: 500;
     transition: color 0.2s;
-    position: relative;
-    z-index: 1;
+    text-align: center;
   }
 }
 
 // 商品区域
 .prod-section {
   background: #fff;
-  padding: 32px 0;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  padding: 24px 0;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .prod-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 18px;
+  gap: 14px;
 }
 
 .prod-card {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s $ease-out-expo;
+  transition: all 0.2s $ease-out-expo;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    box-shadow: 0 16px 32px rgba(74, 159, 212, 0.1);
-    opacity: 0;
-    transition: opacity 0.3s $ease-out-expo;
-    pointer-events: none;
-  }
 
   &:hover {
-    transform: translateY(-6px);
-    border-color: rgba(74, 159, 212, 0.12);
-
-    &::before {
-      opacity: 1;
-    }
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(74, 159, 212, 0.1);
+    border-color: rgba(74, 159, 212, 0.1);
 
     .prod-overlay {
       opacity: 1;
     }
 
     .prod-img {
-      transform: scale(1.05);
-    }
-
-    .prod-price {
-      color: $danger-light;
       transform: scale(1.04);
     }
   }
@@ -441,9 +390,9 @@ $border-base: #CBD5E1;
 
   .prod-img {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
-    transition: transform 0.4s $ease-out-expo;
+    transition: transform 0.3s $ease-out-expo;
   }
 
   .prod-overlay {
@@ -452,32 +401,29 @@ $border-base: #CBD5E1;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(74, 159, 212, 0.75), rgba(58, 139, 196, 0.75));
+    background: rgba(74, 159, 212, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s $ease-out-expo;
+    transition: opacity 0.2s $ease-out-expo;
 
     span {
       color: #fff;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
-      padding: 8px 20px;
+      padding: 6px 14px;
       border: 1.5px solid #fff;
-      border-radius: 20px;
-      backdrop-filter: blur(4px);
-      letter-spacing: 0.01em;
+      border-radius: 16px;
     }
   }
 
   .prod-info {
-    padding: 16px;
-    position: relative;
+    padding: 12px;
   }
 
   .prod-name {
-    font-size: 13px;
+    font-size: 12px;
     color: $text-regular;
     font-weight: 500;
     overflow: hidden;
@@ -485,10 +431,9 @@ $border-base: #CBD5E1;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    line-height: 1.5;
-    height: 39px;
-    margin-bottom: 10px;
-    transition: color 0.2s;
+    line-height: 1.4;
+    height: 34px;
+    margin-bottom: 8px;
 
     &:hover {
       color: $primary;
@@ -501,7 +446,7 @@ $border-base: #CBD5E1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .prod-price-row {
@@ -511,41 +456,82 @@ $border-base: #CBD5E1;
   }
 
   .prod-price {
-    font-size: 20px;
+    font-size: 16px;
     color: $danger;
     font-weight: 700;
     font-family: 'Outfit', sans-serif;
-    transition: all 0.25s $ease-out-expo;
 
     &::before {
       content: '¥';
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 600;
     }
   }
 
   .prod-sales {
-    font-size: 11px;
+    font-size: 10px;
     color: $text-tertiary;
-    font-weight: 450;
-  }
-
-  .prod-action {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: all 0.25s $ease-out-expo;
+    font-weight: 400;
   }
 }
 
+// 空状态 - 更精致
 .empty-state {
-  padding: 72px 0;
+  padding: 60px 0;
   background: #fff;
-  border-radius: 20px;
-  margin: 20px 0;
-  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+  margin: 16px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.empty-content {
+  text-align: center;
+  max-width: 320px;
+  margin: 0 auto;
+
+  .empty-icon {
+    width: 80px;
+    height: 80px;
+    background: $primary-bg;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: $primary;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 13px;
+    color: $text-tertiary;
+    margin-bottom: 20px;
+  }
+
+  .browse-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: $primary;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s $ease-out-expo;
+
+    &:hover {
+      background: $primary-dark;
+      color: #fff;
+    }
+  }
 }
 
 // 响应式
@@ -577,19 +563,23 @@ $border-base: #CBD5E1;
   }
 
   .prod-card {
-    border-radius: 14px;
+    border-radius: 8px;
 
     .prod-img {
-      height: 160px;
+      height: 140px;
     }
 
     .prod-info {
-      padding: 12px;
+      padding: 10px;
     }
 
     .prod-price {
-      font-size: 16px;
+      font-size: 14px;
     }
+  }
+
+  .banner-section .banner-img {
+    height: 200px;
   }
 }
 </style>
