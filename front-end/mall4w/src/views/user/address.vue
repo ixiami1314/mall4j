@@ -31,7 +31,13 @@
           <el-input v-model="form.mobile" />
         </el-form-item>
         <el-form-item :label="t('user.address.area')" prop="province">
-          <el-cascader v-model="form.areaArr" :options="areaOptions" style="width: 100%" />
+          <el-cascader
+            v-model="form.areaArr"
+            :props="cascaderProps"
+            style="width: 100%"
+            :placeholder="t('user.address.selectArea')"
+            @change="handleAreaChange"
+          />
         </el-form-item>
         <el-form-item :label="t('user.address.detail')" prop="addr">
           <el-input v-model="form.addr" type="textarea" />
@@ -48,7 +54,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getAddressList, addAddress, updateAddress, deleteAddress, setDefaultAddress } from '@/api/address'
+import { getAddressList, addAddress, updateAddress, deleteAddress, setDefaultAddress, getAreaList } from '@/api/address'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
 const { t } = useI18n()
@@ -75,10 +81,62 @@ const rules = {
   addr: [{ required: true, message: t('user.address.detailPlaceholder'), trigger: 'blur' }]
 }
 
-const areaOptions = [] // 可接入实际省市区数据
+// 级联选择器懒加载配置
+const cascaderProps = {
+  lazy: true,
+  async lazyLoad(node, resolve) {
+    const { level, value } = node
+    // 根据 level 和 value 确定要请求的 pid
+    let pid = 0
+    if (level === 1) {
+      // 获取城市：需要根据省份名称找到对应的 areaId
+      pid = node.root ? 0 : await getAreaIdByName(value, 0)
+    } else if (level === 2) {
+      // 获取区县：需要根据城市名称找到对应的 areaId
+      pid = await getAreaIdByName(value, node.parent?.value || '')
+    }
+
+    try {
+      const { data } = await getAreaList(pid)
+      const nodes = (data || []).map(item => ({
+        value: item.areaName,
+        label: item.areaName,
+        leaf: level >= 2 // 第三级（区县）为叶子节点
+      }))
+      resolve(nodes)
+    } catch (e) {
+      console.error('获取地区数据失败', e)
+      resolve([])
+    }
+  }
+}
+
+// 根据名称获取地区ID（需要先加载省份数据）
+const areaCache = ref(new Map())
+
+const getAreaIdByName = async (name, parentName) => {
+  // 这里简化处理，实际应该缓存所有地区数据
+  // 由于后端返回的是 Area 对象，包含 areaId
+  return areaCache.value.get(`${parentName}-${name}`) || 0
+}
+
+// 初始化时加载省份数据到缓存
+const loadProvincesToCache = async () => {
+  try {
+    const { data: provinces } = await getAreaList(0)
+    if (provinces) {
+      provinces.forEach(p => {
+        areaCache.value.set(`-${p.areaName}`, p.areaId)
+      })
+    }
+  } catch (e) {
+    console.error('加载省份数据失败', e)
+  }
+}
 
 onMounted(() => {
   fetchAddressList()
+  loadProvincesToCache()
 })
 
 const fetchAddressList = async () => {
@@ -94,13 +152,38 @@ const showAddDialog = () => {
 
 const handleEdit = (addr) => {
   isEdit.value = true
-  Object.assign(form, addr)
+  // 编辑时设置 areaArr
+  const areaArr = []
+  if (addr.province) areaArr.push(addr.province)
+  if (addr.city) areaArr.push(addr.city)
+  if (addr.area) areaArr.push(addr.area)
+  Object.assign(form, { ...addr, areaArr })
   dialogVisible.value = true
+}
+
+const handleAreaChange = (value) => {
+  // 当选择地区时，更新 form 中的省市区字段
+  if (value && value.length >= 1) {
+    form.province = value[0] || ''
+  }
+  if (value && value.length >= 2) {
+    form.city = value[1] || ''
+  }
+  if (value && value.length >= 3) {
+    form.area = value[2] || ''
+  }
 }
 
 const handleSubmit = async () => {
   const valid = await formRef.value.validate().catch(() => false)
   if (!valid) return
+
+  // 确保省市区字段已设置
+  if (form.areaArr && form.areaArr.length >= 1) {
+    form.province = form.areaArr[0] || ''
+    form.city = form.areaArr[1] || ''
+    form.area = form.areaArr[2] || ''
+  }
 
   if (isEdit.value) {
     await updateAddress(form)

@@ -52,3 +52,12 @@ export function setDefaultAddress(addrId) {
     params: { addrId }
   })
 }
+
+// 获取省市区列表
+export function getAreaList(pid = 0) {
+  return http({
+    url: http.adornUrl('/p/area/listByPid'),
+    method: 'get',
+    params: { pid }
+  })
+}
