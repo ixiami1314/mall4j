@@ -145,7 +145,11 @@ const fetchCategories = async () => {
 const fetchTagProds = async () => {
   try {
     const { data } = await getTagProdList()
-    tagProdList.value = data || []
+    // 映射 productDtoList 为 prods，适配模板
+    tagProdList.value = (data || []).map(tag => ({
+      ...tag,
+      prods: tag.productDtoList || []
+    }))
   } catch (error) {
     console.error('获取商品列表失败:', error)
   }

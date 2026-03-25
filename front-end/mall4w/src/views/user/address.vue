@@ -72,7 +72,10 @@ const form = reactive({
   city: '',
   area: '',
   addr: '',
-  areaArr: []
+  areaArr: [],
+  provinceId: null,
+  cityId: null,
+  areaId: null
 })
 
 const rules = {
@@ -81,25 +84,25 @@ const rules = {
   addr: [{ required: true, message: t('user.address.detailPlaceholder'), trigger: 'blur' }]
 }
 
-// 级联选择器懒加载配置
+// 级联选择器懒加载配置 - 使用 areaId 作为 value，这样可以正确加载子级
 const cascaderProps = {
   lazy: true,
   async lazyLoad(node, resolve) {
     const { level, value } = node
-    // 根据 level 和 value 确定要请求的 pid
-    let pid = 0
-    if (level === 1) {
-      // 获取城市：需要根据省份名称找到对应的 areaId
-      pid = node.root ? 0 : await getAreaIdByName(value, 0)
-    } else if (level === 2) {
-      // 获取区县：需要根据城市名称找到对应的 areaId
-      pid = await getAreaIdByName(value, node.parent?.value || '')
-    }
+    // 根据 level 确定要请求的 pid
+    // level 0: 省份 (pid=0), level 1: 城市 (pid=省areaId), level 2: 区县 (pid=市areaId)
+    const pid = level === 0 ? 0 : value
 
     try {
       const { data } = await getAreaList(pid)
+      // 缓存加载的地区数据，用于后续 ID 到名称的转换
+      if (data) {
+        data.forEach(item => {
+          areaMap.value.set(item.areaId, item.areaName)
+        })
+      }
       const nodes = (data || []).map(item => ({
-        value: item.areaName,
+        value: item.areaId,  // 使用 areaId 作为 value，便于加载子级
         label: item.areaName,
         leaf: level >= 2 // 第三级（区县）为叶子节点
       }))
@@ -111,32 +114,34 @@ const cascaderProps = {
   }
 }
 
-// 根据名称获取地区ID（需要先加载省份数据）
-const areaCache = ref(new Map())
+// 缓存地区数据用于显示名称
+const areaMap = ref(new Map())
 
-const getAreaIdByName = async (name, parentName) => {
-  // 这里简化处理，实际应该缓存所有地区数据
-  // 由于后端返回的是 Area 对象，包含 areaId
-  return areaCache.value.get(`${parentName}-${name}`) || 0
+// 根据 areaId 获取 areaName
+const getAreaNameById = (areaId) => {
+  return areaMap.value.get(areaId) || ''
 }
 
-// 初始化时加载省份数据到缓存
-const loadProvincesToCache = async () => {
+// 加载地区数据到缓存
+const loadAreaToCache = async (pid, level) => {
   try {
-    const { data: provinces } = await getAreaList(0)
-    if (provinces) {
-      provinces.forEach(p => {
-        areaCache.value.set(`-${p.areaName}`, p.areaId)
+    const { data } = await getAreaList(pid)
+    if (data) {
+      data.forEach(item => {
+        areaMap.value.set(item.areaId, item.areaName)
       })
     }
+    return data
   } catch (e) {
-    console.error('加载省份数据失败', e)
+    console.error('加载地区数据失败', e)
+    return []
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   fetchAddressList()
-  loadProvincesToCache()
+  // 预加载省份数据到缓存
+  await loadAreaToCache(0, 0)
 })
 
 const fetchAddressList = async () => {
@@ -146,31 +151,77 @@ const fetchAddressList = async () => {
 
 const showAddDialog = () => {
   isEdit.value = false
-  Object.assign(form, { addrId: null, receiver: '', mobile: '', province: '', city: '', area: '', addr: '', areaArr: [] })
+  Object.assign(form, { addrId: null, receiver: '', mobile: '', province: '', city: '', area: '', addr: '', areaArr: [], provinceId: null, cityId: null, areaId: null })
   dialogVisible.value = true
 }
 
-const handleEdit = (addr) => {
+// 根据 areaName 查找 areaId（用于编辑时回显）
+const findAreaIdByName = async (name, pid) => {
+  try {
+    const { data } = await getAreaList(pid)
+    if (data) {
+      const found = data.find(item => item.areaName === name)
+      return found ? found.areaId : null
+    }
+  } catch (e) {
+    console.error('查找地区ID失败', e)
+  }
+  return null
+}
+
+const handleEdit = async (addr) => {
   isEdit.value = true
-  // 编辑时设置 areaArr
+  // 编辑时需要将省市区名称转换为 areaId
   const areaArr = []
-  if (addr.province) areaArr.push(addr.province)
-  if (addr.city) areaArr.push(addr.city)
-  if (addr.area) areaArr.push(addr.area)
+  try {
+    // 查找省份 ID
+    if (addr.province) {
+      const provinceId = await findAreaIdByName(addr.province, 0)
+      if (provinceId) {
+        areaArr.push(provinceId)
+        areaMap.value.set(provinceId, addr.province)
+
+        // 查找城市 ID
+        if (addr.city) {
+          const cityId = await findAreaIdByName(addr.city, provinceId)
+          if (cityId) {
+            areaArr.push(cityId)
+            areaMap.value.set(cityId, addr.city)
+
+            // 查找区县 ID
+            if (addr.area) {
+              const areaId = await findAreaIdByName(addr.area, cityId)
+              if (areaId) {
+                areaArr.push(areaId)
+                areaMap.value.set(areaId, addr.area)
+              }
+            }
+          }
+        }
+      }
+    }
+  } catch (e) {
+    console.error('编辑地址时查找地区ID失败', e)
+  }
+
   Object.assign(form, { ...addr, areaArr })
   dialogVisible.value = true
 }
 
-const handleAreaChange = (value) => {
-  // 当选择地区时，更新 form 中的省市区字段
+const handleAreaChange = async (value) => {
+  // 当选择地区时，更新 form 中的省市区字段（value 是 areaId 数组）
+  // 需要根据 areaId 获取 areaName，同时设置对应的 ID 字段
   if (value && value.length >= 1) {
-    form.province = value[0] || ''
+    form.province = areaMap.value.get(value[0]) || ''
+    form.provinceId = value[0]
   }
   if (value && value.length >= 2) {
-    form.city = value[1] || ''
+    form.city = areaMap.value.get(value[1]) || ''
+    form.cityId = value[1]
   }
   if (value && value.length >= 3) {
-    form.area = value[2] || ''
+    form.area = areaMap.value.get(value[2]) || ''
+    form.areaId = value[2]
   }
 }
 
@@ -178,11 +229,18 @@ const handleSubmit = async () => {
   const valid = await formRef.value.validate().catch(() => false)
   if (!valid) return
 
-  // 确保省市区字段已设置
+  // 确保省市区字段已设置（将 areaId 转换为 areaName，同时设置 ID 字段）
   if (form.areaArr && form.areaArr.length >= 1) {
-    form.province = form.areaArr[0] || ''
-    form.city = form.areaArr[1] || ''
-    form.area = form.areaArr[2] || ''
+    form.province = areaMap.value.get(form.areaArr[0]) || ''
+    form.provinceId = form.areaArr[0]
+  }
+  if (form.areaArr && form.areaArr.length >= 2) {
+    form.city = areaMap.value.get(form.areaArr[1]) || ''
+    form.cityId = form.areaArr[1]
+  }
+  if (form.areaArr && form.areaArr.length >= 3) {
+    form.area = areaMap.value.get(form.areaArr[2]) || ''
+    form.areaId = form.areaArr[2]
   }
 
   if (isEdit.value) {

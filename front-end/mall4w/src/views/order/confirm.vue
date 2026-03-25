@@ -87,13 +87,21 @@ const selectedAddr = ref(null)
 const showAddressDialog = ref(false)
 
 onMounted(async () => {
-  await Promise.all([fetchOrderInfo(), fetchAddressList()])
+  // 先获取地址列表，再获取订单信息（因为订单确认需要 addrId）
+  await fetchAddressList()
+  await fetchOrderInfo()
 })
 
 const fetchOrderInfo = async () => {
   const basketIds = route.query.basketIds?.split(',').map(Number) || []
-  // 从购物车结算时，不传 orderItem；立即购买时才需要传
-  const { data } = await confirmOrder({ basketIds })
+  if (basketIds.length === 0) {
+    loading.value = false
+    return
+  }
+
+  // 必须传入 addrId，使用选中的地址或默认地址
+  const addrId = selectedAddr.value?.addrId || 0
+  const { data } = await confirmOrder({ basketIds, addrId })
   orderInfo.value = data || {}
   loading.value = false
 }
