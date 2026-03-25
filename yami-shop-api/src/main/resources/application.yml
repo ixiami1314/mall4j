@@ -47,5 +47,6 @@ paypal:
   client-secret: ${PAYPAL_CLIENT_SECRET:your-client-secret}
   mode: ${PAYPAL_MODE:sandbox}
   return-url: ${PAYPAL_RETURN_URL:http://localhost:8086/notice/pay/paypal/return}
-  cancel-url: ${PAYPAL_CANCEL_URL:http://localhost:8086/p/pay/paypal/cancel}
+  cancel-url: ${PAYPAL_CANCEL_URL:http://localhost:5173/order/pay-result}
   webhook-id: ${PAYPAL_WEBHOOK_ID:}
+  frontend-url: ${PAYPAL_FRONTEND_URL:http://localhost:5173}

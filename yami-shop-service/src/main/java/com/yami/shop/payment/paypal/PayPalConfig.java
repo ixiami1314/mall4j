@@ -44,6 +44,11 @@ public class PayPalConfig {
     private String webhookId;
 
     /**
+     * 前端 URL（用于回调重定向）
+     */
+    private String frontendUrl;
+
+    /**
      * 是否为沙盒环境
      */
     public boolean isSandbox() {
