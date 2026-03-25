@@ -40,3 +40,12 @@ sa-token:
   token-style: uuid
   # 是否输出操作日志
   is-log: false
+
+# PayPal 支付配置
+paypal:
+  client-id: ${PAYPAL_CLIENT_ID:your-client-id}
+  client-secret: ${PAYPAL_CLIENT_SECRET:your-client-secret}
+  mode: ${PAYPAL_MODE:sandbox}
+  return-url: ${PAYPAL_RETURN_URL:http://localhost:8086/notice/pay/paypal/return}
+  cancel-url: ${PAYPAL_CANCEL_URL:http://localhost:8086/p/pay/paypal/cancel}
+  webhook-id: ${PAYPAL_WEBHOOK_ID:}
