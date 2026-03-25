@@ -92,7 +92,8 @@ onMounted(async () => {
 
 const fetchOrderInfo = async () => {
   const basketIds = route.query.basketIds?.split(',').map(Number) || []
-  const { data } = await confirmOrder({ basketIds, orderItem: [] })
+  // 从购物车结算时，不传 orderItem；立即购买时才需要传
+  const { data } = await confirmOrder({ basketIds })
   orderInfo.value = data || {}
   loading.value = false
 }
@@ -120,7 +121,6 @@ const handleSubmit = async () => {
   try {
     await confirmOrder({
       basketIds: route.query.basketIds?.split(',').map(Number) || [],
-      orderItem: [],
       addrId: selectedAddr.value.addrId
     })
     const { data } = await submitOrder({ orderShopParam: [] })
