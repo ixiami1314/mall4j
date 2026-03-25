@@ -170,7 +170,14 @@
       "payNow": "立即支付",
       "viewOrder": "查看订单",
       "continueShopping": "继续购物",
-      "orderNotFound": "订单号不存在"
+      "orderNotFound": "订单号不存在",
+      "payWithPayPal": "PayPal 支付",
+      "paypalProcessing": "正在跳转 PayPal...",
+      "paypalSuccess": "PayPal 支付成功",
+      "paypalFailed": "PayPal 支付失败",
+      "paypalReturnSuccess": "支付成功！订单已确认",
+      "paypalReturnFailed": "支付处理中，请稍后查看订单状态",
+      "paypalReturnProcessing": "正在确认支付状态..."
     }
   },
   "user": {

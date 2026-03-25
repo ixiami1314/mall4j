@@ -170,7 +170,14 @@
       "payNow": "Pay Now",
       "viewOrder": "View Order",
       "continueShopping": "Continue Shopping",
-      "orderNotFound": "Order not found"
+      "orderNotFound": "Order not found",
+      "payWithPayPal": "Pay with PayPal",
+      "paypalProcessing": "Redirecting to PayPal...",
+      "paypalSuccess": "PayPal payment successful",
+      "paypalFailed": "PayPal payment failed",
+      "paypalReturnSuccess": "Payment successful! Order confirmed",
+      "paypalReturnFailed": "Payment processing, please check order status later",
+      "paypalReturnProcessing": "Confirming payment status..."
     }
   },
   "user": {

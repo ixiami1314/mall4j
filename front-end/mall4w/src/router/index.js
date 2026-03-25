@@ -32,6 +32,7 @@ const authRoutes = [
       { path: 'order/list', name: 'order-list', component: () => import('@/views/order/list.vue'), meta: { title: '订单列表', requiresAuth: true } },
       { path: 'order/detail/:id', name: 'order-detail', component: () => import('@/views/order/detail.vue'), meta: { title: '订单详情', requiresAuth: true } },
       { path: 'order/pay-result', name: 'pay-result', component: () => import('@/views/order/pay-result.vue'), meta: { title: '支付结果', requiresAuth: true } },
+      { path: 'order/paypal-return', name: 'paypal-return', component: () => import('@/views/order/paypal-return.vue'), meta: { title: 'PayPal支付回调', requiresAuth: true } },
       {
         path: 'user',
         name: 'user',

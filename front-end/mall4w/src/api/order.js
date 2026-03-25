@@ -70,3 +70,21 @@ export function getOrderCount() {
     method: 'get'
   })
 }
+
+// 创建 PayPal 订单
+export function createPayPalOrder(orderNumbers) {
+  return http({
+    url: http.adornUrl('/p/pay/paypal/create'),
+    method: 'post',
+    data: { orderNumbers, payType: 3 }
+  })
+}
+
+// 捕获 PayPal 订单
+export function capturePayPalOrder(payPalOrderId) {
+  return http({
+    url: http.adornUrl('/p/pay/paypal/capture'),
+    method: 'post',
+    data: { payPalOrderId }
+  })
+}
