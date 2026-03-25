@@ -19,7 +19,10 @@ public enum PayType {
 	WECHATPAY(1,"微信支付"),
 	
 	/** "支付宝*/
-	ALIPAY(2,"支付宝");
+	ALIPAY(2,"支付宝"),
+
+	/** PayPal*/
+	PAYPAL(3,"PayPal");
 
 	private Integer num;
 	
